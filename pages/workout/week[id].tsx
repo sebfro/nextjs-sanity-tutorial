@@ -4,12 +4,12 @@ import { Workout } from "../../types/SchemaTypes";
 import { fetchAllByType } from "../api/client";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");
-  return {
-    props: {
-      workouts,
-    },
-  };
+	const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");
+	return {
+		props: {
+			workouts,
+		},
+	};
 };
 
 interface WeekProps {
@@ -17,15 +17,15 @@ interface WeekProps {
 }
 
 const week: React.FC<WeekProps> = ({ workouts }) => {
-  return (
-    <>
-      {workouts.length > 0 && (
-        <div>
-          <pre>{JSON.stringify(workouts, null, 2)}</pre>
-        </div>
-      )}
-    </>
-  );
+	return (
+		<>
+			{workouts.length > 0 && (
+				<div>
+					<pre>{JSON.stringify(workouts, null, 2)}</pre>
+				</div>
+			)}
+		</>
+	);
 };
 
 export default week;

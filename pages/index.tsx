@@ -1,16 +1,14 @@
 import React from "react";
 import { Pet } from "../types/SchemaTypes";
 import { GetStaticProps } from "next";
-import { fetchByType } from "./api/client";
+import { fetchAllByType } from "./api/client";
 
 interface HomeProps {
   pets: Pet[];
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  console.log(`${"[_type == " + "pet" + "]"}`);
-  const pets: Pet[] = await fetchByType<Pet[]>("pet");
-  console.log(pets);
+  const pets: Pet[] = await fetchAllByType<Pet[]>("pet");
   return {
     props: {
       pets,

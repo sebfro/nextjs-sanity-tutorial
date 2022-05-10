@@ -19,3 +19,15 @@ export type WorkoutWeek = {
     _id: string,
     name: string
 }
+
+export type WorkoutDay = {
+    _id: string;
+    workoutday: string;
+    workoutweekref: reference;
+    _createdAt: string;
+}
+
+type reference = {
+    _ref: string;
+    _type: string;
+}

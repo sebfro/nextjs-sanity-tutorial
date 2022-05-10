@@ -1,10 +1,10 @@
 import { GetStaticProps } from "next";
 import React from "react";
 import { Workout } from "../../types/SchemaTypes";
-import { fetchByType } from "../api/client";
+import { fetchAllByType } from "../api/client";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const workouts: Workout[] = await fetchByType<Workout[]>("workout");
+  const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");
   return {
     props: {
       workouts,

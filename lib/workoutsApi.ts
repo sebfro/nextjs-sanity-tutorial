@@ -1,9 +1,9 @@
-import { fetchByType } from "../pages/api/client";
+import { fetchAllByType } from "../pages/api/client";
 import { Workout } from "../types/SchemaTypes";
 
 
 export const getSortedWorkoutsData = async () => {
-    const workouts: Workout[] = await fetchByType<Workout[]>("workout");
+    const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");
 
     return workouts.sort(({ _createdAt: a }, { _createdAt: b }) => {
         if (a < b) {
@@ -18,7 +18,7 @@ export const getSortedWorkoutsData = async () => {
 }
 
 export const getAllPostIds = async () => {
-    const workouts: Workout[] = await fetchByType<Workout[]>("workout");
+    const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");
 
     return workouts.map((workouts) => {
       return {

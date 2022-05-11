@@ -1,13 +1,18 @@
 import { GetServerSideProps } from "next";
 import { groq } from "next-sanity";
 import styled from "styled-components";
-import React from "react";
+import React, { useCallback } from "react";
 import { Workout } from "../../types/SchemaTypes";
 import { client } from "../api/client";
 import WorkoutSetRow from "../../components/atoms/WorkoutSetRow";
+import { useRouter } from "next/router";
+import Header from "../../components/atoms/Header";
+import utilStyles from "../../styles/utils.module.css";
+import Button from "../../components/atoms/Button";
 
-//eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getServerSideProps: GetServerSideProps = async ({ query: { id }}) => {
+export const getServerSideProps: GetServerSideProps = async ({
+	query: { id },
+}) => {
 	const response = await client.fetch(
 		groq`*[_type=="workout" && references(*[_type=="workoutday" && _id == "${id}"]._id)]
 		{
@@ -21,33 +26,37 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { id }}) =
 };
 
 interface WorkoutdayProps {
-	workouts: Workout[]
+  workouts: Workout[];
 }
 
 const Workoutday: React.FC<WorkoutdayProps> = ({ workouts }) => {
+	const router = useRouter();
+	const handleAddWorkout = useCallback(() => {
+		console.log("added");
+	}, []);
+
 	return (
-		<Layout>
-			{
-				workouts.map(({ovelse, sets, _id}) => (
-					<Row key={_id}>
-						<p>{ovelse}</p>
-						<WorkoutSetRow sets={sets} />
-					</Row>
-				))
-			}
-		</Layout>);
+		<>
+			<Header headerText="Dagens økt" />
+			{workouts.map(({ ovelse, sets, _id }) => (
+				<Row key={_id}>
+					<p className={utilStyles.headingMd}>{ovelse}</p>
+					<WorkoutSetRow sets={sets} id={_id} />
+				</Row>
+			))}
+			<AddBtn callback={handleAddWorkout} text="+" />
+		</>
+	);
 };
 
 export default Workoutday;
 
-const Layout = styled.div`
-	width: 80%;
-	margin: auto;
-`;
-
 const Row = styled.div`
-	display: grid;
+  display: grid;
 `;
 
-
-
+const AddBtn = styled(Button)`
+.custombtn {
+	margin-top: 10em;
+}
+`;

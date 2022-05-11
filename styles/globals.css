@@ -2,9 +2,13 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #f1f3f6;
+  background-color: white;
   color: #1c2430;
   margin: 0;
+}
+
+html {
+  background-color: white;
 }
 
 header {

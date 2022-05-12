@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 import styled from "styled-components";
 import Button from "../../components/atoms/Button";
 import Header from "../../components/atoms/Header";
-import Layout from "../../components/atoms/Layout";
+import { WorkoutRoutes } from "../../Constants/routes";
 import { WorkoutWeek } from "../../types/SchemaTypes";
 import { fetchAllByType } from "../api/client";
 
@@ -30,7 +30,7 @@ const WorkoutWeeks: React.FC<WorkoutsProps> = ({ workoutWeeks }) => {
 	console.log(workoutWeeks);
 	const router = useRouter();
 	const goToWorkoutWeek = useCallback((id: string) => {
-		router.push({ pathname: "/workout/workoutweek", query: { id } });
+		router.push({ pathname: WorkoutRoutes.workoutweek, query: { id } });
 	}, []);
 
 	const handleAddWeek = useCallback(() => {

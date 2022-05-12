@@ -5,7 +5,6 @@ import React, { useCallback } from "react";
 import { Workout } from "../../types/SchemaTypes";
 import { client } from "../api/client";
 import WorkoutSetRow from "../../components/atoms/WorkoutSetRow";
-import { useRouter } from "next/router";
 import Header from "../../components/atoms/Header";
 import utilStyles from "../../styles/utils.module.css";
 import Button from "../../components/atoms/Button";
@@ -30,7 +29,6 @@ interface WorkoutdayProps {
 }
 
 const Workoutday: React.FC<WorkoutdayProps> = ({ workouts }) => {
-	const router = useRouter();
 	const handleAddWorkout = useCallback(() => {
 		console.log("added");
 	}, []);
@@ -56,7 +54,7 @@ const Row = styled.div`
 `;
 
 const AddBtn = styled(Button)`
-.custombtn {
-	margin-top: 10em;
-}
+  .custombtn {
+    margin-top: 10em;
+  }
 `;

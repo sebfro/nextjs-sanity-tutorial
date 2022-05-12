@@ -1,14 +1,13 @@
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { groq } from "next-sanity";
-import Link from "next/link";
 import React, { useCallback } from "react";
 import { client } from "../api/client";
-import utilStyles from "../../styles/utils.module.css";
 import { WorkoutDay } from "../../types/SchemaTypes";
 import { useRouter } from "next/router";
 import Button from "../../components/atoms/Button";
 import styled from "styled-components";
 import Header from "../../components/atoms/Header";
+import { WorkoutRoutes } from "../../Constants/routes";
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { id }}) => {
 	const workoutDays: WorkoutDay[] = await client.fetch(
@@ -28,7 +27,7 @@ interface WorkoutWeekProps {
 const WorkoutWeek: React.FC<WorkoutWeekProps> = ({ workoutDays }) => {
 	const router = useRouter();
 	const goToWorkoutDay = useCallback((ref: string) => {
-		router.push({ pathname: `${"/workout/workoutday"}`, query: { id: ref}});
+		router.push({ pathname: WorkoutRoutes.workoutday, query: { id: ref}});
 	}, []);
 
 	return (

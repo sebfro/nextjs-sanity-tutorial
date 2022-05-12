@@ -3,3 +3,7 @@ export const WorkoutRoutes = {
 	workoutweek: "/workout/workoutWeek",
 	workoutWeeksOverview: "/workout/workoutWeeksOverview"
 };
+export const PetRoutes = {
+	allPets: "/pets/allpets",
+	mypets: "/pets/mypets",
+};

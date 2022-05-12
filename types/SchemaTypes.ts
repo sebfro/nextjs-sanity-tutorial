@@ -5,6 +5,8 @@ export type Pet = {
     _type: string;
     _updatedAt: string;
     name: string;
+    race: string;
+    weight: string;
 }
 
 export type Workout = {

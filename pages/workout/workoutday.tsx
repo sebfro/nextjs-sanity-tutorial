@@ -42,7 +42,9 @@ const Workoutday: React.FC<WorkoutdayProps> = ({ workouts }) => {
 					<WorkoutSetRow sets={sets} id={_id} />
 				</Row>
 			))}
-			<AddBtn callback={handleAddWorkout} text="+" />
+			<AddBtn>
+				<Button callback={handleAddWorkout} text="+" />
+			</AddBtn>
 		</>
 	);
 };
@@ -53,8 +55,6 @@ const Row = styled.div`
   display: grid;
 `;
 
-const AddBtn = styled(Button)`
-  .custombtn {
-    margin-top: 10em;
-  }
+const AddBtn = styled.div`
+	margin: 1em;
 `;

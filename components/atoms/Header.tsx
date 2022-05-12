@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({headerText, goBackBtn = true}) => {
 
 export default Header;
 
-const HeaderRow = styled.div`
+const HeaderRow = styled.header`
 	display: flex;
 	justify-content: space-between
 `;

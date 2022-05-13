@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface ButtonProps {
-    callback: () => void;
+    callback: (val?: any) => void;
     text: string;
     disabled?: boolean;
 }

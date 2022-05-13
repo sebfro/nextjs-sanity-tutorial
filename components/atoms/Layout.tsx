@@ -16,5 +16,5 @@ export default Layout;
 const WrapperLayout = styled.div`
 	width: 80%;
 	margin: auto;
-	padding-top: 1em;
+	padding: 1em;
 `;

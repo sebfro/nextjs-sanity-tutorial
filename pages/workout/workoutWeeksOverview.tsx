@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import React, { useCallback } from "react";
 import styled from "styled-components";
 import Button from "../../components/atoms/Button";
-import StyledButton from "../../components/atoms/Common/StyledButton";
 import Header from "../../components/atoms/Header";
 import { WorkoutRoutes } from "../../Constants/routes";
 import { WorkoutWeek } from "../../types/SchemaTypes";
 import { apiUrl, fetchAllByType } from "../api/client";
+import flexhelper from "../../styles/flexhelper.module.css";
 
 export const getServerSideProps: GetStaticProps = async () => {
 	let workoutWeeks: WorkoutWeek[] = await fetchAllByType("workoutweek");
@@ -63,11 +63,9 @@ const WorkoutWeeks: React.FC<WorkoutsProps> = ({ workoutWeeks }) => {
 	return (
 		<>
 			<Header headerText="Trenings Uker" />
-			<WeekContainer>
+			<WeekContainer className={flexhelper.flexrow}>
 				{workoutWeeks.map(({ week, _id }) => (
-					<StyledButton key={_id}>
-						<Button key={_id} callback={() => goToWorkoutWeek(_id)} text={week} />
-					</StyledButton>
+					<Button key={_id} callback={() => goToWorkoutWeek(_id)} text={week} />
 				))}
 				<Button callback={handleAddWeek} text="+" />
 			</WeekContainer>
@@ -80,4 +78,6 @@ export default WorkoutWeeks;
 const WeekContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 1em;
 `;

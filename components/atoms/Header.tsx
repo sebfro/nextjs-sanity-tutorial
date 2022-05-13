@@ -23,5 +23,6 @@ export default Header;
 
 const HeaderRow = styled.header`
 	display: flex;
-	justify-content: space-between
+	justify-content: space-between;
+	margin-bottom: 1em;
 `;

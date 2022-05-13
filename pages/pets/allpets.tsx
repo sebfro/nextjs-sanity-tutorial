@@ -8,6 +8,7 @@ import styled from "styled-components";
 import TextRow from "../../components/atoms/TextRow";
 import { Field, Form, Formik } from "formik";
 import Button from "../../components/atoms/Button";
+import flexhelper from "../../styles/flexhelper.module.css";
 
 interface AllPetsProps {
     pets: Pet[];
@@ -61,10 +62,10 @@ const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
 	return (
 		<>
 			<Header headerText="Alle kjæledyr" />
-			<main>
+			<AllpetsWrapper className={flexhelper.flexcolumndirection} >
 				<Formik initialValues={initialValues} onSubmit={handleSubmit} >
-					{({handleChange, values, handleSubmit, resetForm }) => (
-						<StyledForm>
+					{({ handleSubmit, resetForm }) => (
+						<Form>
 							<Field id="petSearch" name="petSearch" required>
 
 							</Field>
@@ -80,7 +81,7 @@ const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
 								<Button callback={() => handleReset(resetForm)} text="Tilbakestill søk" />
 							</ButtonWrapper>}
 							</ButtonContainer>
-						</StyledForm>
+						</Form>
 					)}
 				</Formik>
 				{pets.length > 0 && (
@@ -103,21 +104,21 @@ const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
 						<p>{text}</p>
 					</div>
 				)}
-			</main>
+			</AllpetsWrapper>
 		</>
 	);
 };
 
 export default AllPets;
 
+const AllpetsWrapper = styled.div`
+	padding: 1em;
+`;
+
 const CardContent = styled.div`
     padding: 1em;
     display: inherit;
-    flex-direction: column !important;
-`;
-
-const StyledForm = styled(Form)`
-	padding: 1em;
+    flex-direction: column;
 `;
 
 const ButtonWrapper = styled.div`
@@ -127,4 +128,8 @@ const ButtonWrapper = styled.div`
 
 const ButtonContainer = styled.div`
 	display: flex;
+`;
+
+const CustomMain = styled.div`
+	flex-direction: column;
 `;

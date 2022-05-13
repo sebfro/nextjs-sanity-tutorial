@@ -8,6 +8,7 @@ import WorkoutSetRow from "../../components/atoms/WorkoutSetRow";
 import Header from "../../components/atoms/Header";
 import utilStyles from "../../styles/utils.module.css";
 import Button from "../../components/atoms/Button";
+import flexhelper from "../../styles/flexhelper.module.css";
 
 export const getServerSideProps: GetServerSideProps = async ({
 	query: { id },
@@ -25,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 interface WorkoutdayProps {
-  workouts: Workout[];
+	workouts: Workout[];
 }
 
 const Workoutday: React.FC<WorkoutdayProps> = ({ workouts }) => {
@@ -36,15 +37,15 @@ const Workoutday: React.FC<WorkoutdayProps> = ({ workouts }) => {
 	return (
 		<>
 			<Header headerText="Dagens økt" />
-			{workouts.map(({ ovelse, sets, _id }) => (
-				<Row key={_id}>
-					<p className={utilStyles.headingMd}>{ovelse}</p>
-					<WorkoutSetRow sets={sets} id={_id} />
-				</Row>
-			))}
-			<AddBtn>
+			<div className={flexhelper.flexcolumndirection} >
+				{workouts.map(({ ovelse, sets, _id }) => (
+					<Row key={_id}>
+						<p className={utilStyles.headingMd}>{ovelse}</p>
+						<WorkoutSetRow sets={sets} id={_id} />
+					</Row>
+				))}
 				<Button callback={handleAddWorkout} text="+" />
-			</AddBtn>
+			</div>
 		</>
 	);
 };
@@ -52,9 +53,5 @@ const Workoutday: React.FC<WorkoutdayProps> = ({ workouts }) => {
 export default Workoutday;
 
 const Row = styled.div`
-  display: grid;
-`;
-
-const AddBtn = styled.div`
-	margin: 1em;
+	display: grid;
 `;

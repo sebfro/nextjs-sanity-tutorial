@@ -1,0 +1,14 @@
+.flexmain {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+.flexrow {
+    display: flex;
+    gap: 1em;
+}
+.flexcolumndirection {
+    display: flex;
+	flex-direction: column;
+	row-gap: 1em;
+}

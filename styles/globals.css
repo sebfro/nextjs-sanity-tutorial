@@ -13,7 +13,6 @@ html {
 
 header {
   background-color: #fff;
-  padding: 1rem;
 }
 
 h1 {
@@ -30,9 +29,12 @@ h2 {
 }
 
 main {
-  max-width: 40rem;
+  /* max-width: 40rem; */
   margin: 2rem auto;
   padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
 main > p {

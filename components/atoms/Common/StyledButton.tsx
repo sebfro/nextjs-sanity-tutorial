@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
+import Button from "../Button";
 
 interface StyledAtomsProps {
-    children: JSX.Element;
+	text: string;
+	callback: (value?: never) => void;
+	callbackValue?: never;
 }
-const StyledButton: React.FC<StyledAtomsProps> = ({ children }) => {
+const StyledButton: React.FC<StyledAtomsProps> = ({ callback, text, callbackValue }) => {
+	const handleClick = useCallback(
+		() => {
+			if (callbackValue) callback(callbackValue);
+			callback();
+		},
+		[],
+	);
+
 	return (
-		<ButtonWrapper>{children}</ButtonWrapper>
+		<ButtonWrapper><Button callback={handleClick} text={text} /></ButtonWrapper>
 	);
 };
 

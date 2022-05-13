@@ -9,6 +9,14 @@ export type Pet = {
     weight: string;
 }
 
+export type User = {
+    _id: string;
+    name: string;
+    age: number;
+    weight: number;
+    gender: string;
+}
+
 export type Workout = {
     _createdAt: string,
     _id: string;

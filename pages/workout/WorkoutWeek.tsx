@@ -1,19 +1,16 @@
 import { GetServerSideProps } from "next";
-import { groq } from "next-sanity";
 import React, { useCallback } from "react";
-import { client } from "../api/client";
+import { fetchAllByTypeAndReference } from "../api/client";
 import { WorkoutDay } from "../../types/SchemaTypes";
 import { useRouter } from "next/router";
 import Button from "../../components/atoms/Button";
-import styled from "styled-components";
 import Header from "../../components/atoms/Header";
 import { WorkoutRoutes } from "../../Constants/routes";
-import StyledButton from "../../components/atoms/Common/StyledButton";
+import flexhelper from "../../styles/flexhelper.module.css";
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { id }}) => {
-	const workoutDays: WorkoutDay[] = await client.fetch(
-		groq`*[_type=="workoutday" && references(*[_type=="workoutweek" && _id == "${id}"]._id)]{workoutday, _id, workoutweekref, _createdAt}`
-	);
+	const workoutDays: WorkoutDay[] = 
+		await fetchAllByTypeAndReference("workoutday", "workoutweek", id as string);
 	return {
 		props: {
 			workoutDays,
@@ -34,19 +31,13 @@ const WorkoutWeek: React.FC<WorkoutWeekProps> = ({ workoutDays }) => {
 	return (
 		<>
 			<Header headerText="Velg treningsprogram for uken" />
-			<BtnRow>
+			<div className={flexhelper.flexrow}>
 				{workoutDays.map(({ _id, workoutday }) => (
-					<StyledButton key={_id}>
-						<Button key={_id} callback={() => goToWorkoutDay(_id)} text={workoutday} />
-					</StyledButton>
+					<Button key={_id} callback={() => goToWorkoutDay(_id)} text={workoutday} />
 				))}
-			</BtnRow>
+			</div>
 		</>
 	);
 };
 
 export default WorkoutWeek;
-
-const BtnRow = styled.div`
-	display: flex;
-`;

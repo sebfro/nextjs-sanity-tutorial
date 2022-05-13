@@ -21,3 +21,6 @@ export const fetchAllByTypeWithFilter = async <T>(type: string, filterName: stri
 	return await client.fetch(groq`*[_type == "${type}" && ${filterName} match "*${filterValue}*"]`);
 };
 
+export const fetchAllByTypeAndReference = async <T>(type: string, refType: string, refId: string): Promise<T> => {
+	return await client.fetch(groq`*[_type == "${type}" && references(*[_type == "${refType}" && _id == "${refId}"]._id)]`);
+};

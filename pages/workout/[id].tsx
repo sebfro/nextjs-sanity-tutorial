@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 import { Workout } from "../../types/SchemaTypes";
-import { fetchAllByType } from "../api/client";
+import { fetchAllByType } from "../api/GroqHelper";
 
 // export const getStaticProps: GetStaticProps = async () => {
 // 	const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");

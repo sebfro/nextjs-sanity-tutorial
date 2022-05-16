@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "../../styles/colors.module.css";
 
 interface CardProps {
     children: JSX.Element;
@@ -7,7 +8,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({children}) => {
 	return (
-		<Row>{children}</Row>
+		<Row className={`${colors.lightgrey} borderstyling`} >{children}</Row>
 	);
 };
 

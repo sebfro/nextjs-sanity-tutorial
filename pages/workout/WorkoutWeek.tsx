@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import React, { useCallback } from "react";
-import { fetchAllByTypeAndReference } from "../api/client";
+import { fetchAllByTypeAndReference } from "../api/GroqHelper";
 import { WorkoutDay } from "../../types/SchemaTypes";
 import { useRouter } from "next/router";
 import Button from "../../components/atoms/Button";

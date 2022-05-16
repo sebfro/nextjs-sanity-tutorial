@@ -1,6 +1,7 @@
 import sanityClient from "@sanity/client";
 import React, { useCallback } from "react";
 import styled from "styled-components";
+import colors from "../../styles/colors.module.css";
 
 interface WorkoutSetRowProps {
     sets: string[];
@@ -35,7 +36,7 @@ const WorkoutSetRow: React.FC<WorkoutSetRowProps> = ({ sets, id }) => {
 	);
     
 	return (
-		<Row>
+		<Row className={colors.lightgrey}>
 			{sets.map((set, i) => (
 				<Column key={i}>{set}</Column>
 			))}

@@ -1,0 +1,33 @@
+import React from "react";
+import styled from "styled-components";
+import { Pet } from "../../types/SchemaTypes";
+import Card from "./Card";
+import TextRow from "./TextRow";
+
+interface PetCardProps {
+    pets: Pet[]
+}
+
+const PetCard: React.FC<PetCardProps> = ({ pets }) => {
+	return (
+		<div>
+			{pets.map((pet) => (
+				<Card key={pet._id}>
+					<CardContent>
+						<TextRow textName="Navn" textValue={pet.name} />
+						<TextRow textName="Rase" textValue={pet.race} />
+						<TextRow textName="Vekt" textValue={pet.weight} />
+					</CardContent>
+				</Card>
+			))}
+		</div>
+	);
+};
+
+export default PetCard;
+
+const CardContent = styled.div`
+    padding: 1em;
+    display: inherit;
+    flex-direction: column;
+`;

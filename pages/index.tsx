@@ -12,11 +12,10 @@ const Home: React.FC = () => {
 	}, []);
 	return (
 		<>
-			<Header headerText="Hovedside" goBackBtn={false} />
+			<Header headerText="Hovedside" goBackBtn={false} goHomeBtn={false} />
 			<main>
 				<Button text="Se alle kjæledyr" callback={() => goToPassedPage(PetRoutes.allPets)} />
 				<Button text="Se mine kjæledyr" callback={() => goToPassedPage(PetRoutes.mypets)} />
-				<Button text="Gå til trening oversikt" callback={() => goToPassedPage(WorkoutRoutes.workoutWeeksOverview)} />
 				<Button text="Gå til trening oversikt" callback={() => goToPassedPage(WorkoutRoutes.workoutWeeksOverview)} />
 			</main>
 		</>

@@ -2,13 +2,13 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: white;
-  color: #1c2430;
+  background-color: #0D1117;
+  color: white;
   margin: 0;
 }
 
 html {
-  background-color: white;
+  background-color: #0D1117;
 }
 
 header {
@@ -25,15 +25,12 @@ h2 {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.75px;
-  color: #515e72;
+  color: white;
 }
 
 main {
   /* max-width: 40rem; */
-  margin: 2rem auto;
-  padding: 0 1rem;
   display: flex;
-  justify-content: center;
   gap: 1em;
 }
 
@@ -67,4 +64,9 @@ li {
   margin-bottom: 1rem;
   font-weight: 600;
   border-radius: 0.25rem;
+}
+
+.borderstyling {
+	border: 2px solid #212831;
+	border-radius: 5px;
 }

@@ -6,7 +6,7 @@ import Button from "../../components/atoms/Button";
 import Header from "../../components/atoms/Header";
 import { WorkoutRoutes } from "../../Constants/routes";
 import { WorkoutWeek } from "../../types/SchemaTypes";
-import { apiUrl, fetchAllByType } from "../api/client";
+import { apiUrl, fetchAllByType } from "../api/GroqHelper";
 import flexhelper from "../../styles/flexhelper.module.css";
 
 export const getServerSideProps: GetStaticProps = async () => {

@@ -1,19 +1,21 @@
 import React, { useCallback, useState } from "react";
 import { Pet } from "../../types/SchemaTypes";
 import { GetStaticProps } from "next";
-import { fetchAllByType, fetchAllByTypeWithFilter } from "../api/client";
+import { fetchAllByType, fetchAllByTypeWithFilter } from "../api/GroqHelper";
 import Header from "../../components/atoms/Header";
 import Card from "../../components/atoms/Card";
 import styled from "styled-components";
 import TextRow from "../../components/atoms/TextRow";
-import { Field, Form, Formik } from "formik";
+import { Field, FieldProps, Form, Formik } from "formik";
 import Button from "../../components/atoms/Button";
 import flexhelper from "../../styles/flexhelper.module.css";
+import FormTextInput from "../../components/atoms/FormTextInput";
+
 
 interface AllPetsProps {
-    pets: Pet[];
-  }
-  
+	pets: Pet[];
+}
+
 export const getStaticProps: GetStaticProps = async () => {
 	const pets: Pet[] = await fetchAllByType<Pet[]>("pet");
 	return {
@@ -26,14 +28,16 @@ export const getStaticProps: GetStaticProps = async () => {
 const text = "Your data will show up here when you've configured everything correctly";
 
 interface InitialValues {
-    petSearch: string;
-} 
+	petSearch: string;
+	temp: string;
+}
 
-const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
+const AllPets: React.FC<AllPetsProps> = ({ pets: petProp }) => {
 	const [pets, setPets] = useState(petProp);
 	const [allowReset, setAllowReset] = useState(false);
 	const initialValues: InitialValues = {
-		petSearch: ""
+		petSearch: "",
+		temp: ""
 	};
 	const handleReset = useCallback(
 		async (reset: () => void) => {
@@ -47,10 +51,10 @@ const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
 		},
 		[],
 	);
-	
+
 	const handleSubmit = useCallback(
 		async (values: InitialValues) => {
-			fetchAllByTypeWithFilter<Pet[]>("pet","[name, race, weight]", values.petSearch)
+			fetchAllByTypeWithFilter<Pet[]>("pet", "[name, race, weight]", values.petSearch)
 				.then(response => {
 					setPets(response);
 					setAllowReset(true);
@@ -66,20 +70,18 @@ const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
 				<Formik initialValues={initialValues} onSubmit={handleSubmit} >
 					{({ handleSubmit, resetForm }) => (
 						<Form>
-							<Field id="petSearch" name="petSearch" required>
-
-							</Field>
-							{/* <input type="text" id="name" name="petSearch" 
-								required onChange={handleChange} value={values.petSearch}
-								minLength={4} maxLength={8} size={10}/> */}
+							<Field id="petSearch" name="petSearch"
+								render={(props: FieldProps) => (
+									<FormTextInput placeholder="Skriv inn søkeorder" type="text" {...props} />
+								)}
+							/>
 							<ButtonContainer>
-								<ButtonWrapper>
+								<>
 									<Button callback={handleSubmit} text="Søk" />
-								</ButtonWrapper>
-								{ allowReset &&
-							<ButtonWrapper>
-								<Button callback={() => handleReset(resetForm)} text="Tilbakestill søk" />
-							</ButtonWrapper>}
+									{allowReset &&
+										<Button callback={() => handleReset(resetForm)} text="Tilbakestill søk" />
+									}
+								</>
 							</ButtonContainer>
 						</Form>
 					)}
@@ -112,7 +114,7 @@ const AllPets: React.FC<AllPetsProps> = ({pets: petProp}) => {
 export default AllPets;
 
 const AllpetsWrapper = styled.div`
-	padding: 1em;
+	padding-top: 1em;
 `;
 
 const CardContent = styled.div`
@@ -128,8 +130,6 @@ const ButtonWrapper = styled.div`
 
 const ButtonContainer = styled.div`
 	display: flex;
-`;
-
-const CustomMain = styled.div`
-	flex-direction: column;
+	margin-top: 1em;
+	column-gap: 1em;
 `;

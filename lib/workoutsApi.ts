@@ -1,4 +1,4 @@
-import { fetchAllByType } from "../pages/api/client";
+import { fetchAllByType } from "../pages/api/GroqHelper";
 import { Workout } from "../types/SchemaTypes";
 
 

@@ -3,7 +3,7 @@ import { groq } from "next-sanity";
 import styled from "styled-components";
 import React, { useCallback } from "react";
 import { Workout } from "../../types/SchemaTypes";
-import { client } from "../api/client";
+import { client } from "../api/GroqHelper";
 import WorkoutSetRow from "../../components/atoms/WorkoutSetRow";
 import Header from "../../components/atoms/Header";
 import utilStyles from "../../styles/utils.module.css";

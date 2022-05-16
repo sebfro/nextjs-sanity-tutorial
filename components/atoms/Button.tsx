@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import colors from "../../styles/colors.module.css";
+
 
 interface ButtonProps {
     callback: (val?: any) => void;
@@ -9,7 +11,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ callback, text, disabled }) => {
 	return (
-		<CustomBtn className="custombtn" onClick={callback} >{text}</CustomBtn>
+		<CustomBtn className={`${colors.lightgrey} borderstyling`} onClick={callback} >{text}</CustomBtn>
 	);
 };
 

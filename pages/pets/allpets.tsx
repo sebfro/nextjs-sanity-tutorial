@@ -91,9 +91,9 @@ const AllPets: React.FC<AllPetsProps> = ({ pets: petProp }) => {
 						{pets.map((pet) => (
 							<Card key={pet._id}>
 								<CardContent>
-									<TextRow textName="Navn" textValue={pet.name} />
-									<TextRow textName="Rase" textValue={pet.race} />
-									<TextRow textName="Vekt" textValue={pet.weight} />
+									<TextRow textName="Navn" value={pet.name} />
+									<TextRow textName="Rase" value={pet.race} />
+									<TextRow textName="Vekt" value={pet.weight} />
 								</CardContent>
 							</Card>
 						))}

@@ -11,7 +11,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ callback, text, disabled }) => {
 	return (
-		<CustomBtn className={`${colors.lightgrey} borderstyling`} onClick={callback} >{text}</CustomBtn>
+		<CustomBtn className={`${colors.lightgrey} borderstyling btnborderstyling`} onClick={callback} >{text}</CustomBtn>
 	);
 };
 
@@ -25,7 +25,7 @@ const CustomBtn = styled.div<{ disabled?: boolean }>`
     padding: 1em 1em;
     width: max-content;
     :hover {
-        background-color: lightgray;
+        background-color: #30363D;
     }
     height: fit-content;
-`;
+    `;

@@ -3,11 +3,14 @@ import styled from "styled-components";
 
 interface TextRowProps {
     textName: string;
-    textValue: string;
+    value?: string | number | null;
 }
-const TextRow: React.FC<TextRowProps> = ({textName, textValue}) => {
+
+const notAvailable = "Utilgjengelig";
+
+const TextRow: React.FC<TextRowProps> = ({textName, value: textValue}) => {
 	return (
-		<Row>{textName}: {textValue}</Row>
+		<Row>{textName}: {textValue || notAvailable}</Row>
 	);
 };
 

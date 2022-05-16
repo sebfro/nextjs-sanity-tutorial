@@ -7,3 +7,6 @@ export const PetRoutes = {
 	allPets: "/pets/allpets",
 	mypets: "/pets/mypets",
 };
+export const TibberRoutes = {
+	tibberOverview: "/tibber/overview",
+};

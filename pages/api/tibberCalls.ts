@@ -1,6 +1,6 @@
 import { graphql, buildSchema } from "graphql";
 import axios, { AxiosResponse } from "axios";
-import { TIBBER_API_TOKEN } from "../../Constants/common";
+import { TIBBER_API_TOKEN } from "../../Constants/tokens";
 import { TibberHomes } from "../../types/TIbberApiTypes";
 
 const schema = buildSchema(`

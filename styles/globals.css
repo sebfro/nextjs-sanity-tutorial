@@ -32,6 +32,7 @@ main {
   /* max-width: 40rem; */
   display: flex;
   gap: 1em;
+  flex-wrap: wrap;
 }
 
 main > p {
@@ -42,7 +43,6 @@ main > div {
   background-color: #fff;
   padding: 1rem;
   border-radius: 0.25rem;
-  margin-bottom: 2rem;
 }
 
 pre {

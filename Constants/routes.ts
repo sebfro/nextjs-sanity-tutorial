@@ -10,3 +10,6 @@ export const PetRoutes = {
 export const TibberRoutes = {
 	tibberOverview: "/tibber/overview",
 };
+export const VeivesenRoutes = {
+	riskMatrix: "/risk/matrix",
+};

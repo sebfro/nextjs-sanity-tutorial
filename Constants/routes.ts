@@ -12,4 +12,5 @@ export const TibberRoutes = {
 };
 export const VeivesenRoutes = {
 	riskMatrix: "/risk/matrix",
+	overviewLayout: "/overview/layout",
 };

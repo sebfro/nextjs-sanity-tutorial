@@ -19,6 +19,7 @@ const Home: React.FC = () => {
 				<Button text="Gå til trening oversikt" callback={() => goToPassedPage(WorkoutRoutes.workoutWeeksOverview)} />
 				<Button text="Gå til tibber oversikt" callback={() => goToPassedPage(TibberRoutes.tibberOverview)} />
 				<Button text="Gå til risikovurdering" callback={() => goToPassedPage(VeivesenRoutes.riskMatrix)} />
+				<Button text="Gå til Vegvesen layout" callback={() => goToPassedPage(VeivesenRoutes.overviewLayout)} />
 			</main>
 		</>
 	);

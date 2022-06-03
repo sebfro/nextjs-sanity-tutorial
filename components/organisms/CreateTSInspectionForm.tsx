@@ -1,24 +1,32 @@
-import { Formik } from 'formik';
-import React from 'react';
+import { Field, Form, Formik, FormikHelpers } from 'formik';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Dropdown from '../atoms/Dropdown';
+import { FieldProps } from 'formik';
 
 const options: string[] = ['1', '2', '3', '4', '5'];
 
 interface InitialValues {
 	name: string;
-	inspectiontype: string;
+	inspectionType: string;
 }
 
 const CreateTSInspectionForm: React.FC = () => {
 	const initialValues: InitialValues = {
 		name: '',
-		inspectiontype: '',
+		inspectionType: '',
 	};
 
-	const handleSubmit = useCallback(async (values: InitialValues) => {
-		console.log('submit');
-	}, []);
+	const handleSubmit = useCallback(
+		async (
+			values: InitialValues,
+			formikHelpers: FormikHelpers<InitialValues>
+		) => {
+			console.log(values);
+			console.log('--------');
+		},
+		[]
+	);
 
 	return (
 		<Container>
@@ -26,17 +34,32 @@ const CreateTSInspectionForm: React.FC = () => {
 				<h1>Opprett TS-inspeksjon</h1>
 			</Heading>
 			<Line />
-			<FormWrapper initialValues={initialValues} onSubmit={handleSubmit}>
-				<input type="text" id="fname" name="fname" />
-				<Dropdown name="Inspeksjonstype" id="1" options={options} />
-				<input type="text" id="tre" name="tre" />
-				<input type="text" id="fire" name="fire" />
-				<input type="text" id="fem" name="fem" />
-				<input type="text" id="seks" name="seks" />
-				<img src="/ExampleMap.png" alt="logo" />
-				<input type="text" id="syv" name="syv" />
-				<input type="text" id="syv" name="syv" />
-				<input className="picturesubmit" type="file" alt="Submit" />
+			<FormWrapper>
+				<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+					<Form>
+						<input type="text" id="fname" name="fname" />
+						<Field
+							id="inspectionType"
+							name="inspectionType"
+							render={(props: FieldProps) => (
+								<Dropdown
+									name="Inspeksjonstype"
+									id="1"
+									options={options}
+									{...props}
+								/>
+							)}
+						/>
+						<input type="text" id="tre" name="tre" />
+						<input type="text" id="fire" name="fire" />
+						<input type="text" id="fem" name="fem" />
+						<input type="text" id="seks" name="seks" />
+						<img src="/ExampleMap.png" alt="logo" />
+						<input type="text" id="syv" name="syv" />
+						<input type="text" id="syv" name="syv" />
+						<input className="picturesubmit" type="file" alt="Submit" />
+					</Form>
+				</Formik>
 			</FormWrapper>
 		</Container>
 	);
@@ -64,7 +87,7 @@ const Line = styled.div`
 	border: 0 none;
 `;
 
-const FormWrapper = styled(Formik)`
+const FormWrapper = styled.div`
 	input:first-of-type {
 		grid-column: 1 / 3;
 	}

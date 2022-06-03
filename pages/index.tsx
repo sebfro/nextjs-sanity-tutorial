@@ -45,6 +45,10 @@ const Home: React.FC = () => {
 					text="Gå til Vegvesen layout"
 					callback={() => goToPassedPage(VeivesenRoutes.overviewLayout)}
 				/>
+				<Button
+					text="Gå til Vegvesen TSINSP form"
+					callback={() => goToPassedPage(VeivesenRoutes.tsinspform)}
+				/>
 			</main>
 		</>
 	);

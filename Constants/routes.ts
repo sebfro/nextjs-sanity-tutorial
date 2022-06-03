@@ -1,16 +1,17 @@
 export const WorkoutRoutes = {
-	workoutday: "/workout/workoutday",
-	workoutweek: "/workout/workoutWeek",
-	workoutWeeksOverview: "/workout/workoutWeeksOverview"
+	workoutday: '/workout/workoutday',
+	workoutweek: '/workout/workoutWeek',
+	workoutWeeksOverview: '/workout/workoutWeeksOverview',
 };
 export const PetRoutes = {
-	allPets: "/pets/allpets",
-	mypets: "/pets/mypets",
+	allPets: '/pets/allpets',
+	mypets: '/pets/mypets',
 };
 export const TibberRoutes = {
-	tibberOverview: "/tibber/overview",
+	tibberOverview: '/tibber/overview',
 };
 export const VeivesenRoutes = {
-	riskMatrix: "/risk/matrix",
-	overviewLayout: "/overview/layout",
+	riskMatrix: '/risk/matrix',
+	overviewLayout: '/overview/layout',
+	tsinspform: '/tsinsp/tsinspform',
 };

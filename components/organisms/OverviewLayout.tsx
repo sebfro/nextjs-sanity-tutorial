@@ -1,72 +1,81 @@
-import React, { useCallback, useState } from "react";
-import styled from "styled-components";
-import StyledButton from "../atoms/Common/StyledButton";
+import React, { useCallback, useState } from 'react';
+import styled from 'styled-components';
+import StyledButton from '../atoms/Common/StyledButton';
 
 interface OverviewLayoutProps {
   username: string;
 }
 
-type Toggle = "InProgress" | "Completed";
+type Toggle = 'InProgress' | 'Completed';
 
 const OverviewLayout: React.FC<OverviewLayoutProps> = ({ username }) => {
-	const [selectedToggle, setSelectedToggle] = useState<Toggle>("InProgress");
-	const handleOnClick = useCallback(() => {
-		console.log("Create");
-	}, []);
+  const [selectedToggle, setSelectedToggle] = useState<Toggle>('InProgress');
+  const handleOnClick = useCallback(() => {
+    console.log('Create');
+  }, []);
 
-	// Tanken med denne er å håndtere koretene som vises. Hvis det er nødvendig.
-	const handleRoutingToInsepction = useCallback(() => {
-		console.log("I be routing");
-	}, []);
+  // Tanken med denne er å håndtere koretene som vises. Hvis det er nødvendig.
+  const handleRoutingToInsepction = useCallback(() => {
+    console.log('I be routing');
+  }, []);
 
-	const handleLogout = useCallback(() => {
-		console.log("Goodbye my friend");
-	}, []);
+  const handleLogout = useCallback(() => {
+    console.log('Goodbye my friend');
+  }, []);
 
-	const handleToggle = useCallback((toggle: Toggle) => {
-		setSelectedToggle(toggle);
-	}, []);
+  const handleToggle = useCallback((toggle: Toggle) => {
+    setSelectedToggle(toggle);
+  }, []);
 
-	return (
-		<Layout>
-			<TopBar className="flexaligncenter">
-				<HeadingItem className="flexaligncenter">
-					<StyledSvg src="/heart.png" alt="logo" />
-					{username}
-				</HeadingItem>
-				<HeadingItem
-					className="flexaligncenter pointeronhover"
-					onClick={handleLogout}
-				>
-					<StyledSvg src="/piggy-bank.png" alt="logo" />
+  return (
+    <Layout>
+      <TopBar className="flexaligncenter">
+        <HeadingItem className="flexaligncenter">
+          <StyledSvg src="/heart.png" alt="logo" />
+          {username}
+        </HeadingItem>
+        <HeadingItem
+          className="flexaligncenter pointeronhover"
+          onClick={handleLogout}
+        >
+          <StyledSvg src="/piggy-bank.png" alt="logo" />
           Logg ut
-				</HeadingItem>
-			</TopBar>
-			<Content>
-				<Heading className="flexaligncenter">
-					<LogoAndTitle className="flexaligncenter">
-						<img src="/piggy-bank.png" alt="logo" />
-						<p>TS-inspeksjoner</p>
-					</LogoAndTitle>
-					<StyledButton text="Opprett TS-inspeksjon" callback={handleOnClick} />
-				</Heading>
-				<Toggles>
-					<ToggleBtn
-						className={selectedToggle === "InProgress" ? "selectedtoggle" : "deselectedtoggle"}
-						onClick={() => handleToggle("InProgress")}
-					>
+        </HeadingItem>
+      </TopBar>
+      <Content>
+        <Heading className="flexaligncenter">
+          <LogoAndTitle className="flexaligncenter">
+            <img src="/piggy-bank.png" alt="logo" />
+            <p>TS-inspeksjoner</p>
+          </LogoAndTitle>
+          <StyledButton text="Opprett TS-inspeksjon" callback={handleOnClick} />
+        </Heading>
+        <Toggles>
+          <ToggleBtn
+            className={
+              selectedToggle === 'InProgress'
+                ? 'selectedtoggle'
+                : 'deselectedtoggle'
+            }
+            onClick={() => handleToggle('InProgress')}
+          >
             Pågående inspeksjoner
-					</ToggleBtn>
-					<p>|</p>
-					<ToggleBtn 
-						className={selectedToggle === "Completed" ? "selectedtoggle" : "deselectedtoggle"}
-						onClick={() => handleToggle("Completed")}>
+          </ToggleBtn>
+          <p>|</p>
+          <ToggleBtn
+            className={
+              selectedToggle === 'Completed'
+                ? 'selectedtoggle'
+                : 'deselectedtoggle'
+            }
+            onClick={() => handleToggle('Completed')}
+          >
             Fullførte inspeksjoner
-					</ToggleBtn>
-				</Toggles>
-			</Content>
-		</Layout>
-	);
+          </ToggleBtn>
+        </Toggles>
+      </Content>
+    </Layout>
+  );
 };
 
 export default OverviewLayout;
@@ -86,7 +95,7 @@ const Layout = styled.div`
     border-bottom: 2px solid #fcae3d;
   }
   .deselectedtoggle {
-	  color: grey;
+    color: grey;
   }
 `;
 
@@ -99,9 +108,9 @@ const Toggles = styled.div`
 `;
 
 const ToggleBtn = styled.p`
-	:hover {
-      cursor: pointer;
-    }
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const TopBar = styled.div`

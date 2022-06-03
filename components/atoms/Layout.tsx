@@ -1,14 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 interface LayoutProps {
-    children: JSX.Element;
+	children: JSX.Element;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-	return (
-		<WrapperLayout>{children}</WrapperLayout>
-	);
+	return <WrapperLayout>{children}</WrapperLayout>;
 };
 
 export default Layout;

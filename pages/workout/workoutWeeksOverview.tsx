@@ -1,16 +1,16 @@
-import { GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import React, { useCallback } from "react";
-import styled from "styled-components";
-import Button from "../../components/atoms/Button";
-import Header from "../../components/atoms/Header";
-import { WorkoutRoutes } from "../../Constants/routes";
-import { WorkoutWeek } from "../../types/SchemaTypes";
-import { apiUrl, fetchAllByType } from "../api/GroqHelper";
-import flexhelper from "../../styles/flexhelper.module.css";
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import React, { useCallback } from 'react';
+import styled from 'styled-components';
+import Button from '../../components/atoms/Button';
+import Header from '../../components/atoms/Header';
+import { WorkoutRoutes } from '../../Constants/routes';
+import { WorkoutWeek } from '../../types/SchemaTypes';
+import { apiUrl, fetchAllByType } from '../api/GroqHelper';
+import flexhelper from '../../styles/flexhelper.module.css';
 
 export const getServerSideProps: GetStaticProps = async () => {
-	let workoutWeeks: WorkoutWeek[] = await fetchAllByType("workoutweek");
+	let workoutWeeks: WorkoutWeek[] = await fetchAllByType('workoutweek');
 	workoutWeeks = workoutWeeks.sort((a, b) => {
 		if (a.weeknr < b.weeknr) return -1;
 		if (a.weeknr > b.weeknr) return 1;
@@ -24,14 +24,17 @@ export const getServerSideProps: GetStaticProps = async () => {
 };
 
 interface WorkoutsProps {
-  workoutWeeks: WorkoutWeek[];
+	workoutWeeks: WorkoutWeek[];
 }
 
 const WorkoutWeeks: React.FC<WorkoutsProps> = ({ workoutWeeks }) => {
 	const router = useRouter();
-	const goToWorkoutWeek = useCallback((id: string) => {
-		router.push({ pathname: WorkoutRoutes.workoutweek, query: { id } });
-	}, []);
+	const goToWorkoutWeek = useCallback(
+		(id: string) => {
+			router.push({ pathname: WorkoutRoutes.workoutweek, query: { id } });
+		},
+		[router]
+	);
 
 	const handleAddWeek = useCallback(() => {
 		const token = process.env.DB_PASS;
@@ -40,24 +43,24 @@ const WorkoutWeeks: React.FC<WorkoutsProps> = ({ workoutWeeks }) => {
 			mutations: [
 				{
 					create: {
-						_type: "cms.document",
-						title: "Uke 11",
+						_type: 'cms.document',
+						title: 'Uke 11',
 					},
 				},
 			],
 		};
 		fetch(apiUrl, {
-			method: "post",
+			method: 'post',
 			headers: {
-				"Content-type": "application/json",
-				Authorization: `Bearer ${token}`
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify(mutations)
+			body: JSON.stringify(mutations),
 		})
 			.then(res => res.json())
 			.then(result => console.log(result))
 			.catch(error => console.log(error));
-		console.log("Add week");
+		console.log('Add week');
 	}, []);
 
 	return (
@@ -76,8 +79,8 @@ const WorkoutWeeks: React.FC<WorkoutsProps> = ({ workoutWeeks }) => {
 export default WorkoutWeeks;
 
 const WeekContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  row-gap: 1em;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	row-gap: 1em;
 `;

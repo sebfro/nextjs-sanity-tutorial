@@ -1,16 +1,21 @@
-import { GetServerSideProps } from "next";
-import React, { useCallback } from "react";
-import { fetchAllByTypeAndReference } from "../api/GroqHelper";
-import { WorkoutDay } from "../../types/SchemaTypes";
-import { useRouter } from "next/router";
-import Button from "../../components/atoms/Button";
-import Header from "../../components/atoms/Header";
-import { WorkoutRoutes } from "../../Constants/routes";
-import flexhelper from "../../styles/flexhelper.module.css";
+import { GetServerSideProps } from 'next';
+import React, { useCallback } from 'react';
+import { fetchAllByTypeAndReference } from '../api/GroqHelper';
+import { WorkoutDay } from '../../types/SchemaTypes';
+import { useRouter } from 'next/router';
+import Button from '../../components/atoms/Button';
+import Header from '../../components/atoms/Header';
+import { WorkoutRoutes } from '../../Constants/routes';
+import flexhelper from '../../styles/flexhelper.module.css';
 
-export const getServerSideProps: GetServerSideProps = async ({ query: { id }}) => {
-	const workoutDays: WorkoutDay[] = 
-		await fetchAllByTypeAndReference("workoutday", "workoutweek", id as string);
+export const getServerSideProps: GetServerSideProps = async ({
+	query: { id },
+}) => {
+	const workoutDays: WorkoutDay[] = await fetchAllByTypeAndReference(
+		'workoutday',
+		'workoutweek',
+		id as string
+	);
 	return {
 		props: {
 			workoutDays,
@@ -19,21 +24,28 @@ export const getServerSideProps: GetServerSideProps = async ({ query: { id }}) =
 };
 
 interface WorkoutWeekProps {
-  workoutDays: WorkoutDay[];
+	workoutDays: WorkoutDay[];
 }
 
 const WorkoutWeek: React.FC<WorkoutWeekProps> = ({ workoutDays }) => {
 	const router = useRouter();
-	const goToWorkoutDay = useCallback((ref: string) => {
-		router.push({ pathname: WorkoutRoutes.workoutday, query: { id: ref}});
-	}, []);
+	const goToWorkoutDay = useCallback(
+		(ref: string) => {
+			router.push({ pathname: WorkoutRoutes.workoutday, query: { id: ref } });
+		},
+		[router]
+	);
 
 	return (
 		<>
 			<Header headerText="Velg treningsprogram for uken" />
 			<div className={flexhelper.flexrow}>
 				{workoutDays.map(({ _id, workoutday }) => (
-					<Button key={_id} callback={() => goToWorkoutDay(_id)} text={workoutday} />
+					<Button
+						key={_id}
+						callback={() => goToWorkoutDay(_id)}
+						text={workoutday}
+					/>
 				))}
 			</div>
 		</>

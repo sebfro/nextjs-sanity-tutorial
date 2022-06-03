@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import styled from "styled-components";
+import React, { useCallback } from 'react';
+import styled from 'styled-components';
 
 interface CheckcircleProps {
 	onClickCallback: (value: string) => void;
@@ -9,21 +9,23 @@ interface CheckcircleProps {
 const Checkcircle: React.FC<CheckcircleProps> = ({
 	onClickCallback,
 	value,
-	className
+	className,
 }) => {
 	const handleChange = useCallback(
 		(e: any) => {
 			onClickCallback(e.target.value);
 		},
-		[value],
+		[onClickCallback]
 	);
 
 	return (
 		<Wrapper className={className}>
-
-
-			<CustomCheckbox name="risk" type="radio" value={value} onChange={handleChange} />
-		
+			<CustomCheckbox
+				name="risk"
+				type="radio"
+				value={value}
+				onChange={handleChange}
+			/>
 		</Wrapper>
 	);
 };
@@ -31,11 +33,10 @@ const Checkcircle: React.FC<CheckcircleProps> = ({
 export default Checkcircle;
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-
+	display: flex;
+	justify-content: center;
 `;
 
 const CustomCheckbox = styled.input`
-    width: 2em;
+	width: 2em;
 `;

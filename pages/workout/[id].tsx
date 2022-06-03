@@ -1,8 +1,6 @@
-import { GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import React from "react";
-import { Workout } from "../../types/SchemaTypes";
-import { fetchAllByType } from "../api/GroqHelper";
+import { useRouter } from 'next/router';
+import React from 'react';
+import { Workout } from '../../types/SchemaTypes';
 
 // export const getStaticProps: GetStaticProps = async () => {
 // 	const workouts: Workout[] = await fetchAllByType<Workout[]>("workout");
@@ -14,15 +12,17 @@ import { fetchAllByType } from "../api/GroqHelper";
 // };
 
 interface WeekProps {
-  workouts: Workout[];
+	workouts: Workout[];
 }
 
 const Week: React.FC<WeekProps> = () => {
 	const router = useRouter();
 	console.log(router.query);
-	const workouts = [{
-		title: "hei"
-	}];
+	const workouts = [
+		{
+			title: 'hei',
+		},
+	];
 	return (
 		<>
 			{workouts.length > 0 && (

@@ -1,20 +1,37 @@
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Dropdown from '../atoms/Dropdown';
 import { FieldProps } from 'formik';
+import FormTextInput from '../atoms/FormInputs/FormTextInput';
 
-const options: string[] = ['1', '2', '3', '4', '5'];
+const options: string[] = [
+	'Option 1',
+	'Option 2',
+	'Option 3',
+	'Option 4',
+	'Option 5',
+];
 
 interface InitialValues {
 	name: string;
 	inspectionType: string;
+	inspectionReason: string;
+	ordering: string;
+	inspectionLeader: string;
+	strekningStart: string;
+	strekningSlutt: string;
 }
 
 const CreateTSInspectionForm: React.FC = () => {
 	const initialValues: InitialValues = {
 		name: '',
 		inspectionType: '',
+		inspectionReason: '',
+		ordering: '',
+		inspectionLeader: '',
+		strekningStart: '',
+		strekningSlutt: '',
 	};
 
 	const handleSubmit = useCallback(
@@ -34,33 +51,93 @@ const CreateTSInspectionForm: React.FC = () => {
 				<h1>Opprett TS-inspeksjon</h1>
 			</Heading>
 			<Line />
-			<FormWrapper>
-				<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+			<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+				{(props: FormikProps<any>) => (
 					<Form>
-						<input type="text" id="fname" name="fname" />
-						<Field
-							id="inspectionType"
-							name="inspectionType"
-							render={(props: FieldProps) => (
-								<Dropdown
-									name="Inspeksjonstype"
-									id="1"
-									options={options}
-									{...props}
-								/>
-							)}
-						/>
-						<input type="text" id="tre" name="tre" />
-						<input type="text" id="fire" name="fire" />
-						<input type="text" id="fem" name="fem" />
-						<input type="text" id="seks" name="seks" />
-						<img src="/ExampleMap.png" alt="logo" />
-						<input type="text" id="syv" name="syv" />
-						<input type="text" id="syv" name="syv" />
-						<input className="picturesubmit" type="file" alt="Submit" />
+						<FormWrapper>
+							<Field
+								name="name"
+								render={(props: FieldProps) => (
+									<FormTextInput
+										{...props}
+										type="text"
+										className="spantwocolumns"
+										labelText="Navn på TS-Inspeksjon"
+									/>
+								)}
+							/>
+							<Field
+								id="inspectionType"
+								name="inspectionType"
+								render={(props: FieldProps) => (
+									<Dropdown
+										labelText="Inspeksjonstype"
+										name="Inspeksjonstype"
+										id="1"
+										options={options}
+										{...props}
+									/>
+								)}
+							/>
+							<Field
+								id="inspectionReason"
+								name="inspectionReason"
+								render={(props: FieldProps) => (
+									<Dropdown
+										labelText="Bakgrunn for inspeksjon"
+										name="inspectionReason"
+										id="1"
+										options={options}
+										{...props}
+									/>
+								)}
+							/>
+							<Field
+								id="ordering"
+								name="ordering"
+								render={(props: FieldProps) => (
+									<Dropdown
+										labelText="Bestiller"
+										name="ordering"
+										id="1"
+										options={options}
+										{...props}
+									/>
+								)}
+							/>
+							<Dropdown
+								labelText="Bestiller"
+								name="inspectionLeader"
+								id="1"
+								options={options}
+							/>
+							<Field
+								name="strekningStart"
+								render={(props: FieldProps) => (
+									<FormTextInput
+										{...props}
+										type="text"
+										labelText="Strekning - Start"
+									/>
+								)}
+							/>
+							<Field
+								name="strekningSlutt"
+								render={(props: FieldProps) => (
+									<FormTextInput
+										{...props}
+										type="text"
+										labelText="Strekning - Slutt"
+									/>
+								)}
+							/>
+							<img src="/ExampleMap.png" alt="logo" />
+							<input className="picturesubmit" type="file" alt="Submit" />
+							<button type="submit">Submit</button>
+						</FormWrapper>
 					</Form>
-				</Formik>
-			</FormWrapper>
+				)}
+			</Formik>
 		</Container>
 	);
 };
@@ -88,7 +165,7 @@ const Line = styled.div`
 `;
 
 const FormWrapper = styled.div`
-	input:first-of-type {
+	.spantwocolumns {
 		grid-column: 1 / 3;
 	}
 	img {
@@ -96,6 +173,9 @@ const FormWrapper = styled.div`
 		grid-column: 2;
 	}
 	.picturesubmit {
+		grid-column: 1 / 3;
+	}
+	button {
 		grid-column: 1 / 3;
 	}
 	display: grid;

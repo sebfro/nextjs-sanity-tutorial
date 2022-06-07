@@ -9,7 +9,7 @@ import TextRow from '../../components/atoms/TextRow';
 import { Field, FieldProps, Form, Formik } from 'formik';
 import Button from '../../components/atoms/Button';
 import flexhelper from '../../styles/flexhelper.module.css';
-import FormTextInput from '../../components/atoms/FormTextInput';
+import FormTextInput from '../../components/atoms/StyledFormTextInput';
 
 interface AllPetsProps {
 	pets: Pet[];

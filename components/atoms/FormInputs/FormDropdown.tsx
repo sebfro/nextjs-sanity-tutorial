@@ -6,13 +6,22 @@ interface DropdownProps {
 	name: string;
 	options: string[];
 	labelText: string;
+	placeholder?: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ name, options, labelText }) => {
+const FormDropdown: React.FC<DropdownProps> = ({
+	name,
+	options,
+	labelText,
+	placeholder = 'Velg ett alternativ...',
+}) => {
 	return (
 		<Wrapper>
 			<Label>{labelText} </Label>
 			<Field as="select" name={name} id={name}>
+				<option className="default" value="" disabled>
+					{placeholder}
+				</option>
 				{options.map((o, i) => (
 					<option value={o} key={o + i}>
 						{o}
@@ -23,7 +32,7 @@ const Dropdown: React.FC<DropdownProps> = ({ name, options, labelText }) => {
 	);
 };
 
-export default Dropdown;
+export default FormDropdown;
 
 const Label = styled.p`
 	font-weight: bold;
@@ -32,6 +41,9 @@ const Label = styled.p`
 `;
 
 const Wrapper = styled.div`
+	.default {
+		color: #97989b;
+	}
 	select {
 		width: 100%;
 		border: 2px solid #97989b;

@@ -1,35 +1,39 @@
-import { FieldProps } from 'formik';
+import { Field, FieldProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../styles/colors.module.css';
 
 interface FormTextInputProps {
 	labelText: string;
-	type?: string;
+	name: string;
 	placeholder?: string;
 	className?: string;
 }
 
-const FormTextInput: React.FC<FormTextInputProps & FieldProps> = ({
-	field,
-	form,
-	type,
+const FormTextInput: React.FC<FormTextInputProps> = ({
 	className,
 	labelText,
+	name,
 	placeholder = '',
-	...props
 }) => {
 	return (
-		<div className={className}>
-			<Label>{labelText} </Label>
-			<StyledInput
-				type={type}
-				{...field}
-				{...props}
-				placeholder={placeholder}
-			/>
-			{/* {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>} */}
-		</div>
+		<Field name={name}>
+			{({
+				field, // { name, value, onChange, onBlur }
+				form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+				meta,
+			}: FieldProps) => (
+				<div className={className}>
+					<div>
+						<Label>{labelText} </Label>
+						<StyledInput type="text" placeholder={placeholder} {...field} />
+						{/* {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>} */}
+					</div>
+					{meta.touched && meta.error && (
+						<div className="error">{meta.error}</div>
+					)}
+				</div>
+			)}
+		</Field>
 	);
 };
 

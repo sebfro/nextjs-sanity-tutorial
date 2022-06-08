@@ -1,8 +1,7 @@
 import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import Dropdown from '../atoms/Dropdown';
-import { FieldProps } from 'formik';
+import FormDropdown from '../atoms/FormInputs/FormDropdown';
 import FormTextInput from '../atoms/FormInputs/FormTextInput';
 import FileDropBox from '../atoms/FormInputs/FileDropBox';
 
@@ -14,25 +13,27 @@ const options: string[] = [
 	'Option 5',
 ];
 
-interface InitialValues {
-	name: string;
+export interface InitialValues {
+	inspectionName: string;
 	inspectionType: string;
 	inspectionReason: string;
 	ordering: string;
 	inspectionLeader: string;
 	strekningStart: string;
 	strekningSlutt: string;
+	files: FileList;
 }
 
 const CreateTSInspectionForm: React.FC = () => {
 	const initialValues: InitialValues = {
-		name: '',
+		inspectionName: '',
 		inspectionType: '',
 		inspectionReason: '',
 		ordering: '',
 		inspectionLeader: '',
 		strekningStart: '',
 		strekningSlutt: '',
+		files: new FileList(),
 	};
 
 	const handleSubmit = useCallback(
@@ -53,65 +54,53 @@ const CreateTSInspectionForm: React.FC = () => {
 			</Heading>
 			<Line />
 			<Formik initialValues={initialValues} onSubmit={handleSubmit}>
-				{(props: FormikProps<any>) => (
+				{(props: FormikProps<InitialValues>) => (
 					<Form>
 						<FormWrapper>
-							<Field
-								name="name"
-								render={(props: FieldProps) => (
-									<FormTextInput
-										{...props}
-										type="text"
-										className="spantwocolumns"
-										labelText="Navn på TS-Inspeksjon"
-									/>
-								)}
+							<FormTextInput
+								name="inspectionName"
+								className="spantwocolumns"
+								labelText="Navn på TS-Inspeksjon"
+								placeholder="Veinummer + strekningsnavn"
 							/>
-							<Dropdown
+							<FormDropdown
+								placeholder="Velg type..."
 								labelText="Inspeksjonstype"
 								name="inspectionType"
 								options={options}
 								{...props}
 							/>
-							<Dropdown
+							<FormDropdown
 								labelText="Bakgrunn for inspeksjon"
 								name="inspectionReason"
 								options={options}
 								{...props}
 							/>
-							<Dropdown
+							<FormDropdown
 								labelText="Bestiller"
 								name="ordering"
 								options={options}
 								{...props}
 							/>
-							<Dropdown
+							<FormDropdown
 								labelText="Bestiller"
 								name="inspectionLeader"
 								options={options}
 							/>
-							<Field
+							<FormTextInput
 								name="strekningStart"
-								render={(props: FieldProps) => (
-									<FormTextInput
-										{...props}
-										type="text"
-										labelText="Strekning - Start"
-									/>
-								)}
+								labelText="Strekning - Start"
 							/>
-							<Field
+							<FormTextInput
 								name="strekningSlutt"
-								render={(props: FieldProps) => (
-									<FormTextInput
-										{...props}
-										type="text"
-										labelText="Strekning - Slutt"
-									/>
-								)}
+								labelText="Strekning - Slutt"
 							/>
 							<img src="/ExampleMap.png" alt="logo" />
-							<FileDropBox labelText="Bakgrunnsmateriale" />
+							<FileDropBox
+								labelText="Bakgrunnsmateriale"
+								name="files"
+								formikProps={props}
+							/>
 							<button type="submit">Submit</button>
 						</FormWrapper>
 					</Form>
@@ -129,9 +118,12 @@ const Container = styled.div`
 	width: 600px;
 `;
 
-const Heading = styled.h1`
+const Heading = styled.div`
 	color: black;
 	padding: 3em 2em 1em;
+	h1 {
+		font-size: 26px;
+	}
 `;
 
 const Line = styled.div`

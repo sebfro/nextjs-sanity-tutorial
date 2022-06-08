@@ -1,49 +1,26 @@
-import { Field, FieldProps } from 'formik';
-import React, { useCallback } from 'react';
+import { Field } from 'formik';
+import React from 'react';
 import styled from 'styled-components';
 
 interface DropdownProps {
 	name: string;
-	id: string;
 	options: string[];
 	labelText: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({
-	id,
-	name,
-	options,
-	labelText,
-}) => {
-	const handleChnage = useCallback((e: any) => {
-		console.log(e.target.value);
-	}, []);
-
+const Dropdown: React.FC<DropdownProps> = ({ name, options, labelText }) => {
 	return (
-		<div>
+		<Wrapper>
 			<Label>{labelText} </Label>
-			<Field as="select" name={name} onChange={handleChnage}>
+			<Field as="select" name={name} id={name}>
 				{options.map((o, i) => (
-					<option value={o} key={o + i} />
+					<option value={o} key={o + i}>
+						{o}
+					</option>
 				))}
 			</Field>
-		</div>
+		</Wrapper>
 	);
-
-	// return (
-	// 	<Wrapper>
-	// 		<label htmlFor={id}>Choose a car:</label>
-	// 		<select
-	// 			id={id}
-	// 			onChange={handleChnage}
-	// 			defaultValue="Velg ett alternativ..."
-	// 		>
-	// 			{options.map((o, i) => (
-	// 				<option value={o} key={o + i} />
-	// 			))}
-	// 		</select>
-	// 	</Wrapper>
-	// );
 };
 
 export default Dropdown;
@@ -57,14 +34,8 @@ const Label = styled.p`
 const Wrapper = styled.div`
 	select {
 		width: 100%;
+		border: 2px solid #97989b;
+		height: 44px;
+		background-color: white;
 	}
-`;
-
-const StyledSelect = styled.select`
-	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	height: 2em;
-	border-radius: 5px; */
-	width: 100%;
-	/* padding: 0.5em;
-	color: black; */
 `;

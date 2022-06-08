@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Dropdown from '../atoms/Dropdown';
 import { FieldProps } from 'formik';
 import FormTextInput from '../atoms/FormInputs/FormTextInput';
+import FileDropBox from '../atoms/FormInputs/FileDropBox';
 
 const options: string[] = [
 	'Option 1',
@@ -66,49 +67,27 @@ const CreateTSInspectionForm: React.FC = () => {
 									/>
 								)}
 							/>
-							<Field
-								id="inspectionType"
+							<Dropdown
+								labelText="Inspeksjonstype"
 								name="inspectionType"
-								render={(props: FieldProps) => (
-									<Dropdown
-										labelText="Inspeksjonstype"
-										name="Inspeksjonstype"
-										id="1"
-										options={options}
-										{...props}
-									/>
-								)}
+								options={options}
+								{...props}
 							/>
-							<Field
-								id="inspectionReason"
+							<Dropdown
+								labelText="Bakgrunn for inspeksjon"
 								name="inspectionReason"
-								render={(props: FieldProps) => (
-									<Dropdown
-										labelText="Bakgrunn for inspeksjon"
-										name="inspectionReason"
-										id="1"
-										options={options}
-										{...props}
-									/>
-								)}
+								options={options}
+								{...props}
 							/>
-							<Field
-								id="ordering"
+							<Dropdown
+								labelText="Bestiller"
 								name="ordering"
-								render={(props: FieldProps) => (
-									<Dropdown
-										labelText="Bestiller"
-										name="ordering"
-										id="1"
-										options={options}
-										{...props}
-									/>
-								)}
+								options={options}
+								{...props}
 							/>
 							<Dropdown
 								labelText="Bestiller"
 								name="inspectionLeader"
-								id="1"
 								options={options}
 							/>
 							<Field
@@ -132,7 +111,7 @@ const CreateTSInspectionForm: React.FC = () => {
 								)}
 							/>
 							<img src="/ExampleMap.png" alt="logo" />
-							<input className="picturesubmit" type="file" alt="Submit" />
+							<FileDropBox labelText="Bakgrunnsmateriale" />
 							<button type="submit">Submit</button>
 						</FormWrapper>
 					</Form>
@@ -152,7 +131,7 @@ const Container = styled.div`
 
 const Heading = styled.h1`
 	color: black;
-	padding: 3em 1em 1em;
+	padding: 3em 2em 1em;
 `;
 
 const Line = styled.div`
@@ -181,6 +160,6 @@ const FormWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 49% 49%;
 	justify-content: space-between;
-	padding: 1em;
+	padding: 1.5em 2em 2em;
 	row-gap: 1em;
 `;

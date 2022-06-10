@@ -1,0 +1,84 @@
+import React, { ReactElement } from 'react';
+import styled from 'styled-components';
+import SaveButtonRow from './SaveButtonRow';
+
+interface ModalProps {
+	isOpen: boolean;
+	handleClose: () => void;
+	handleConfirm: () => void;
+	headerText: string;
+	children: ReactElement;
+}
+const Modal: React.FC<ModalProps> = ({
+	isOpen,
+	handleClose,
+	handleConfirm,
+	headerText,
+	children,
+}) => {
+	if (isOpen) {
+		return (
+			<ModalContainer>
+				<ModalCard>
+					<Heading>
+						<h1>{headerText}</h1>
+						<StyledSvg src="/piggy-bank.png" alt="logo" onClick={handleClose} />
+					</Heading>
+					{children}
+					<SaveButtonRow
+						cancelCallback={handleClose}
+						confirmCallback={handleConfirm}
+					/>
+				</ModalCard>
+			</ModalContainer>
+		);
+	} else {
+		return null;
+	}
+};
+
+export default Modal;
+
+const Heading = styled.div`
+	display: flex;
+	justify-content: space-between;
+	h1 {
+		margin: 0;
+		color: black;
+		font-weight: normal;
+		font-size: 24px;
+	}
+`;
+
+const ModalContainer = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+`;
+
+const ModalCard = styled.div`
+	position: fixed;
+	background: white;
+	width: 50%;
+	height: auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 2em 1.5em 1em;
+	p {
+		color: black;
+	}
+`;
+
+const StyledSvg = styled.img`
+	width: 20px;
+	height: 24px;
+	cursor: pointer;
+	align-self: center;
+	/* display: flex;
+	align-items: center;
+	column-gap: 0.4em; */
+`;

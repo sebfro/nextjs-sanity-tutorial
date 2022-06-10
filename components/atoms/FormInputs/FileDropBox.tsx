@@ -25,7 +25,7 @@ const FileDropBox: React.FC<FileDropBoxProps> = ({
 	// 	},
 	// 	[name, setFieldValue, values.files]
 	// );
-	console.log(values.files);
+	// console.log(values.files);
 	return (
 		<Field name={name}>
 			{({
@@ -48,10 +48,10 @@ const FileDropBox: React.FC<FileDropBoxProps> = ({
 						accept=".pdf,.docx,.jpg"
 						// {...field}
 						onChange={(e: any) => {
-							console.log(Array.from(e.currentTarget.files));
+							console.log(e.currentTarget.files);
 							setFieldValue(
 								'files',
-								values.files.concat(e.currentTarget.files)
+								values.files.concat(Array.from(e.currentTarget.files))
 							);
 						}}
 					/>

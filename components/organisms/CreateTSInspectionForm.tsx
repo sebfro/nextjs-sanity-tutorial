@@ -5,6 +5,7 @@ import FormDropdown from '../atoms/FormInputs/FormDropdown';
 import FormTextInput from '../atoms/FormInputs/FormTextInput';
 import FileDropBox from '../atoms/FormInputs/FileDropBox';
 import SaveButtonRow from '../molecules/SaveButtonRow';
+import { prependOnceListener } from 'process';
 
 const options: string[] = [
 	'Option 1',
@@ -47,6 +48,10 @@ const CreateTSInspectionForm: React.FC = () => {
 		},
 		[]
 	);
+
+	const handleCancelClick = useCallback(() => {
+		console.log('I cancel');
+	}, []);
 
 	return (
 		<Container>
@@ -104,8 +109,8 @@ const CreateTSInspectionForm: React.FC = () => {
 							/>
 							<button type="submit">Submit</button>
 							<SaveButtonRow
-								confirmCallback={() => {}}
-								cancelCallback={() => {}}
+								confirmCallback={props.handleSubmit}
+								cancelCallback={handleCancelClick}
 							/>
 						</FormWrapper>
 					</Form>

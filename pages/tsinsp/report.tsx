@@ -1,22 +1,23 @@
-import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
+import { Form, Formik, FormikProps } from 'formik';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Card from '../../components/atoms/Card';
 import FormTextInput from '../../components/atoms/FormInputs/FormTextInput';
 import Header from '../../components/atoms/ReportAtoms/Header';
-import Row from '../../components/atoms/ReportAtoms/Row';
-import Thumbnail from '../../components/atoms/ReportAtoms/Thumbnail';
 import { StyledSvg } from '../../components/atoms/StyledComponents/StyledSvg';
 import { Label } from './../../components/atoms/Common/Label';
 import { Line } from './../../components/atoms/StyledComponents/Line';
 import ButtonRow from './../../components/atoms/FormInputs/ButtonRow';
 import Checkbox from '../../components/atoms/ReportAtoms/Checkbox';
+import SideCardContent from '../../components/molecules/ReportMolecules/SideCardContent';
+import * as Yup from 'yup';
 
 export interface InitialValues {
 	description: string;
 	suggestion: string;
 	handbookReference: string;
 	risk: string;
+	immediateAction: boolean;
 }
 
 const Report: React.FC = () => {
@@ -25,27 +26,36 @@ const Report: React.FC = () => {
 		suggestion: '',
 		handbookReference: '',
 		risk: '',
+		immediateAction: false,
 	};
 
-	const handleSubmit = useCallback(
-		async (
-			values: InitialValues,
-			formikHelpers: FormikHelpers<InitialValues>
-		) => {
-			console.log(values);
-			console.log('--------');
-		},
-		[]
-	);
+	const handleSubmit = useCallback(async (values: InitialValues) => {
+		console.log(values);
+		console.log('--------');
+	}, []);
 
 	const handleEditClick = useCallback(() => {
 		console.log('How edit work?');
 	}, []);
 
+	const handleCancelClick = useCallback(() => {
+		console.log('I cancel');
+	}, []);
+
+	const SignupSchema = Yup.object().shape({
+		description: Yup.string().required('Required'),
+		suggestion: Yup.string().required('Required'),
+		handbookReference: Yup.string().required('Required'),
+	});
+
 	return (
 		<div>
 			<Card backgroundColor="white">
-				<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+				<Formik
+					initialValues={initialValues}
+					onSubmit={handleSubmit}
+					validationSchema={SignupSchema}
+				>
 					{(props: FormikProps<InitialValues>) => (
 						<StyledForm>
 							<div className="reportpadding">
@@ -60,35 +70,7 @@ const Report: React.FC = () => {
 								</Card>
 							</div>
 							<ReportBody className="reportpadding">
-								<Card>
-									<SideCardWrapper>
-										<Thumbnail thumbnailPath="/ExampleMap.png" />
-										<SideCardContent>
-											<Row
-												firstText="Posisjon"
-												secondText="14 - 21 %"
-												includeLine={false}
-											>
-												<CustomStyledSvg
-													className="cursorhover"
-													src="/EditPencil.svg"
-													alt="logo"
-												/>
-											</Row>
-											<CoordinateRow>
-												<CustomStyledSvg src="/ArrowRight.png" alt="logo" />
-												<p>RV580 S1D1 M5561</p>
-											</CoordinateRow>
-											<CoordinateRow>
-												<CustomStyledSvg src="/ArrowLeft.png" alt="logo" />
-												<p>RV580 S1D1 M5561</p>
-											</CoordinateRow>
-											<Row firstText="Fartsgrense" secondText="40 - 60 Km/t" />
-											<Row firstText="ÅDT" secondText="32 4112 - 47 458" />
-											<Row firstText="Andel lange" secondText="14 - 21 %" />
-										</SideCardContent>
-									</SideCardWrapper>
-								</Card>
+								<SideCardContent />
 								<InputsContainer>
 									<FormTextInput
 										name="description"
@@ -102,7 +84,11 @@ const Report: React.FC = () => {
 										textarea
 										height={7}
 									>
-										<Checkbox onClickCallback={() => {}} value="temp" />
+										<Checkbox
+											value="temp"
+											label="Strakstiltak"
+											name="immediateAction"
+										/>
 									</FormTextInput>
 									<FormTextInput
 										name="handbookReference"
@@ -129,8 +115,9 @@ const Report: React.FC = () => {
 								<ButtonRow
 									cancelBtnText="Slett funn"
 									confirmBtnText="Ferdigstill funn"
-									cancelCallback={() => {}}
-									confirmCallback={() => {}}
+									cancelCallback={handleCancelClick}
+									confirmCallback={props.handleSubmit}
+									type="submit"
 								/>
 							</div>
 						</StyledForm>
@@ -169,18 +156,6 @@ const InputsContainer = styled.div`
 	flex-direction: column;
 `;
 
-const SideCardWrapper = styled.div`
-	width: 100%;
-	#thumbnail {
-		width: 100%;
-	}
-`;
-
-const SideCardContent = styled.div`
-	padding: 16px 21px;
-	display: grid;
-`;
-
 const CustomStyledSvg = styled(StyledSvg)`
 	width: 1em;
 `;
@@ -201,14 +176,6 @@ const RiskCardContent = styled.div`
 			color: #444f55;
 		}
 	}
-`;
-
-const CoordinateRow = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	text-decoration: underline;
-	color: #444f55;
 `;
 
 const CustomLine = styled(Line)`

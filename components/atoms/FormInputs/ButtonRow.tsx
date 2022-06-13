@@ -7,12 +7,14 @@ interface ButtonRowProps {
 	cancelCallback: () => void;
 	confirmBtnText?: string;
 	cancelBtnText?: string;
+	type?: 'button' | 'submit' | 'reset' | undefined;
 }
 const ButtonRow: React.FC<ButtonRowProps> = ({
 	cancelCallback,
 	confirmCallback,
 	cancelBtnText = 'Avbryt',
 	confirmBtnText = 'Lagre',
+	type = undefined,
 }) => {
 	return (
 		<ButtonRowWrapper>
@@ -21,6 +23,7 @@ const ButtonRow: React.FC<ButtonRowProps> = ({
 				text={confirmBtnText}
 				callback={confirmCallback}
 				border={false}
+				type={type}
 			/>
 			<TsButton
 				border={false}

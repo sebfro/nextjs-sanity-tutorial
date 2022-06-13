@@ -8,6 +8,7 @@ interface TsButtonProps {
 	iconPath?: string;
 	centerText?: boolean;
 	border?: boolean;
+	type?: 'button' | 'submit' | 'reset' | undefined;
 }
 const TsButton: React.FC<TsButtonProps> = ({
 	callback,
@@ -15,9 +16,15 @@ const TsButton: React.FC<TsButtonProps> = ({
 	iconPath,
 	centerText = false,
 	border = true,
+	type = undefined,
 }) => {
 	return (
-		<Button border={border} centerText={centerText} onClick={callback}>
+		<Button
+			border={border}
+			centerText={centerText}
+			onClick={callback}
+			type={type}
+		>
 			{iconPath && (
 				<CustomStyledSvg className="cursorhover" src={iconPath} alt="logo" />
 			)}

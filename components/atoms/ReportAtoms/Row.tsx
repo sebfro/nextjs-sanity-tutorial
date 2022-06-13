@@ -32,6 +32,7 @@ export default Row;
 const TextWrapper = styled.div<{ reverseDirection: boolean }>`
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	p:first-of-type {
 		font-weight: bold;
 	}

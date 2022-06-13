@@ -32,23 +32,31 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 				<div className={className}>
 					<Wrapper>
 						<LabelWrapper>
-							<Label>{labelText} </Label>
+							<Temp>
+								<Label>{labelText} </Label>
+								{meta.touched && meta.error && (
+									<p className="error">({meta.error}*)</p>
+								)}
+							</Temp>
 							{children && children}
 						</LabelWrapper>
 						{textarea ? (
 							<StyledTextarea
+								className="styledinput"
 								height={height}
 								placeholder={placeholder}
 								{...field}
 							/>
 						) : (
-							<StyledInput type="text" placeholder={placeholder} {...field} />
+							<StyledInput
+								className="styledinput"
+								type="text"
+								placeholder={placeholder}
+								{...field}
+							/>
 						)}
 						{/* {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>} */}
 					</Wrapper>
-					{meta.touched && meta.error && (
-						<div className="error">{meta.error}</div>
-					)}
 				</div>
 			)}
 		</Field>
@@ -58,9 +66,7 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 export default FormTextInput;
 
 const Wrapper = styled.div`
-	input,
-	textarea {
-		min-width: 15em;
+	.styledinput {
 		padding: 0.5em;
 		border: 2px solid #97989b;
 		width: -moz-available;
@@ -80,4 +86,13 @@ const StyledTextarea = styled.textarea<{ height: number }>`
 const LabelWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
+	.error {
+		font-size: 14px;
+		color: red;
+	}
+`;
+
+const Temp = styled.div`
+	display: flex;
+	column-gap: 0.5em;
 `;

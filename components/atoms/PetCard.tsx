@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Pet } from '../../types/SchemaTypes';
-import Card from './Card';
+import Card from './OldCard';
 import TextRow from './TextRow';
 
 interface PetCardProps {

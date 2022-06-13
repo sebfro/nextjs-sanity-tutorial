@@ -1,6 +1,7 @@
 import { Field } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
+import { Label } from '../Common/Label';
 
 interface DropdownProps {
 	name: string;
@@ -33,12 +34,6 @@ const FormDropdown: React.FC<DropdownProps> = ({
 };
 
 export default FormDropdown;
-
-const Label = styled.p`
-	font-weight: bold;
-	color: black;
-	font-size: 12px;
-`;
 
 const Wrapper = styled.div`
 	.default {

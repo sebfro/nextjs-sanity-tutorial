@@ -3,7 +3,7 @@ import { Pet } from '../../types/SchemaTypes';
 import { GetStaticProps } from 'next';
 import { fetchAllByType, fetchAllByTypeWithFilter } from '../api/GroqHelper';
 import Header from '../../components/atoms/Header';
-import Card from '../../components/atoms/Card';
+import Card from '../../components/atoms/OldCard';
 import styled from 'styled-components';
 import TextRow from '../../components/atoms/TextRow';
 import { Field, FieldProps, Form, Formik } from 'formik';

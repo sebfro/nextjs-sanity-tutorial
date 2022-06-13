@@ -8,6 +8,7 @@ interface ModalProps {
 	handleConfirm: () => void;
 	headerText: string;
 	children: ReactElement;
+	includeBtnRow?: boolean;
 }
 const Modal: React.FC<ModalProps> = ({
 	isOpen,
@@ -15,6 +16,7 @@ const Modal: React.FC<ModalProps> = ({
 	handleConfirm,
 	headerText,
 	children,
+	includeBtnRow = true,
 }) => {
 	if (isOpen) {
 		return (
@@ -25,10 +27,12 @@ const Modal: React.FC<ModalProps> = ({
 						<StyledSvg src="/piggy-bank.png" alt="logo" onClick={handleClose} />
 					</Heading>
 					{children}
-					<SaveButtonRow
-						cancelCallback={handleClose}
-						confirmCallback={handleConfirm}
-					/>
+					{includeBtnRow && (
+						<SaveButtonRow
+							cancelCallback={handleClose}
+							confirmCallback={handleConfirm}
+						/>
+					)}
 				</ModalCard>
 			</ModalContainer>
 		);

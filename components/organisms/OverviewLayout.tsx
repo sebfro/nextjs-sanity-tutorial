@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import StyledButton from '../atoms/Common/StyledButton';
+import { StyledSvg } from '../atoms/StyledComponents/StyledSvg';
 
 interface OverviewLayoutProps {
 	username: string;
@@ -132,13 +133,6 @@ const Heading = styled.div`
 
 const HeadingItem = styled.div`
 	display: flex;
-	column-gap: 0.4em;
-`;
-
-const StyledSvg = styled.img`
-	width: 1em;
-	display: flex;
-	align-items: center;
 	column-gap: 0.4em;
 `;
 

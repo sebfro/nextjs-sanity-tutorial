@@ -1,12 +1,15 @@
 import { Field, FieldProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
+import { Label } from '../Common/Label';
 
 interface FormTextInputProps {
 	labelText: string;
 	name: string;
 	placeholder?: string;
 	className?: string;
+	textarea?: boolean;
+	height?: number;
 }
 
 const FormTextInput: React.FC<FormTextInputProps> = ({
@@ -14,6 +17,8 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 	labelText,
 	name,
 	placeholder = '',
+	textarea = false,
+	height = 2,
 }) => {
 	return (
 		<Field name={name}>
@@ -23,11 +28,19 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 				meta,
 			}: FieldProps) => (
 				<div className={className}>
-					<div>
+					<Wrapper>
 						<Label>{labelText} </Label>
-						<StyledInput type="text" placeholder={placeholder} {...field} />
+						{textarea ? (
+							<StyledTextarea
+								height={height}
+								placeholder={placeholder}
+								{...field}
+							/>
+						) : (
+							<StyledInput type="text" placeholder={placeholder} {...field} />
+						)}
 						{/* {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>} */}
-					</div>
+					</Wrapper>
 					{meta.touched && meta.error && (
 						<div className="error">{meta.error}</div>
 					)}
@@ -39,19 +52,22 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 
 export default FormTextInput;
 
-const Label = styled.p`
-	font-weight: bold;
-	color: black;
-	font-size: 12px;
+const Wrapper = styled.div`
+	input,
+	textarea {
+		min-width: 15em;
+		padding: 0.5em;
+		border: 2px solid #97989b;
+		width: -moz-available;
+		width: -webkit-fill-available;
+	}
 `;
 
 const StyledInput = styled.input`
-	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 	height: 2em;
-	/* border-radius: 5px; */
-	min-width: 15em;
-	padding: 0.5em;
-	/* color: white; */
-	border: 2px solid #97989b;
-	width: -moz-available;
+`;
+
+const StyledTextarea = styled.textarea<{ height: number }>`
+	height: ${({ height }) => height + 'em'};
+	resize: none;
 `;

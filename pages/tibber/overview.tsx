@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
 import styled from 'styled-components';
-import Card, { Row } from '../../components/atoms/Card';
+import Card, { Row } from '../../components/atoms/OldCard';
 import Header from '../../components/atoms/Header';
 import TextRow from '../../components/atoms/TextRow';
 import { home } from '../../types/TIbberApiTypes';

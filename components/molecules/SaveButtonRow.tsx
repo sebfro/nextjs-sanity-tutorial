@@ -15,7 +15,7 @@ const SaveButtonRow: React.FC<SaveButtonRowProps> = ({
 	confirmCallback,
 	cancelBtnText = 'Avbryt',
 	confirmBtnText = 'Lagre',
-	columnDirection = true,
+	columnDirection = false,
 }) => {
 	return (
 		<ButtonRow direction={columnDirection}>

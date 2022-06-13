@@ -2,6 +2,7 @@ import { Field, FieldProps, FormikProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../organisms/CreateTSInspectionForm';
+import { StyledSvg } from '../StyledComponents/StyledSvg';
 
 interface FileDropBoxProps {
 	labelText: string;
@@ -82,17 +83,10 @@ const Wrapper = styled.div`
 	}
 `;
 
-const StyledSvg = styled.img`
-	width: 1em;
-	display: flex;
-	align-items: center;
-	column-gap: 0.4em;
-`;
-
 const Label = styled.p`
 	font-weight: bold;
 	color: black;
-	font-size: 12px;
+	font-size: 14px;
 `;
 
 const CustomBtn = styled.label`

@@ -1,11 +1,10 @@
 import { Field, Form, Formik, FormikHelpers, FormikProps } from 'formik';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import FormDropdown from '../atoms/FormInputs/FormDropdown';
 import FormTextInput from '../atoms/FormInputs/FormTextInput';
 import FileDropBox from '../atoms/FormInputs/FileDropBox';
 import SaveButtonRow from '../molecules/SaveButtonRow';
-import Modal from '../molecules/Modal';
 
 const options: string[] = [
 	'Option 1',
@@ -27,7 +26,6 @@ export interface InitialValues {
 }
 
 const CreateTSInspectionForm: React.FC = () => {
-	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const initialValues: InitialValues = {
 		inspectionName: '',
 		inspectionType: '',
@@ -49,10 +47,6 @@ const CreateTSInspectionForm: React.FC = () => {
 		},
 		[]
 	);
-
-	const handleOpenModal = useCallback(() => {
-		setModalIsOpen(!modalIsOpen);
-	}, [modalIsOpen]);
 
 	return (
 		<Container>
@@ -109,17 +103,6 @@ const CreateTSInspectionForm: React.FC = () => {
 								formikProps={props}
 							/>
 							<button type="submit">Submit</button>
-							<button type="submit" onClick={handleOpenModal}>
-								Open Modal
-							</button>
-							{/* <Modal
-								isOpen={modalIsOpen}
-								handleClose={handleOpenModal}
-								handleConfirm={() => {}}
-								headerText="Temp"
-							>
-								<p>Hallo</p>
-							</Modal> */}
 							<SaveButtonRow
 								confirmCallback={() => {}}
 								cancelCallback={() => {}}

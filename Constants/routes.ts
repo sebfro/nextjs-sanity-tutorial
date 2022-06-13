@@ -14,4 +14,5 @@ export const VeivesenRoutes = {
 	riskMatrix: '/risk/matrix',
 	overviewLayout: '/overview/layout',
 	tsinspform: '/tsinsp/tsinspform',
+	report: '/tsinsp/report',
 };

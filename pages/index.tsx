@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import Header from '../components/atoms/Header';
 import {
 	PetRoutes,
@@ -8,6 +8,8 @@ import {
 } from '../Constants/routes';
 import { useRouter } from 'next/router';
 import Button from '../components/atoms/Button';
+import Modal from '../components/molecules/Modal';
+import CreateTSInspectionForm from '../components/organisms/CreateTSInspectionForm';
 
 const Home: React.FC = () => {
 	const router = useRouter();
@@ -17,6 +19,7 @@ const Home: React.FC = () => {
 		},
 		[router]
 	);
+	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<>
 			<Header headerText="Hovedside" goBackBtn={false} goHomeBtn={false} />
@@ -49,6 +52,15 @@ const Home: React.FC = () => {
 					text="Gå til Vegvesen TSINSP form"
 					callback={() => goToPassedPage(VeivesenRoutes.tsinspform)}
 				/>
+				<Button text="Åpne modal" callback={() => setIsOpen(!isOpen)} />
+				<Modal
+					isOpen={isOpen}
+					handleClose={() => setIsOpen(false)}
+					handleConfirm={() => setIsOpen(false)}
+					headerText="Temp"
+				>
+					<CreateTSInspectionForm />
+				</Modal>
 			</main>
 		</>
 	);

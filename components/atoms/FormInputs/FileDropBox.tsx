@@ -1,5 +1,5 @@
 import { Field, FieldProps, FormikProps } from 'formik';
-import React, { useCallback, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../organisms/CreateTSInspectionForm';
 
@@ -7,29 +7,18 @@ interface FileDropBoxProps {
 	labelText: string;
 	name: string;
 	formikProps: FormikProps<InitialValues>;
+	acceptedFormats?: string;
 }
 const FileDropBox: React.FC<FileDropBoxProps> = ({
 	labelText,
 	name,
 	formikProps: { setFieldValue, values },
+	acceptedFormats = '.pdf,.docx,.jpg',
 }) => {
-	const fileRef = useRef();
-	// const handleFileUpload = useCallback(
-	// 	(e: any) => {
-	// 		console.log('------------------------------------------------------');
-	// 		// console.log(e.target.value);
-	// 		// console.log(e.target[name]);
-	// 		// console.log(e.target.files);
-	// 		console.log(values.files);
-	// 		setFieldValue(name, [...values.files, e.target[name].file]);
-	// 	},
-	// 	[name, setFieldValue, values.files]
-	// );
-	// console.log(values.files);
+	// touched og errors kan brukes til feilhåntering når vi kommer så langt
 	return (
 		<Field name={name}>
 			{({
-				field, // { name, value, onChange, onBlur }
 				form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
 				meta,
 			}: FieldProps) => (
@@ -45,8 +34,7 @@ const FileDropBox: React.FC<FileDropBoxProps> = ({
 						className="picturesubmit"
 						type="file"
 						alt="Submit"
-						accept=".pdf,.docx,.jpg"
-						// {...field}
+						accept={acceptedFormats}
 						onChange={(e: any) => {
 							console.log(e.currentTarget.files);
 							setFieldValue(
@@ -55,7 +43,9 @@ const FileDropBox: React.FC<FileDropBoxProps> = ({
 							);
 						}}
 					/>
-					<p className="subtitle">Tillatte filformater: .pdf, .docx, .jpg</p>
+					<p className="subtitle">
+						Tillatte filformater: {acceptedFormats.replaceAll(',', ', ')}
+					</p>
 					{meta.touched && meta.error && (
 						<div className="error">{meta.error}</div>
 					)}
@@ -77,17 +67,7 @@ const Wrapper = styled.div`
 		margin-top: 0.5em;
 	}
 	input {
-		border: 2px dotted black;
-		width: 100%;
-		padding: 1em;
-		display: flex;
-		position: absolute;
-		z-index: -1;
-
-		top: 10px;
-		left: 8px;
-		font-size: 17px;
-		color: #b8b8b8;
+		display: none;
 	}
 	.button {
 		border: 2px dotted black;

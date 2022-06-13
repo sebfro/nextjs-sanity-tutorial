@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../atoms/Button';
 import TsButton from '../atoms/TsButton';
-import StyledButton from './../atoms/Common/StyledButton';
 
 interface SaveButtonRowProps {
 	confirmCallback: () => void;
 	cancelCallback: () => void;
 	confirmBtnText?: string;
 	cancelBtnText?: string;
+	columnDirection?: boolean;
 }
 
 const SaveButtonRow: React.FC<SaveButtonRowProps> = ({
@@ -16,29 +15,46 @@ const SaveButtonRow: React.FC<SaveButtonRowProps> = ({
 	confirmCallback,
 	cancelBtnText = 'Avbryt',
 	confirmBtnText = 'Lagre',
+	columnDirection = true,
 }) => {
 	return (
-		<ButtonRow>
-			<TsButton text={cancelBtnText} callback={cancelCallback} />
-			<TsButton text={confirmBtnText} callback={confirmCallback} />
+		<ButtonRow direction={columnDirection}>
+			<TsButton
+				centerText={columnDirection}
+				text={cancelBtnText}
+				callback={cancelCallback}
+			/>
+			<TsButton
+				centerText={columnDirection}
+				text={confirmBtnText}
+				callback={confirmCallback}
+			/>
 		</ButtonRow>
 	);
 };
 
 export default SaveButtonRow;
 
-const ButtonRow = styled.div`
+const ButtonRow = styled.div<{ direction: boolean }>`
 	display: flex;
 	justify-content: space-between;
+	flex-direction: ${({ direction }) => (direction ? 'column-reverse' : 'row')};
+	row-gap: 1em;
 	button {
 		width: 100%;
 	}
 	column-gap: 1em;
 	button:first-of-type {
 		color: #444f55;
+		:hover {
+			background-color: #dbd7d7;
+		}
 	}
 	button:last-of-type {
 		color: white;
 		background-color: #444f55;
+		:hover {
+			background-color: #646a6d;
+		}
 	}
 `;

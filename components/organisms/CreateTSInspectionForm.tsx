@@ -112,14 +112,14 @@ const CreateTSInspectionForm: React.FC = () => {
 							<button type="submit" onClick={handleOpenModal}>
 								Open Modal
 							</button>
-							<Modal
+							{/* <Modal
 								isOpen={modalIsOpen}
 								handleClose={handleOpenModal}
 								handleConfirm={() => {}}
 								headerText="Temp"
 							>
 								<p>Hallo</p>
-							</Modal>
+							</Modal> */}
 							<SaveButtonRow
 								confirmCallback={() => {}}
 								cancelCallback={() => {}}
@@ -137,7 +137,7 @@ export default CreateTSInspectionForm;
 const Container = styled.div`
 	display: grid;
 	background-color: white;
-	width: 600px;
+	width: 100%;
 `;
 
 const Heading = styled.div`

@@ -8,6 +8,7 @@ interface SaveButtonRowProps {
 	confirmBtnText?: string;
 	cancelBtnText?: string;
 	columnDirection?: boolean;
+	reverseRow?: boolean;
 }
 
 const SaveButtonRow: React.FC<SaveButtonRowProps> = ({
@@ -16,6 +17,7 @@ const SaveButtonRow: React.FC<SaveButtonRowProps> = ({
 	cancelBtnText = 'Avbryt',
 	confirmBtnText = 'Lagre',
 	columnDirection = false,
+	reverseRow = false,
 }) => {
 	return (
 		<ButtonRow direction={columnDirection}>

@@ -8,6 +8,9 @@ import Row from '../../components/atoms/ReportAtoms/Row';
 import Thumbnail from '../../components/atoms/ReportAtoms/Thumbnail';
 import { StyledSvg } from '../../components/atoms/StyledComponents/StyledSvg';
 import { Label } from './../../components/atoms/Common/Label';
+import { Line } from './../../components/atoms/StyledComponents/Line';
+import ButtonRow from './../../components/atoms/FormInputs/ButtonRow';
+import Checkbox from '../../components/atoms/ReportAtoms/Checkbox';
 
 export interface InitialValues {
 	description: string;
@@ -45,16 +48,18 @@ const Report: React.FC = () => {
 				<Formik initialValues={initialValues} onSubmit={handleSubmit}>
 					{(props: FormikProps<InitialValues>) => (
 						<StyledForm>
-							<Card>
-								<Header
-									headingNumber={4}
-									title="Annet problem i sidearealet"
-									discoveryType="Avvik"
-									discovery="Eksisterende rekkverk"
-									handleOnClick={handleEditClick}
-								/>
-							</Card>
-							<ReportBody>
+							<div className="reportpadding">
+								<Card>
+									<Header
+										headingNumber={4}
+										title="Annet problem i sidearealet"
+										discoveryType="Avvik"
+										discovery="Eksisterende rekkverk"
+										handleOnClick={handleEditClick}
+									/>
+								</Card>
+							</div>
+							<ReportBody className="reportpadding">
 								<Card>
 									<SideCardWrapper>
 										<Thumbnail thumbnailPath="/ExampleMap.png" />
@@ -96,7 +101,9 @@ const Report: React.FC = () => {
 										labelText="Forslag til tiltak"
 										textarea
 										height={7}
-									/>
+									>
+										<Checkbox onClickCallback={() => {}} value="temp" />
+									</FormTextInput>
 									<FormTextInput
 										name="handbookReference"
 										labelText="Håndbok referanse"
@@ -117,6 +124,15 @@ const Report: React.FC = () => {
 									</Card>
 								</InputsContainer>
 							</ReportBody>
+							<CustomLine />
+							<div className="reportpadding">
+								<ButtonRow
+									cancelBtnText="Slett funn"
+									confirmBtnText="Ferdigstill funn"
+									cancelCallback={() => {}}
+									confirmCallback={() => {}}
+								/>
+							</div>
 						</StyledForm>
 					)}
 				</Formik>
@@ -128,7 +144,6 @@ const Report: React.FC = () => {
 export default Report;
 
 const StyledForm = styled(Form)`
-	padding: 1.5em;
 	width: 100%;
 	row-gap: 1em;
 	column-gap: 0.9em;
@@ -137,6 +152,9 @@ const StyledForm = styled(Form)`
 		:hover {
 			cursor: pointer;
 		}
+	}
+	.reportpadding {
+		padding: 1.5em;
 	}
 `;
 
@@ -191,4 +209,8 @@ const CoordinateRow = styled.div`
 	align-items: center;
 	text-decoration: underline;
 	color: #444f55;
+`;
+
+const CustomLine = styled(Line)`
+	background-color: #dedede;
 `;

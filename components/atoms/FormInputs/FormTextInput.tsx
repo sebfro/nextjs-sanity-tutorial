@@ -1,11 +1,12 @@
 import { Field, FieldProps } from 'formik';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Label } from '../Common/Label';
 
 interface FormTextInputProps {
 	labelText: string;
 	name: string;
+	children?: ReactElement;
 	placeholder?: string;
 	className?: string;
 	textarea?: boolean;
@@ -16,6 +17,7 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 	className,
 	labelText,
 	name,
+	children,
 	placeholder = '',
 	textarea = false,
 	height = 2,
@@ -29,7 +31,10 @@ const FormTextInput: React.FC<FormTextInputProps> = ({
 			}: FieldProps) => (
 				<div className={className}>
 					<Wrapper>
-						<Label>{labelText} </Label>
+						<LabelWrapper>
+							<Label>{labelText} </Label>
+							{children && children}
+						</LabelWrapper>
 						{textarea ? (
 							<StyledTextarea
 								height={height}
@@ -70,4 +75,9 @@ const StyledInput = styled.input`
 const StyledTextarea = styled.textarea<{ height: number }>`
 	height: ${({ height }) => height + 'em'};
 	resize: none;
+`;
+
+const LabelWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
 `;

@@ -56,6 +56,10 @@ const Home: React.FC = () => {
 					text="Åpne rapport"
 					callback={() => goToPassedPage(VeivesenRoutes.report)}
 				/>
+				<Button
+					text="Åpne ferdigstilt rapport"
+					callback={() => goToPassedPage(VeivesenRoutes.finishedreport)}
+				/>
 				<Button text="Åpne modal" callback={() => setIsOpen(!isOpen)} />
 				<Modal
 					isOpen={isOpen}

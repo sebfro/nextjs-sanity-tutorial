@@ -4,18 +4,24 @@ import { StyledSvg } from '../StyledComponents/StyledSvg';
 
 interface ThumbnailProps {
 	thumbnailPath: string;
+	editable?: boolean;
 }
-const Thumbnail: React.FC<ThumbnailProps> = ({ thumbnailPath }) => {
+const Thumbnail: React.FC<ThumbnailProps> = ({
+	thumbnailPath,
+	editable = true,
+}) => {
 	return (
 		<ThumbnailWrapper>
 			<img id="thumbnail" src={thumbnailPath} alt="logo" />
-			<CircleEditPencil>
-				<CustomStyledSvg
-					className="cursorhover"
-					src="/EditPencil.svg"
-					alt="logo"
-				/>
-			</CircleEditPencil>
+			{editable && (
+				<CircleEditPencil>
+					<CustomStyledSvg
+						className="cursorhover"
+						src="/EditPencil.svg"
+						alt="logo"
+					/>
+				</CircleEditPencil>
+			)}
 		</ThumbnailWrapper>
 	);
 };
@@ -26,6 +32,9 @@ const ThumbnailWrapper = styled.div`
 	display: inline-block;
 	position: relative;
 	width: 100%;
+	#thumbnail {
+		width: 100%;
+	}
 `;
 
 const CircleEditPencil = styled.div`

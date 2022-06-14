@@ -11,6 +11,8 @@ import ButtonRow from './../../components/atoms/FormInputs/ButtonRow';
 import Checkbox from '../../components/atoms/ReportAtoms/Checkbox';
 import SideCardContent from '../../components/molecules/ReportMolecules/SideCardContent';
 import * as Yup from 'yup';
+import { Layout } from '../../components/molecules/ReportLayout';
+import RiskCardRow from './../../components/atoms/ReportAtoms/RiskCardRow';
 
 export interface InitialValues {
 	description: string;
@@ -69,7 +71,7 @@ const Report: React.FC = () => {
 									/>
 								</Card>
 							</div>
-							<ReportBody className="reportpadding">
+							<Layout className="reportpadding">
 								<SideCardContent />
 								<InputsContainer>
 									<FormTextInput
@@ -95,21 +97,9 @@ const Report: React.FC = () => {
 										labelText="Håndbok referanse"
 									/>
 									<Label>Alvorlighetsscore</Label>
-									<Card>
-										<RiskCardContent>
-											<div className="risktext">
-												<p>150</p>
-												<p>Drepte (15) * Ofte (10)</p>
-											</div>
-											<CustomStyledSvg
-												className="cursorhover"
-												src="/EditPencil.svg"
-												alt="logo"
-											/>
-										</RiskCardContent>
-									</Card>
+									<RiskCardRow consequence={15} frequency={10} type="edit" />
 								</InputsContainer>
-							</ReportBody>
+							</Layout>
 							<CustomLine />
 							<div className="reportpadding">
 								<ButtonRow
@@ -135,47 +125,14 @@ const StyledForm = styled(Form)`
 	row-gap: 1em;
 	column-gap: 0.9em;
 	display: grid;
-	.cursorhover {
-		:hover {
-			cursor: pointer;
-		}
-	}
 	.reportpadding {
 		padding: 1.5em;
 	}
 `;
 
-const ReportBody = styled.div`
-	display: grid;
-	grid-template-columns: 35% 60%;
-	column-gap: 5%;
-`;
-
 const InputsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-`;
-
-const CustomStyledSvg = styled(StyledSvg)`
-	width: 1em;
-`;
-
-const RiskCardContent = styled.div`
-	display: flex;
-	justify-content: space-between;
-	padding: 0 1em;
-	width: 100%;
-	.risktext {
-		align-items: center;
-		display: flex;
-		column-gap: 1em;
-		p:first-of-type {
-			font-size: 18px;
-		}
-		p:last-of-type {
-			color: #444f55;
-		}
-	}
 `;
 
 const CustomLine = styled(Line)`

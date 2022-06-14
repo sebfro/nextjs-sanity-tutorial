@@ -5,19 +5,31 @@ import Row from '../../atoms/ReportAtoms/Row';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
 import { StyledSvg } from '../../atoms/StyledComponents/StyledSvg';
 
-const SideCardContent: React.FC = () => {
+interface SideCardContentProps {
+	canEditPosition?: boolean;
+}
+
+const SideCardContent: React.FC<SideCardContentProps> = ({
+	canEditPosition = true,
+}) => {
 	return (
 		<Card>
 			<SideCardWrapper>
 				<Thumbnail thumbnailPath="/ExampleMap.png" />
 				<Content>
-					<Row firstText="Posisjon" secondText="14 - 21 %" includeLine={false}>
-						<CustomStyledSvg
-							className="cursorhover"
-							src="/EditPencil.svg"
-							alt="logo"
-						/>
-					</Row>
+					{canEditPosition && (
+						<Row
+							firstText="Posisjon"
+							secondText="14 - 21 %"
+							includeLine={false}
+						>
+							<CustomStyledSvg
+								className="cursorhover"
+								src="/EditPencil.svg"
+								alt="logo"
+							/>
+						</Row>
+					)}
 					<CoordinateRow>
 						<CustomStyledSvg src="/ArrowRight.png" alt="logo" />
 						<p>RV580 S1D1 M5561</p>
@@ -39,9 +51,6 @@ export default SideCardContent;
 
 const SideCardWrapper = styled.div`
 	width: 100%;
-	#thumbnail {
-		width: 100%;
-	}
 `;
 
 const CoordinateRow = styled.div`

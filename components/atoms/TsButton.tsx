@@ -6,17 +6,21 @@ interface TsButtonProps {
 	callback: () => void;
 	text: string;
 	iconPath?: string;
+	classname?: string;
 	centerText?: boolean;
 	border?: boolean;
 	type?: 'button' | 'submit' | 'reset' | undefined;
+	reverse?: boolean;
 }
 const TsButton: React.FC<TsButtonProps> = ({
 	callback,
 	text,
 	iconPath,
+	classname = '',
 	centerText = false,
 	border = true,
 	type = undefined,
+	reverse = false,
 }) => {
 	return (
 		<Button
@@ -24,6 +28,8 @@ const TsButton: React.FC<TsButtonProps> = ({
 			centerText={centerText}
 			onClick={callback}
 			type={type}
+			reverse={reverse}
+			className={classname}
 		>
 			{iconPath && (
 				<CustomStyledSvg className="cursorhover" src={iconPath} alt="logo" />
@@ -35,11 +41,16 @@ const TsButton: React.FC<TsButtonProps> = ({
 
 export default TsButton;
 
-const Button = styled.button<{ centerText: boolean; border: boolean }>`
+const Button = styled.button<{
+	centerText: boolean;
+	border: boolean;
+	reverse: boolean;
+}>`
 	border: ${({ border }) => (border ? '1px solid black' : 'none')};
 	background-color: white;
 	display: flex;
 	column-gap: 12px;
+	flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 	${({ centerText }) =>
 		centerText
 			? css`

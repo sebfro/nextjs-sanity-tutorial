@@ -1,36 +1,41 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import DescriptionWithTagRow from '../../atoms/ReportAtoms/DescriptionWithTagRow';
 import { TagsProps } from '../../atoms/ReportAtoms/Tag';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
 
-const TopText =
-	'Ved østsiden av Østre Granfosstunnelen er det en bom i midtdeler som ikke er godkjent. Denne bommen er ikke påkjørselssikker verken når den er lukket eller når den er åpnet. Bomfundamentet er ikke sikret, bortsett fra i noen situasjoner.';
-
-const Tags: TagsProps[] = [
-	{
-		text: 'Strakstiltak',
-		iconPath: '/InfoNotification.png',
-		type: 'error',
-	},
-	{
-		text: 'Avvik',
-	},
-	{
-		text: 'Vegbanen',
-	},
-	{
-		text: 'Risiko 150',
-	},
-];
-
-const FinishedReportMinimized: React.FC = () => {
+interface FinishedReportMinimizedProps {
+	tags: TagsProps[];
+	topText: string;
+	risk: number;
+	immediateActionRequired?: boolean;
+}
+const FinishedReportMinimized: React.FC<FinishedReportMinimizedProps> = ({
+	tags,
+	topText,
+	risk,
+	immediateActionRequired = false,
+}) => {
+	const allTags: TagsProps[] = useMemo(() => {
+		if (!immediateActionRequired) return tags;
+		return [
+			immediateActionRequired && {
+				text: 'Strakstiltak',
+				iconPath: '/InfoNotification.png',
+				type: 'error',
+			},
+			...tags,
+		];
+	}, [immediateActionRequired, tags]);
 	return (
 		<Wrapper>
 			<div>
 				<Thumbnail thumbnailPath="/wallpaper.jpg" editable={false} />
 			</div>
-			<DescriptionWithTagRow description={TopText} tags={Tags} />
+			<DescriptionWithTagRow
+				description={topText}
+				tags={[...allTags, { text: `Risiko ${risk}` }]}
+			/>
 		</Wrapper>
 	);
 };

@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { Line } from '../StyledComponents/Line';
+import styled, { css } from 'styled-components';
 
 interface RowProps {
 	firstText: string;
@@ -17,8 +16,7 @@ const Row: React.FC<RowProps> = ({
 	reverseDirection = false,
 }) => {
 	return (
-		<Container>
-			{includeLine && <CustomLine />}
+		<Container border={includeLine}>
 			<TextWrapper reverseDirection={reverseDirection}>
 				<p>{firstText}</p>
 				{children ? children : <p>{secondText}</p>}
@@ -48,8 +46,10 @@ const TextWrapper = styled.div<{ reverseDirection: boolean }>`
 		reverseDirection ? 'row-reverse' : 'row'};
 `;
 
-const Container = styled.div``;
-
-const CustomLine = styled(Line)`
-	background-color: #dadada;
+const Container = styled.div<{ border: boolean }>`
+	${({ border }) =>
+		border &&
+		css`
+			border-top: 1px solid #dadada;
+		`};
 `;

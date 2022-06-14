@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Card, { StyledCard } from '../../components/atoms/Card';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
-import { Layout } from '../../components/molecules/ReportLayout';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
 
@@ -31,6 +30,12 @@ const Finishedreport: React.FC = () => {
 	const handleToggle = useCallback(() => {
 		setShowMore(!showMore);
 	}, [showMore]);
+	const handleEditClick = useCallback(() => {
+		console.log('edit');
+	}, []);
+	const handleDeleteClick = useCallback(() => {
+		console.log('slett');
+	}, []);
 
 	return (
 		<Card backgroundColor="white">
@@ -60,14 +65,20 @@ const Finishedreport: React.FC = () => {
 								</>
 							</CustomCard>
 							<FinishedReportExpanded
-								actionDescription={ActionDescription}
 								topText={TopText}
+								actionDescription={ActionDescription}
 								handbookReference={HandbookReference}
 								tags={Tags}
+								immediateActionRequired
 							/>
 						</>
 					) : (
-						<FinishedReportMinimized />
+						<FinishedReportMinimized
+							tags={Tags}
+							topText={TopText}
+							immediateActionRequired
+							risk={150}
+						/>
 					)}
 				</Wrapper>
 				<ButtonRow>
@@ -75,14 +86,14 @@ const Finishedreport: React.FC = () => {
 						iconPath="/EditPencil.svg"
 						text="Rediger"
 						border={false}
-						callback={() => {}}
+						callback={handleEditClick}
 						classname="btnstyling"
 					/>
 					<TsButton
 						iconPath="/Trash.png"
 						text="Slett"
 						border={false}
-						callback={() => {}}
+						callback={handleDeleteClick}
 						classname="btnstyling"
 					/>
 				</ButtonRow>

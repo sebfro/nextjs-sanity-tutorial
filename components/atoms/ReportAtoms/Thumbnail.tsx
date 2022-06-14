@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { StyledSvg } from '../StyledComponents/StyledSvg';
 
@@ -10,11 +10,15 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 	thumbnailPath,
 	editable = true,
 }) => {
+	const handleEditPhoto = useCallback(() => {
+		console.log('Edit photo');
+	}, []);
+
 	return (
 		<ThumbnailWrapper>
 			<img id="thumbnail" src={thumbnailPath} alt="logo" />
 			{editable && (
-				<CircleEditPencil>
+				<CircleEditPencil onClick={handleEditPhoto}>
 					<CustomStyledSvg
 						className="cursorhover"
 						src="/EditPencil.svg"

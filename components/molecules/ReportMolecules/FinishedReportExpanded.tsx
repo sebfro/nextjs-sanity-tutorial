@@ -14,6 +14,7 @@ interface FinishedReportExpandedProps {
 	actionDescription: string;
 	handbookReference: string;
 	topText: string;
+	immediateActionRequired?: boolean;
 }
 
 const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
@@ -21,6 +22,7 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 	handbookReference,
 	tags,
 	topText,
+	immediateActionRequired = false,
 }) => {
 	return (
 		<Layout>
@@ -30,11 +32,15 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 					<CustomLine />
 				</DescriptionWithTagRow>
 				<Infobox label="Forslag til tiltak" description={actionDescription}>
-					<Tag
-						text="Strakstiltak"
-						iconPath="/InfoNotification.png"
-						type="error"
-					/>
+					<>
+						{immediateActionRequired && (
+							<Tag
+								text="Strakstiltak"
+								iconPath="/InfoNotification.png"
+								type="error"
+							/>
+						)}
+					</>
 				</Infobox>
 				<Infobox label="Hånbok referanse" description={handbookReference} />
 				<div>

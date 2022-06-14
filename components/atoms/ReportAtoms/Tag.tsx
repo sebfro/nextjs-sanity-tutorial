@@ -25,6 +25,7 @@ const Container = styled.div<{ type: 'error' | 'standard' }>`
 	width: fit-content;
 	padding: 0.3em 0.5em;
 	display: flex;
+	column-gap: 0.3em;
 	${({ type }) => {
 		switch (type) {
 			case 'error':

@@ -6,27 +6,28 @@ import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
 
-const TopText =
-	'Ved østsiden av Østre Granfosstunnelen er det en bom i midtdeler som ikke er godkjent. Denne bommen er ikke påkjørselssikker verken når den er lukket eller når den er åpnet. Bomfundamentet er ikke sikret, bortsett fra i noen situasjoner.';
-const ActionDescription =
-	'Koble sammen rekkverkene og snu skapet slik at det blir mulig å åpne dørene på innsiden av rekkverket.Koble sammen rekkverkene og snu skapet slik at det blir mulig å åpne dørene på innsiden av rekkverket.';
-
-const HandbookReference =
-	'Håndbok V161 Brurekkverk, Vegnormal N101 Trafikksikkert sideterreng og vegsikringsutstyr';
-
-const Tags: TagsProps[] = [
-	{
-		text: 'Avvik',
-	},
-	{
-		text: 'Vegbanen',
-	},
-];
-
 const TextColor = '#444F55';
 
-const Finishedreport: React.FC = () => {
-	const [showMore, setShowMore] = useState(true);
+export interface FinishedreportProps {
+	topText: string;
+	actionDescription: string;
+	handbookReference: string;
+	tags: TagsProps[];
+	reportNr: number;
+	headerText: string;
+	immediateActionRequired: boolean;
+}
+
+const Finishedreport: React.FC<FinishedreportProps> = ({
+	reportNr,
+	headerText,
+	topText,
+	actionDescription,
+	handbookReference,
+	tags,
+	immediateActionRequired,
+}) => {
+	const [showMore, setShowMore] = useState(false);
 	const handleToggle = useCallback(() => {
 		setShowMore(!showMore);
 	}, [showMore]);
@@ -43,8 +44,8 @@ const Finishedreport: React.FC = () => {
 				<Wrapper>
 					<Header>
 						<div className="headertext">
-							<h1>2.</h1>
-							<h1>Høyde på rekkverk</h1>
+							<h1>{reportNr}.</h1>
+							<h1>{headerText}</h1>
 						</div>
 						<TsButton
 							iconPath={showMore ? '/ArrowUp.png' : '/ArrowDown.png'}
@@ -57,7 +58,7 @@ const Finishedreport: React.FC = () => {
 					</Header>
 					{showMore ? (
 						<>
-							<CustomCard backgroundColor="white">
+							<CustomCard backgroundColor="white" includeBorder>
 								<>
 									<p>Registrert 11.04.22 09:42</p>
 									<p>|</p>
@@ -65,18 +66,18 @@ const Finishedreport: React.FC = () => {
 								</>
 							</CustomCard>
 							<FinishedReportExpanded
-								topText={TopText}
-								actionDescription={ActionDescription}
-								handbookReference={HandbookReference}
-								tags={Tags}
-								immediateActionRequired
+								topText={topText}
+								actionDescription={actionDescription}
+								handbookReference={handbookReference}
+								tags={tags}
+								immediateActionRequired={immediateActionRequired}
 							/>
 						</>
 					) : (
 						<FinishedReportMinimized
-							tags={Tags}
-							topText={TopText}
-							immediateActionRequired
+							tags={tags}
+							topText={topText}
+							immediateActionRequired={immediateActionRequired}
 							risk={150}
 						/>
 					)}

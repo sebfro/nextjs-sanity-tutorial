@@ -50,6 +50,7 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 						frequency={10}
 						type="expand"
 						backgroundColor="#FFF5E6"
+						includeBorder={false}
 					/>
 				</div>
 			</ReportContent>

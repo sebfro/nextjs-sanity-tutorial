@@ -8,6 +8,7 @@ interface RiskCardRowprops {
 	frequency: number;
 	type: 'edit' | 'expand';
 	backgroundColor?: string;
+	includeBorder?: boolean;
 }
 
 const RiskCardRow: React.FC<RiskCardRowprops> = ({
@@ -15,6 +16,7 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 	frequency,
 	type,
 	backgroundColor = '#f5f5f5',
+	includeBorder = true,
 }) => {
 	const iconSrc = useMemo(() => {
 		switch (type) {
@@ -25,7 +27,7 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 		}
 	}, [type]);
 	return (
-		<Card backgroundColor={backgroundColor}>
+		<Card backgroundColor={backgroundColor} includeBorder={includeBorder}>
 			<RiskCardContent>
 				<div className="risktext">
 					<p>{consequence * frequency}</p>

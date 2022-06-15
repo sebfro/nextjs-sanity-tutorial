@@ -15,7 +15,7 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 	return (
 		<Card>
 			<SideCardWrapper>
-				<Thumbnail thumbnailPath="/ExampleMap.png" />
+				<Thumbnail photos={['/ExampleMap.png']} />
 				<Content>
 					{canEditPosition && (
 						<Row

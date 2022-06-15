@@ -30,7 +30,10 @@ const FinishedReportMinimized: React.FC<FinishedReportMinimizedProps> = ({
 	return (
 		<Wrapper>
 			<div>
-				<Thumbnail thumbnailPath="/wallpaper.jpg" editable={false} />
+				<Thumbnail
+					photos={['/wallpaper.jpg', '/ExampleMap.png', '/wallpaper.jpg']}
+					editable={false}
+				/>
 			</div>
 			<DescriptionWithTagRow
 				description={topText}

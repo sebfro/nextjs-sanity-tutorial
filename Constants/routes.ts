@@ -15,5 +15,5 @@ export const VeivesenRoutes = {
 	overviewLayout: '/overview/layout',
 	tsinspform: '/tsinsp/tsinspform',
 	report: '/tsinsp/report',
-	finishedreport: '/tsinsp/finishedreportpage',
+	finishedreport: '/tsinsp/reportspage',
 };

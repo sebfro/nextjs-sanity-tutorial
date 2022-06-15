@@ -8,6 +8,7 @@ interface ModalProps {
 	handleConfirm: () => void;
 	headerText: string;
 	children: ReactElement;
+	className?: string;
 	includeBtnRow?: boolean;
 }
 const Modal: React.FC<ModalProps> = ({
@@ -16,12 +17,13 @@ const Modal: React.FC<ModalProps> = ({
 	handleConfirm,
 	headerText,
 	children,
+	className,
 	includeBtnRow = true,
 }) => {
 	if (isOpen) {
 		return (
 			<ModalContainer>
-				<ModalCard>
+				<ModalCard className={className}>
 					<Heading>
 						<h1>{headerText}</h1>
 						<StyledSvg src="/piggy-bank.png" alt="logo" onClick={handleClose} />
@@ -82,7 +84,4 @@ const StyledSvg = styled.img`
 	height: 24px;
 	cursor: pointer;
 	align-self: center;
-	/* display: flex;
-	align-items: center;
-	column-gap: 0.4em; */
 `;

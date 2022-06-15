@@ -10,6 +10,8 @@ import { useRouter } from 'next/router';
 import Button from '../components/atoms/Button';
 import Modal from '../components/molecules/Modal';
 import CreateTSInspectionForm from '../components/organisms/CreateTSInspectionForm';
+import ChangePosition from './../components/molecules/ChangePosition';
+import styled from 'styled-components';
 
 const Home: React.FC = () => {
 	const router = useRouter();
@@ -20,6 +22,7 @@ const Home: React.FC = () => {
 		[router]
 	);
 	const [isOpen, setIsOpen] = useState(false);
+	const [isPositionModalOpen, setIsPositionModalOpen] = useState(false);
 	return (
 		<>
 			<Header headerText="Hovedside" goBackBtn={false} goHomeBtn={false} />
@@ -57,7 +60,7 @@ const Home: React.FC = () => {
 					callback={() => goToPassedPage(VeivesenRoutes.report)}
 				/>
 				<Button
-					text="Åpne ferdigstilt rapport"
+					text="Åpne rapport oversikt"
 					callback={() => goToPassedPage(VeivesenRoutes.finishedreport)}
 				/>
 				<Button text="Åpne modal" callback={() => setIsOpen(!isOpen)} />
@@ -69,9 +72,26 @@ const Home: React.FC = () => {
 				>
 					<CreateTSInspectionForm />
 				</Modal>
+				<Button
+					text="Åpne posisjon modal"
+					callback={() => setIsPositionModalOpen(!isOpen)}
+				/>
+				<StyledModal
+					isOpen={isPositionModalOpen}
+					handleClose={() => setIsPositionModalOpen(false)}
+					handleConfirm={() => setIsPositionModalOpen(false)}
+					headerText="Endre posisjon"
+					includeBtnRow={false}
+				>
+					<ChangePosition />
+				</StyledModal>
 			</main>
 		</>
 	);
 };
 
 export default Home;
+
+const StyledModal = styled(Modal)`
+	padding: 2.8em 2em 3em;
+`;

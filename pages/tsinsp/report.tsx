@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Card from '../../components/atoms/Card';
 import FormTextInput from '../../components/atoms/FormInputs/FormTextInput';
 import Header from '../../components/atoms/ReportAtoms/Header';
-import { StyledSvg } from '../../components/atoms/StyledComponents/StyledSvg';
 import { Label } from './../../components/atoms/Common/Label';
 import { Line } from './../../components/atoms/StyledComponents/Line';
 import ButtonRow from './../../components/atoms/FormInputs/ButtonRow';
@@ -18,16 +17,36 @@ export interface InitialValues {
 	description: string;
 	suggestion: string;
 	handbookReference: string;
-	risk: string;
+	risk: {
+		consequence: number;
+		frequency: number;
+	};
 	immediateAction: boolean;
 }
 
-const Report: React.FC = () => {
+export interface ReportProps {
+	reportNr: number;
+	title: string;
+	discoveryType: string;
+	discovery: string;
+	risk: {
+		consequence: number;
+		frequency: number;
+	};
+}
+
+const Report: React.FC<ReportProps> = ({
+	reportNr,
+	title,
+	discoveryType,
+	discovery,
+	risk,
+}) => {
 	const initialValues: InitialValues = {
 		description: '',
 		suggestion: '',
 		handbookReference: '',
-		risk: '',
+		risk: risk,
 		immediateAction: false,
 	};
 
@@ -63,10 +82,10 @@ const Report: React.FC = () => {
 							<div className="reportpadding">
 								<Card>
 									<Header
-										headingNumber={4}
-										title="Annet problem i sidearealet"
-										discoveryType="Avvik"
-										discovery="Eksisterende rekkverk"
+										headingNumber={reportNr}
+										title={title}
+										discoveryType={discoveryType}
+										discovery={discovery}
 										handleOnClick={handleEditClick}
 									/>
 								</Card>
@@ -97,7 +116,7 @@ const Report: React.FC = () => {
 										labelText="Håndbok referanse"
 									/>
 									<Label>Alvorlighetsscore</Label>
-									<RiskCardRow consequence={15} frequency={10} type="edit" />
+									<RiskCardRow {...risk} type="edit" />
 								</InputsContainer>
 							</Layout>
 							<CustomLine />

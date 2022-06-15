@@ -53,7 +53,7 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 							callback={handleToggle}
 							border={false}
 							reverse
-							classname="togglebtn"
+							className="togglebtn"
 						/>
 					</Header>
 					{showMore ? (
@@ -88,14 +88,14 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 						text="Rediger"
 						border={false}
 						callback={handleEditClick}
-						classname="btnstyling"
+						className="btnstyling"
 					/>
 					<TsButton
 						iconPath="/Trash.png"
 						text="Slett"
 						border={false}
 						callback={handleDeleteClick}
-						classname="btnstyling"
+						className="btnstyling"
 					/>
 				</ButtonRow>
 			</Container>

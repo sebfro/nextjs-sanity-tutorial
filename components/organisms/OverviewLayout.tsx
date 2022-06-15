@@ -1,13 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import LayoutToggle, { Toggle } from '../atoms/Common/LayoutToggle';
 import StyledButton from '../atoms/Common/StyledButton';
 import { StyledSvg } from '../atoms/StyledComponents/StyledSvg';
 
 interface OverviewLayoutProps {
 	username: string;
 }
-
-type Toggle = 'InProgress' | 'Completed';
 
 const OverviewLayout: React.FC<OverviewLayoutProps> = ({ username }) => {
 	const [selectedToggle, setSelectedToggle] = useState<Toggle>('InProgress');
@@ -52,29 +51,12 @@ const OverviewLayout: React.FC<OverviewLayoutProps> = ({ username }) => {
 					</LogoAndTitle>
 					<StyledButton text="Opprett TS-inspeksjon" callback={handleOnClick} />
 				</Heading>
-				<Toggles>
-					<ToggleBtn
-						className={
-							selectedToggle === 'InProgress'
-								? 'selectedtoggle'
-								: 'deselectedtoggle'
-						}
-						onClick={() => handleToggle('InProgress')}
-					>
-						Pågående inspeksjoner
-					</ToggleBtn>
-					<p>|</p>
-					<ToggleBtn
-						className={
-							selectedToggle === 'Completed'
-								? 'selectedtoggle'
-								: 'deselectedtoggle'
-						}
-						onClick={() => handleToggle('Completed')}
-					>
-						Fullførte inspeksjoner
-					</ToggleBtn>
-				</Toggles>
+				<LayoutToggle
+					firstToggleText="Pågående inspeksjoner"
+					lastToggleText="Fullførte inspeksjoner"
+					handleToggleClick={handleToggle}
+					selectedToggle={selectedToggle}
+				/>
 			</Content>
 		</Layout>
 	);
@@ -92,26 +74,6 @@ const Layout = styled.div`
 		:hover {
 			cursor: pointer;
 		}
-	}
-	.selectedtoggle {
-		border-bottom: 2px solid #fcae3d;
-	}
-	.deselectedtoggle {
-		color: grey;
-	}
-`;
-
-const Toggles = styled.div`
-	display: flex;
-	column-gap: 0.4em;
-	justify-content: flex-start;
-	color: black;
-	column-gap: 1em;
-`;
-
-const ToggleBtn = styled.p`
-	:hover {
-		cursor: pointer;
 	}
 `;
 

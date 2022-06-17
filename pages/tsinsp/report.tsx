@@ -93,7 +93,7 @@ const Report: React.FC<ReportProps> = ({
 							<Layout className="reportpadding">
 								<SideCardContent />
 								<InputsContainer>
-									<FormTextInput
+									<DescriptionInput
 										name="description"
 										labelText="Beskrivelse av funn"
 										textarea
@@ -156,4 +156,10 @@ const InputsContainer = styled.div`
 
 const CustomLine = styled(Line)`
 	background-color: #dedede;
+`;
+
+const DescriptionInput = styled(FormTextInput)`
+	p {
+		margin: 0;
+	}
 `;

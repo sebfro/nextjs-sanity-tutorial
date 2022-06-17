@@ -18,7 +18,7 @@ const DiscoveriesInReportCard: React.FC<DiscoveriesInReportCardProps> = ({
 	}, []);
 
 	return (
-		<CustomStyledCard>
+		<CustomStyledCard backgroundColor="#ececec">
 			<LeftSideContent>
 				<h1>Funn i rapporten</h1>
 				<div id="discoverywrapper">

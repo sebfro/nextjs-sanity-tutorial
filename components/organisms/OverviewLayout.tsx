@@ -1,62 +1,25 @@
-import React, { useCallback, useState } from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import LayoutToggle, { Toggle } from '../atoms/Common/LayoutToggle';
-import StyledButton from '../atoms/Common/StyledButton';
-import { StyledSvg } from '../atoms/StyledComponents/StyledSvg';
+import ReportsPage from '../../pages/tsinsp/reportspage';
+import TopBar from '../atoms/TopBar';
 
 interface OverviewLayoutProps {
 	username: string;
+	children?: ReactElement;
 }
 
 const OverviewLayout: React.FC<OverviewLayoutProps> = ({ username }) => {
-	const [selectedToggle, setSelectedToggle] = useState<Toggle>('InProgress');
-	const handleOnClick = useCallback(() => {
-		console.log('Create');
-	}, []);
-
-	// Tanken med denne er å håndtere koretene som vises. Hvis det er nødvendig.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const handleRoutingToInsepction = useCallback(() => {
-		console.log('I be routing');
-	}, []);
-
-	const handleLogout = useCallback(() => {
-		console.log('Goodbye my friend');
-	}, []);
-
-	const handleToggle = useCallback((toggle: Toggle) => {
-		setSelectedToggle(toggle);
-	}, []);
-
 	return (
 		<Layout>
-			<TopBar className="flexaligncenter">
-				<HeadingItem className="flexaligncenter">
-					<StyledSvg src="/heart.png" alt="logo" />
-					{username}
-				</HeadingItem>
-				<HeadingItem
-					className="flexaligncenter pointeronhover"
-					onClick={handleLogout}
-				>
-					<StyledSvg src="/piggy-bank.png" alt="logo" />
-					Logg ut
-				</HeadingItem>
-			</TopBar>
+			<TopBar username={username} />
 			<Content>
 				<Heading className="flexaligncenter">
 					<LogoAndTitle className="flexaligncenter">
 						<img src="/piggy-bank.png" alt="logo" />
 						<p>TS-inspeksjoner</p>
 					</LogoAndTitle>
-					<StyledButton text="Opprett TS-inspeksjon" callback={handleOnClick} />
 				</Heading>
-				<LayoutToggle
-					firstToggleText="Pågående inspeksjoner"
-					lastToggleText="Fullførte inspeksjoner"
-					handleToggleClick={handleToggle}
-					selectedToggle={selectedToggle}
-				/>
+				<ReportsPage />
 			</Content>
 		</Layout>
 	);
@@ -77,12 +40,6 @@ const Layout = styled.div`
 	}
 `;
 
-const TopBar = styled.div`
-	padding: 0.2em 0.8em;
-	background-color: #353e43;
-	justify-content: space-between;
-`;
-
 const Content = styled.div`
 	width: 90%;
 	margin: auto;
@@ -91,11 +48,6 @@ const Content = styled.div`
 const Heading = styled.div`
 	margin: 2em 0;
 	justify-content: space-between;
-`;
-
-const HeadingItem = styled.div`
-	display: flex;
-	column-gap: 0.4em;
 `;
 
 const LogoAndTitle = styled.div`

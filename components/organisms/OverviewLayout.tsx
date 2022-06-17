@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import ReportsPage from '../../pages/tsinsp/reportspage';
+import LinkButton from '../atoms/LinkButton';
 import TopBar from '../atoms/TopBar';
 
 interface OverviewLayoutProps {
@@ -13,6 +14,11 @@ const OverviewLayout: React.FC<OverviewLayoutProps> = ({ username }) => {
 		<Layout>
 			<TopBar username={username} />
 			<Content>
+				<LinkButton
+					className="linkstyling"
+					text="Inspeksjoner"
+					link="http://localhost:3000/"
+				/>
 				<Heading className="flexaligncenter">
 					<LogoAndTitle className="flexaligncenter">
 						<img src="/piggy-bank.png" alt="logo" />
@@ -43,6 +49,9 @@ const Layout = styled.div`
 const Content = styled.div`
 	width: 90%;
 	margin: auto;
+	.linkstyling {
+		margin: 3em 0 1.5em;
+	}
 `;
 
 const Heading = styled.div`

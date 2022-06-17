@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 export default Layout;
 
 const WrapperLayout = styled.div`
-	width: 80%;
+	/* width: 80%; */
 	margin: auto;
-	padding: 1em;
+	/* padding: 1em; */
 `;

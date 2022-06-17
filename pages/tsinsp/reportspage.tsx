@@ -5,6 +5,7 @@ import LayoutToggle, {
 } from '../../components/atoms/Common/LayoutToggle';
 import DiscoveriesInReportCard from '../../components/atoms/ReportAtoms/DiscoveriesInReportCard';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
+import ResultStatusCard from '../../components/atoms/ResultStatusCard';
 import TsButton from '../../components/atoms/TsButton';
 import Finishedreport, {
 	FinishedreportProps,
@@ -78,6 +79,10 @@ const ReportsPage: React.FC = () => {
 
 	return (
 		<Container>
+			<ResultStatusCard
+				status="warning"
+				text="Rapport levert  klokken 13:03,  22. Mars 2022"
+			/>
 			<DiscoveriesInReportCard avvik={11} feil={0} merknad={3} />
 			<BtnRow>
 				<LayoutToggle

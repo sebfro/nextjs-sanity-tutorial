@@ -4,18 +4,18 @@ import styled, { css } from 'styled-components';
 interface GreyCardProps {
 	backgroundColor?: string;
 	includeBorder?: boolean;
-	classname?: string;
+	className?: string;
 	children: ReactElement;
 }
 const Card: React.FC<GreyCardProps> = ({
 	children,
 	backgroundColor = '#f5f5f5',
 	includeBorder = true,
-	classname,
+	className,
 }) => {
 	return (
 		<StyledCard
-			className={classname}
+			className={className}
 			includeBorder={includeBorder}
 			backgroundColor={backgroundColor}
 		>

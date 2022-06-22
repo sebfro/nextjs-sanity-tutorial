@@ -76,6 +76,10 @@ const Home: React.FC = () => {
 					text="Åpne posisjon modal"
 					callback={() => setIsPositionModalOpen(!isOpen)}
 				/>
+				<Button
+					text="Gå til test område"
+					callback={() => goToPassedPage(VeivesenRoutes.testarea)}
+				/>
 				<StyledModal
 					isOpen={isPositionModalOpen}
 					handleClose={() => setIsPositionModalOpen(false)}
@@ -94,4 +98,5 @@ export default Home;
 
 const StyledModal = styled(Modal)`
 	padding: 2.8em 2em 3em;
+	width: fit-content;
 `;

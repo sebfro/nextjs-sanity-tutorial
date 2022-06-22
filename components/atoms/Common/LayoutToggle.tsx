@@ -1,49 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
-
-export type Toggle = 'InProgress' | 'Completed';
-
 interface LayoutToggleProps {
-	firstToggleText: string;
-	lastToggleText: string;
-	handleToggleClick: (toggle: Toggle) => void;
-	selectedToggle: Toggle;
+	toggles: string[];
+	handleToggleClick: (toggle: string) => void;
+	selectedToggle: string;
+	className?: string;
+	selectedColor?: string;
+	deselectedColor?: string;
+	divivderColor?: string;
 }
 
 const LayoutToggle: React.FC<LayoutToggleProps> = ({
-	firstToggleText,
-	lastToggleText,
+	toggles,
 	handleToggleClick,
 	selectedToggle,
+	className = '',
+	selectedColor = '#444F55',
+	deselectedColor = '#697277',
+	divivderColor = '#858D90',
 }) => {
 	return (
-		<Toggles>
-			<ToggleBtn
-				className={
-					selectedToggle === 'InProgress'
-						? 'selectedtoggle'
-						: 'deselectedtoggle'
-				}
-				onClick={() => handleToggleClick('InProgress')}
-			>
-				{firstToggleText}
-			</ToggleBtn>
-			<p>|</p>
-			<ToggleBtn
-				className={
-					selectedToggle === 'Completed' ? 'selectedtoggle' : 'deselectedtoggle'
-				}
-				onClick={() => handleToggleClick('Completed')}
-			>
-				{lastToggleText}
-			</ToggleBtn>
+		<Toggles
+			className={className}
+			deselectedColor={deselectedColor}
+			selectedColor={selectedColor}
+		>
+			{toggles.map((t, i) => (
+				<>
+					{i !== 0 && <Divivder color={divivderColor}>|</Divivder>}
+					<ToggleBtn
+						className={
+							selectedToggle === t ? 'selectedtoggle' : 'deselectedtoggle'
+						}
+						onClick={() => handleToggleClick(t)}
+						key={t}
+					>
+						{t}
+					</ToggleBtn>
+				</>
+			))}
 		</Toggles>
 	);
 };
 
 export default LayoutToggle;
 
-const Toggles = styled.div`
+const Toggles = styled.div<{ selectedColor: string; deselectedColor: string }>`
 	display: flex;
 	column-gap: 0.4em;
 	justify-content: flex-start;
@@ -52,9 +54,10 @@ const Toggles = styled.div`
 	align-items: center;
 	.selectedtoggle {
 		border-bottom: 2px solid #fcae3d;
+		color: ${({ selectedColor }) => selectedColor};
 	}
 	.deselectedtoggle {
-		color: grey;
+		color: ${({ deselectedColor }) => deselectedColor};
 	}
 `;
 
@@ -62,4 +65,8 @@ const ToggleBtn = styled.p`
 	:hover {
 		cursor: pointer;
 	}
+`;
+
+const Divivder = styled.p<{ color: string }>`
+	color: ${({ color }) => color};
 `;

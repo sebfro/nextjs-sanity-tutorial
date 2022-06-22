@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import LayoutToggle, {
-	Toggle,
-} from '../../components/atoms/Common/LayoutToggle';
+import LayoutToggle from '../../components/atoms/Common/LayoutToggle';
 import DiscoveriesInReportCard from '../../components/atoms/ReportAtoms/DiscoveriesInReportCard';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import ResultStatusCard from '../../components/atoms/ResultStatusCard';
@@ -67,9 +65,13 @@ const inProgressReports: ReportProps[] = [
 ];
 
 const ReportsPage: React.FC = () => {
-	const [selectedToggle, setSelectedToggle] = useState<Toggle>('InProgress');
+	const toggles: string[] = [
+		'Funn under arbeid (4)',
+		`Ferdigstilte funn (${FinishedReports.length})`,
+	];
+	const [selectedToggle, setSelectedToggle] = useState<string>(toggles[0]);
 
-	const handleToggle = useCallback((toggle: Toggle) => {
+	const handleToggle = useCallback((toggle: string) => {
 		setSelectedToggle(toggle);
 	}, []);
 
@@ -86,10 +88,9 @@ const ReportsPage: React.FC = () => {
 			<DiscoveriesInReportCard avvik={11} feil={0} merknad={3} />
 			<BtnRow>
 				<LayoutToggle
-					firstToggleText="Funn under arbeid (4)"
-					lastToggleText={`Ferdigstilte funn (${FinishedReports.length})`}
 					handleToggleClick={handleToggle}
 					selectedToggle={selectedToggle}
+					toggles={toggles}
 				/>
 				<StyledTsButton
 					centerText
@@ -97,7 +98,7 @@ const ReportsPage: React.FC = () => {
 					text="Register funn"
 				/>
 			</BtnRow>
-			{selectedToggle === 'InProgress'
+			{selectedToggle === toggles[0]
 				? inProgressReports.map((r, i) => (
 						<Report {...r} key={r.reportNr + i} />
 				  ))

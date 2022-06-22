@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import ReportsPage from '../../pages/tsinsp/reportspage';
+import Map from '../atoms/Common/Map';
 import LinkButton from '../atoms/LinkButton';
 import TopBar from '../atoms/TopBar';
 
@@ -14,18 +15,21 @@ const OverviewLayout: React.FC<OverviewLayoutProps> = ({ username }) => {
 		<Layout>
 			<TopBar username={username} />
 			<Content>
-				<LinkButton
-					className="linkstyling"
-					text="Inspeksjoner"
-					link="http://localhost:3000/"
-				/>
-				<Heading className="flexaligncenter">
-					<LogoAndTitle className="flexaligncenter">
-						<img src="/piggy-bank.png" alt="logo" />
-						<p>TS-inspeksjoner</p>
-					</LogoAndTitle>
-				</Heading>
-				<ReportsPage />
+				<LeftContent>
+					<LinkButton
+						className="linkstyling"
+						text="Inspeksjoner"
+						link="http://localhost:3000/"
+					/>
+					<Heading className="flexaligncenter">
+						<LogoAndTitle className="flexaligncenter">
+							<img src="/piggy-bank.png" alt="logo" />
+							<p>TS-inspeksjoner</p>
+						</LogoAndTitle>
+					</Heading>
+					<ReportsPage />
+				</LeftContent>
+				<Map />
 			</Content>
 		</Layout>
 	);
@@ -49,9 +53,16 @@ const Layout = styled.div`
 const Content = styled.div`
 	width: 90%;
 	margin: auto;
+	display: flex;
+	column-gap: 2em;
+	padding: 3em;
 	.linkstyling {
-		margin: 3em 0 1.5em;
+		margin: 0 0 1.5em;
 	}
+`;
+
+const LeftContent = styled.div`
+	width: 100%;
 `;
 
 const Heading = styled.div`

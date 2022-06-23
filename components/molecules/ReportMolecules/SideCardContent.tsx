@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useFormikContext } from 'formik';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
+import { InitialValues } from '../../../pages/tsinsp/report';
 import Card from '../../atoms/Card';
 import Row from '../../atoms/ReportAtoms/Row';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
@@ -14,12 +16,26 @@ interface SideCardContentProps {
 const SideCardContent: React.FC<SideCardContentProps> = ({
 	canEditPosition = true,
 }) => {
+	const {
+		values: { images },
+	} = useFormikContext<InitialValues>();
+	const urlImages = useMemo((): string[] => {
+		if (!images || images.length === 0) return [];
+		return images.flatMap(i => {
+			// if (i && i.type.match('image.*')) {
+			return URL.createObjectURL(i);
+			// }
+		});
+	}, [images]);
+
+	console.log(urlImages);
+
 	const [isPositionModalOpen, setIsPositionModalOpen] = useState(false);
 	return (
 		<Card>
 			<>
 				<SideCardWrapper>
-					<Thumbnail photos={['/ExampleMap.png']} />
+					<Thumbnail photos={urlImages} />
 					<Content>
 						{canEditPosition && (
 							<Row

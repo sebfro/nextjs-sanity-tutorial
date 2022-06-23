@@ -15,7 +15,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 }) => {
 	const [counter, setCounter] = useState(1);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
+	// const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
 	const handleEditPhoto = useCallback(() => {
 		setModalIsOpen(!modalIsOpen);
 	}, [modalIsOpen]);
@@ -26,14 +26,14 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 			if (inc === 'prev' && counter === 1) return;
 			const photoIndex = counter + (inc === 'next' ? 1 : -1);
 			setCounter(photoIndex);
-			setSelectedPhoto(photos[photoIndex - 1]);
+			// setSelectedPhoto(photos[photoIndex - 1]);
 		},
 		[counter, photos]
 	);
 
 	return (
 		<ThumbnailWrapper>
-			<img id="thumbnail" src={selectedPhoto} alt="logo" />
+			<img id="thumbnail" src={photos[counter - 1]} />
 			{editable && (
 				<CircleEditPencil onClick={handleEditPhoto}>
 					<CustomStyledSvg
@@ -43,7 +43,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 					/>
 				</CircleEditPencil>
 			)}
-			{slideShow && (
+			{slideShow && photos.length > 0 && (
 				<>
 					{counter !== 1 && (
 						<CircleArrowLeft
@@ -74,7 +74,6 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 			)}
 			<UpdateImages
 				isOpen={modalIsOpen}
-				images={photos}
 				handleClose={handleEditPhoto}
 				handleConfirm={handleEditPhoto}
 			/>
@@ -88,6 +87,7 @@ const ThumbnailWrapper = styled.div`
 	display: inline-block;
 	position: relative;
 	width: 100%;
+	min-height: 12em;
 	#thumbnail {
 		width: 100%;
 		height: 100%;

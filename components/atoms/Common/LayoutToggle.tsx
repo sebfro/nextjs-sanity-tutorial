@@ -33,7 +33,7 @@ const LayoutToggle: React.FC<LayoutToggleProps> = ({
 							selectedToggle === t ? 'selectedtoggle' : 'deselectedtoggle'
 						}
 						onClick={() => handleToggleClick(t)}
-						key={t}
+						key={t + i}
 					>
 						{t}
 					</ToggleBtn>

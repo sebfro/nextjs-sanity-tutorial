@@ -7,12 +7,14 @@ interface FileDropBoxProps {
 	labelText: string;
 	name: string;
 	formikProps: FormikProps<any>;
+	fieldName?: string;
 	acceptedFormats?: string;
 }
 const FormFileDropBox: React.FC<FileDropBoxProps> = ({
 	labelText,
 	name,
 	formikProps: { setFieldValue, values },
+	fieldName = 'files',
 	acceptedFormats = '.pdf,.docx,.jpg',
 }) => {
 	// touched og errors kan brukes til feilhåntering når vi kommer så langt
@@ -36,10 +38,9 @@ const FormFileDropBox: React.FC<FileDropBoxProps> = ({
 						alt="Submit"
 						accept={acceptedFormats}
 						onChange={(e: any) => {
-							console.log(e.currentTarget.files);
 							setFieldValue(
-								'files',
-								values.files.concat(Array.from(e.currentTarget.files))
+								fieldName,
+								values[fieldName].concat(Array.from(e.currentTarget.files))
 							);
 						}}
 					/>

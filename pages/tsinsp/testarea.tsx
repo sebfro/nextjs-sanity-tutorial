@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CircleButton from '../../components/atoms/Common/CircleButton';
 import InfoCard from '../../components/atoms/Common/InfoCard';
 import LinkCard from '../../components/atoms/Common/LinkCard';
 import { VeivesenRoutes } from '../../Constants/routes';
@@ -17,6 +18,10 @@ const TestArea: React.FC = () => {
 				redirectText="Se oppfølgingsside"
 				redirectLink={VeivesenRoutes.overviewLayout}
 			/>
+			<Row>
+				<CircleButton svgSrc="/heart.png" />
+				<CircleButton svgSrc="/EditPencil.svg" />
+			</Row>
 		</Wrapper>
 	);
 };
@@ -30,4 +35,9 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	row-gap: 2em;
+`;
+
+const Row = styled.div`
+	display: flex;
+	column-gap: 1em;
 `;

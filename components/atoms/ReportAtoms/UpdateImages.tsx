@@ -1,14 +1,18 @@
-import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
+import {
+	Form,
+	Formik,
+	FormikHelpers,
+	FormikProps,
+	useFormikContext,
+} from 'formik';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import { InitialValues } from '../../../pages/tsinsp/report';
 import Modal from '../../molecules/Modal';
 import FormFileDropBox from '../FormInputs/FormFileDropBox';
+import { StyledSvg } from './../StyledComponents/StyledSvg';
 
-interface InitialValues {
-	images: string[];
-}
-
-interface UpdateImagesProps extends InitialValues {
+interface UpdateImagesProps {
 	isOpen: boolean;
 	handleClose: () => void;
 	handleConfirm: () => void;
@@ -19,16 +23,11 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 	handleClose,
 	...props
 }) => {
-	const handleSubmit = useCallback(
-		async (
-			values: InitialValues,
-			formikHelpers: FormikHelpers<InitialValues>
-		) => {
-			console.log(values);
-			console.log('--------');
-		},
-		[]
-	);
+	const formikProps = useFormikContext<InitialValues>();
+	const handleSubmit = useCallback(async (values: InitialValues) => {
+		console.log(values);
+		console.log('--------');
+	}, []);
 	return (
 		<Wrapper>
 			<Modal
@@ -39,20 +38,31 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 				includeBtnRow={false}
 			>
 				<Content>
-					<Formik initialValues={props} onSubmit={handleSubmit}>
-						{(props: FormikProps<InitialValues>) => (
-							<Form>
-								<FormWrapper>
-									<FormFileDropBox
-										labelText="Bakgrunnsmateriale"
-										name="files"
-										formikProps={props}
-										acceptedFormats=".jpg,.png"
-									/>
-								</FormWrapper>
-							</Form>
-						)}
-					</Formik>
+					<FormWrapper>
+						<FormFileDropBox
+							labelText="Bakgrunnsmateriale"
+							name="files"
+							formikProps={formikProps}
+							acceptedFormats=".jpg,.png"
+							fieldName="images"
+						/>
+					</FormWrapper>
+					<UploadedImages>
+						{formikProps.values.images.map((img, i) => {
+							return (
+								<UploadedImagesRow key={i}>
+									<UploadedImageName>
+										<StyledSvg src="/SuccessIcon.svg" />
+										<p>{img.name}</p>
+									</UploadedImageName>
+									<TrashIcon>
+										<StyledSvg src="/Trash.png" />
+										<p>Fjern fil</p>
+									</TrashIcon>
+								</UploadedImagesRow>
+							);
+						})}
+					</UploadedImages>
 				</Content>
 			</Modal>
 		</Wrapper>
@@ -67,4 +77,36 @@ const FormWrapper = styled.div``;
 const Content = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+
+const UploadedImages = styled.div`
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid black;
+`;
+const UploadedImagesRow = styled.div`
+	display: flex;
+	justify-content: space-between;
+	border-top: 1px solid black;
+	align-items: center;
+	padding: 1em 1.5em 1em 0;
+`;
+
+const UploadedImageName = styled.div`
+	display: flex;
+	column-gap: 0.5em;
+`;
+
+const TrashIcon = styled.div`
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	row-gap: 0.5em;
+	img {
+		width: 24px;
+		height: 24px;
+	}
+	p {
+		margin: 0;
+	}
 `;

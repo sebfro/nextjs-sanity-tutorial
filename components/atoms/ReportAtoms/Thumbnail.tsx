@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { StyledSvg } from '../StyledComponents/StyledSvg';
+import UpdateImages from './UpdateImages';
 
 interface ThumbnailProps {
 	photos: string[];
@@ -13,10 +14,11 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 	slideShow = true,
 }) => {
 	const [counter, setCounter] = useState(1);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
 	const handleEditPhoto = useCallback(() => {
-		console.log('Edit photo');
-	}, []);
+		setModalIsOpen(!modalIsOpen);
+	}, [modalIsOpen]);
 	const handleNextPhoto = useCallback(
 		(inc: 'next' | 'prev') => {
 			console.log(inc);
@@ -70,6 +72,12 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 					<Counter>{`${counter} / ${photos.length}`}</Counter>
 				</>
 			)}
+			<UpdateImages
+				isOpen={modalIsOpen}
+				images={photos}
+				handleClose={handleEditPhoto}
+				handleConfirm={handleEditPhoto}
+			/>
 		</ThumbnailWrapper>
 	);
 };

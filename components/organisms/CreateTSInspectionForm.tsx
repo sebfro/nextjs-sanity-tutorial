@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import FormDropdown from '../atoms/FormInputs/FormDropdown';
 import FormTextInput from '../atoms/FormInputs/FormTextInput';
-import FileDropBox from '../atoms/FormInputs/FileDropBox';
+import FormFileDropBox from '../atoms/FormInputs/FormFileDropBox';
 import SaveButtonRow from '../molecules/SaveButtonRow';
 
 const options: string[] = [
@@ -101,7 +101,7 @@ const CreateTSInspectionForm: React.FC = () => {
 								labelText="Strekning - Slutt"
 							/>
 							<img src="/ExampleMap.png" alt="logo" />
-							<FileDropBox
+							<FormFileDropBox
 								labelText="Bakgrunnsmateriale"
 								name="files"
 								formikProps={props}

@@ -1,16 +1,15 @@
 import { Field, FieldProps, FormikProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
-import { InitialValues } from '../../organisms/CreateTSInspectionForm';
 import { StyledSvg } from '../StyledComponents/StyledSvg';
 
 interface FileDropBoxProps {
 	labelText: string;
 	name: string;
-	formikProps: FormikProps<InitialValues>;
+	formikProps: FormikProps<any>;
 	acceptedFormats?: string;
 }
-const FileDropBox: React.FC<FileDropBoxProps> = ({
+const FormFileDropBox: React.FC<FileDropBoxProps> = ({
 	labelText,
 	name,
 	formikProps: { setFieldValue, values },
@@ -56,7 +55,7 @@ const FileDropBox: React.FC<FileDropBoxProps> = ({
 	);
 };
 
-export default FileDropBox;
+export default FormFileDropBox;
 
 const Wrapper = styled.div`
 	width: 100%;

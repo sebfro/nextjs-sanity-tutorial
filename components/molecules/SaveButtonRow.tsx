@@ -5,6 +5,7 @@ import TsButton from '../atoms/TsButton';
 interface SaveButtonRowProps {
 	confirmCallback: () => void;
 	cancelCallback: () => void;
+	className?: string;
 	confirmBtnText?: string;
 	cancelBtnText?: string;
 	columnDirection?: boolean;
@@ -13,12 +14,13 @@ interface SaveButtonRowProps {
 const SaveButtonRow: React.FC<SaveButtonRowProps> = ({
 	cancelCallback,
 	confirmCallback,
+	className,
 	cancelBtnText = 'Avbryt',
 	confirmBtnText = 'Lagre',
 	columnDirection = false,
 }) => {
 	return (
-		<ButtonRow direction={columnDirection}>
+		<ButtonRow direction={columnDirection} className={className}>
 			<TsButton
 				centerText={columnDirection}
 				text={cancelBtnText}

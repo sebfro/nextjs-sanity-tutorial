@@ -54,6 +54,7 @@ const Content = styled.div`
 	width: 90%;
 	margin: auto;
 	display: flex;
+	flex-wrap: wrap;
 	column-gap: 2em;
 	padding: 3em;
 	.linkstyling {

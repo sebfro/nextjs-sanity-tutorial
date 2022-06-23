@@ -5,6 +5,7 @@ import TsButton from '../TsButton';
 interface ButtonRowProps {
 	confirmCallback: () => void;
 	cancelCallback: () => void;
+	className?: string;
 	confirmBtnText?: string;
 	cancelBtnText?: string;
 	type?: 'button' | 'submit' | 'reset' | undefined;
@@ -12,12 +13,13 @@ interface ButtonRowProps {
 const ButtonRow: React.FC<ButtonRowProps> = ({
 	cancelCallback,
 	confirmCallback,
+	className,
 	cancelBtnText = 'Avbryt',
 	confirmBtnText = 'Lagre',
 	type = undefined,
 }) => {
 	return (
-		<ButtonRowWrapper>
+		<ButtonRowWrapper className={className}>
 			<TsButton
 				centerText
 				text={confirmBtnText}

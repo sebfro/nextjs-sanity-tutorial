@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import SaveButtonRow from './SaveButtonRow';
 
-interface ModalProps {
+export interface ModalProps {
 	isOpen: boolean;
 	handleClose: () => void;
 	handleConfirm: () => void;
@@ -10,6 +10,9 @@ interface ModalProps {
 	children: ReactElement;
 	className?: string;
 	includeBtnRow?: boolean;
+	columnDirection?: boolean;
+	confirmBtnText?: string;
+	cancelBtnText?: string;
 }
 const Modal: React.FC<ModalProps> = ({
 	isOpen,
@@ -19,6 +22,9 @@ const Modal: React.FC<ModalProps> = ({
 	children,
 	className,
 	includeBtnRow = true,
+	columnDirection = false,
+	cancelBtnText = 'Avbryt',
+	confirmBtnText = 'Lagre',
 }) => {
 	if (isOpen) {
 		return (
@@ -33,6 +39,9 @@ const Modal: React.FC<ModalProps> = ({
 						<SaveButtonRow
 							cancelCallback={handleClose}
 							confirmCallback={handleConfirm}
+							columnDirection={columnDirection}
+							cancelBtnText={cancelBtnText}
+							confirmBtnText={confirmBtnText}
 						/>
 					)}
 				</ModalCard>

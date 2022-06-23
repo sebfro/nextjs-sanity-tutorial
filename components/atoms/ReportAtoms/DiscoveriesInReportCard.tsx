@@ -1,7 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import Modal from '../../molecules/Modal';
 import TsButton from '../TsButton';
 import { StyledCard } from './../Card';
+import DeliverReportModal from './DeliverReportModal';
 
 interface DiscoveriesInReportCardProps {
 	avvik: number;
@@ -13,8 +15,13 @@ const DiscoveriesInReportCard: React.FC<DiscoveriesInReportCardProps> = ({
 	feil,
 	merknad,
 }) => {
+	const [modalOpen, setModalOpen] = useState(false);
+	const handleModalConfirm = useCallback(() => {
+		setModalOpen(false);
+	}, []);
+
 	const handleClick = useCallback(() => {
-		console.log('What do now?');
+		setModalOpen(true);
 	}, []);
 
 	return (
@@ -37,6 +44,16 @@ const DiscoveriesInReportCard: React.FC<DiscoveriesInReportCardProps> = ({
 				</div>
 			</LeftSideContent>
 			<CustomBtn centerText callback={handleClick} text="Lever rapport" />
+			<CustomModal
+				isOpen={modalOpen}
+				handleClose={handleModalConfirm}
+				handleConfirm={handleModalConfirm}
+				headerText="Lever rapport"
+				columnDirection
+				confirmBtnText="Lever rapport"
+			>
+				<DeliverReportModal avvik={11} feil={0} merknad={3} />
+			</CustomModal>
 		</CustomStyledCard>
 	);
 };
@@ -82,5 +99,15 @@ const DiscoveryText = styled.div`
 	}
 	p:last-of-type {
 		font-size: 16px;
+	}
+`;
+
+const CustomModal = styled(Modal)`
+	display: flex;
+	flex-direction: column;
+	row-gap: 2em;
+	padding: 2.8em 2em 3em;
+	button {
+		font-size: 18px;
 	}
 `;

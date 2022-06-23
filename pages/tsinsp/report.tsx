@@ -1,5 +1,5 @@
 import { Form, Formik, FormikProps } from 'formik';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../components/atoms/Card';
 import FormTextInput from '../../components/atoms/FormInputs/FormTextInput';
@@ -12,6 +12,7 @@ import SideCardContent from '../../components/molecules/ReportMolecules/SideCard
 import * as Yup from 'yup';
 import { Layout } from '../../components/molecules/ReportLayout';
 import RiskCardRow from './../../components/atoms/ReportAtoms/RiskCardRow';
+import UpdateDiscoveryDetails from '../../components/atoms/ReportAtoms/UpdateDiscoveryDetails';
 
 export interface InitialValues {
 	description: string;
@@ -42,6 +43,7 @@ const Report: React.FC<ReportProps> = ({
 	discovery,
 	risk,
 }) => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const initialValues: InitialValues = {
 		description: '',
 		suggestion: '',
@@ -57,6 +59,7 @@ const Report: React.FC<ReportProps> = ({
 
 	const handleEditClick = useCallback(() => {
 		console.log('How edit work?');
+		setIsModalOpen(true);
 	}, []);
 
 	const handleCancelClick = useCallback(() => {
@@ -133,6 +136,14 @@ const Report: React.FC<ReportProps> = ({
 					)}
 				</Formik>
 			</Card>
+			<UpdateDiscoveryDetails
+				isOpen={isModalOpen}
+				handleClose={() => setIsModalOpen(false)}
+				handleConfirm={() => setIsModalOpen(false)}
+				type="Avvik"
+				location="Sideareal"
+				problem="Annet problem i sidearealet"
+			/>
 		</div>
 	);
 };

@@ -8,6 +8,7 @@ import {
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../../pages/tsinsp/report';
+import { SuccessIcon } from '../../Icons';
 import Modal from '../../molecules/Modal';
 import FormFileDropBox from '../FormInputs/FormFileDropBox';
 import { StyledSvg } from './../StyledComponents/StyledSvg';
@@ -52,7 +53,7 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 							return (
 								<UploadedImagesRow key={i}>
 									<UploadedImageName>
-										<StyledSvg src="/SuccessIcon.svg" />
+										<StyledSvg src={SuccessIcon} />
 										<p>{img.name}</p>
 									</UploadedImageName>
 									<TrashIcon>

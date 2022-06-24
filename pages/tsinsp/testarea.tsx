@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircleButton from '../../components/atoms/Common/CircleButton';
+import IconButton from '../../components/atoms/Common/IconButton';
 import InfoCard from '../../components/atoms/Common/InfoCard';
 import LinkCard from '../../components/atoms/Common/LinkCard';
+import { EditPencil } from '../../components/Icons';
 import { VeivesenRoutes } from '../../Constants/routes';
 
 const TestArea: React.FC = () => {
@@ -19,8 +20,8 @@ const TestArea: React.FC = () => {
 				redirectLink={VeivesenRoutes.overviewLayout}
 			/>
 			<Row>
-				<CircleButton svgSrc="/heart.png" />
-				<CircleButton svgSrc="/EditPencil.svg" />
+				<IconButton svgSrc="/heart.png" />
+				<IconButton svgSrc={EditPencil} circle={false} />
 			</Row>
 			<CardButton>Click me</CardButton>
 		</Wrapper>

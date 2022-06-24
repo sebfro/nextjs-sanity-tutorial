@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
+import { EditPencil, Expand } from '../../Icons';
 import Card from '../Card';
-import { StyledSvg } from '../StyledComponents/StyledSvg';
+import IconButton from './../Common/IconButton';
 
 interface RiskCardRowprops {
 	consequence: number;
@@ -21,9 +22,9 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 	const iconSrc = useMemo(() => {
 		switch (type) {
 			case 'edit':
-				return '/EditPencil.svg';
+				return EditPencil;
 			default:
-				return '/Expand.png';
+				return Expand;
 		}
 	}, [type]);
 	return (
@@ -35,7 +36,11 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 						Drepte ({consequence}) * Ofte ({frequency})
 					</p>
 				</div>
-				<CustomStyledSvg className="cursorhover" src={iconSrc} alt="logo" />
+				<IconButton
+					svgSrc={iconSrc}
+					handleClickCallback={() => {}}
+					border={false}
+				/>
 			</RiskCardContent>
 		</Card>
 	);
@@ -46,6 +51,7 @@ export default RiskCardRow;
 const RiskCardContent = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	padding: 0 1em;
 	width: 100%;
 	.risktext {
@@ -59,10 +65,4 @@ const RiskCardContent = styled.div`
 			color: #444f55;
 		}
 	}
-`;
-
-const CustomStyledSvg = styled(StyledSvg)`
-	width: 1em;
-	height: 1em;
-	align-self: center;
 `;

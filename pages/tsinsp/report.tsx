@@ -45,10 +45,6 @@ const Report: React.FC<ReportProps> = ({
 	risk,
 }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	// const f: File = new File(['ExampleMap.png'], 'ExampleMap.png', {
-	// 	lastModified: 1654262368023,
-	// 	type: 'image/png',
-	// });
 	const initialValues: InitialValues = {
 		description: '',
 		suggestion: '',
@@ -57,14 +53,6 @@ const Report: React.FC<ReportProps> = ({
 		immediateAction: false,
 		images: [],
 	};
-
-	// {
-	// 	name: '/ExampleMap.png',
-	// 	lastModified: 1654262368023,
-	// 	size: 63646,
-	// 	type: 'image/png',
-	// 	webkitRelativePath: '',
-	// }
 
 	const handleSubmit = useCallback(async (values: InitialValues) => {
 		console.log(values);

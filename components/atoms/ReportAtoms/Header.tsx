@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { EditPencil } from '../../Icons';
+import EditPencilBtn from '../Common/EditPencilBtn';
+import IconButton from '../Common/IconButton';
 import { StyledCursorPointerSvg } from '../StyledComponents/StyledSvg';
 
 interface HeaderProps {
@@ -27,11 +30,8 @@ const Header: React.FC<HeaderProps> = ({
 					</p>
 				</TextWrapper>
 			</ColumnOne>
-			<CustomStyledSvg
-				src="/EditPencil.svg"
-				alt="logo"
-				onClick={handleOnClick}
-			/>
+			<EditPencilBtn onClick={handleOnClick} border />
+			{/* <IconButton handleClickCallback={handleOnClick} svgSrc={EditPencil} /> */}
 		</Container>
 	);
 };
@@ -44,6 +44,7 @@ const Container = styled.div`
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+	font-size: 30px;
 `;
 
 const TextWrapper = styled.div`

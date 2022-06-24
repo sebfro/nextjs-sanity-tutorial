@@ -18,7 +18,7 @@ const Card: React.FC<GreyCardProps> = ({
 	return (
 		<Wrapper includeBorder={includeBorder} backgroundColor={backgroundColor}>
 			{button ? (
-				<button className={`${className} cardstyling`}>{children}</button>
+				<CustomBtn className={`${className} cardstyling`}>{children}</CustomBtn>
 			) : (
 				<div className={`${className} cardstyling`}>{children}</div>
 			)}
@@ -44,13 +44,14 @@ const Wrapper = styled.div<WrapperProps>`
 		background-color: ${({ backgroundColor = '#f5f5f5' }) => backgroundColor};
 		color: black;
 	}
-	button {
-		width: 100%;
-		padding: 0;
-	}
 `;
 
-export const StyledCard = styled.button<{
+const CustomBtn = styled.button`
+	width: 100%;
+	padding: 0;
+`;
+
+export const StyledCard = styled.div<{
 	backgroundColor?: string;
 	includeBorder?: boolean;
 }>`

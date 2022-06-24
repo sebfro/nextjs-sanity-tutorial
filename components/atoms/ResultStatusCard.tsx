@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { InfoSuccess } from '../Icons';
 import Card from './Card';
 import { StyledSvg } from './StyledComponents/StyledSvg';
 
@@ -12,7 +13,7 @@ const ResultStatusCard: React.FC<ResultStatusCard> = ({ status, text }) => {
 	return (
 		<StyledCard status={status}>
 			<>
-				<StyledSvg src="/Info_Success.svg" alt="Succes checkmark" />
+				<StyledSvg src={InfoSuccess} alt="Succes checkmark" />
 				<p>{text}</p>
 			</>
 		</StyledCard>

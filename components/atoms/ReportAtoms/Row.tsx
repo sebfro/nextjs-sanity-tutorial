@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 interface RowProps {
 	firstText: string;
 	secondText?: string;
+	className?: string;
 	children?: ReactElement;
 	includeLine?: boolean;
 	reverseDirection?: boolean;
@@ -11,12 +12,13 @@ interface RowProps {
 const Row: React.FC<RowProps> = ({
 	firstText,
 	secondText,
+	className,
 	children,
 	includeLine = true,
 	reverseDirection = false,
 }) => {
 	return (
-		<Container border={includeLine}>
+		<Container border={includeLine} className={className}>
 			<TextWrapper reverseDirection={reverseDirection}>
 				<p>{firstText}</p>
 				{children ? children : <p>{secondText}</p>}

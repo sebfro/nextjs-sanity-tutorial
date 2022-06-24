@@ -4,6 +4,7 @@ import Card, { StyledCard } from '../../components/atoms/Card';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
+import { EditPencil } from '../Icons';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
 
 const TextColor = '#444F55';
@@ -84,7 +85,7 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 				</Wrapper>
 				<ButtonRow>
 					<TsButton
-						iconPath="/EditPencil.svg"
+						iconPath={EditPencil}
 						text="Rediger"
 						border={false}
 						callback={handleEditClick}

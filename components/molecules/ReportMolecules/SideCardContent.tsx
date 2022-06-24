@@ -3,11 +3,13 @@ import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../../pages/tsinsp/report';
 import Card from '../../atoms/Card';
+import EditPencilBtn from '../../atoms/Common/EditPencilBtn';
 import Row from '../../atoms/ReportAtoms/Row';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
-import { StyledSvg } from '../../atoms/StyledComponents/StyledSvg';
+import { PositionLeftArrow, PositionRightArrow } from '../../Icons';
 import ChangePosition from '../ChangePosition';
 import Modal from '../Modal';
+import IconButton from './../../atoms/Common/IconButton';
 
 interface SideCardContentProps {
 	canEditPosition?: boolean;
@@ -38,25 +40,31 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 					<Thumbnail photos={urlImages} />
 					<Content>
 						{canEditPosition && (
-							<Row
+							<StyledRow
 								firstText="Posisjon"
 								secondText="14 - 21 %"
 								includeLine={false}
 							>
-								<CustomStyledSvg
-									className="cursorhover"
-									src="/EditPencil.svg"
-									alt="logo"
+								<EditPencilBtn
+									border={false}
 									onClick={() => setIsPositionModalOpen(true)}
 								/>
-							</Row>
+							</StyledRow>
 						)}
 						<CoordinateRow>
-							<CustomStyledSvg src="/ArrowRight.png" alt="logo" />
+							<CustomStyledSvg
+								svgSrc={PositionRightArrow}
+								border={false}
+								handleClickCallback={() => {}}
+							/>
 							<p>RV580 S1D1 M5561</p>
 						</CoordinateRow>
 						<CoordinateRow>
-							<CustomStyledSvg src="/ArrowLeft.png" alt="logo" />
+							<CustomStyledSvg
+								svgSrc={PositionLeftArrow}
+								border={false}
+								handleClickCallback={() => {}}
+							/>
 							<p>RV580 S1D1 M5561</p>
 						</CoordinateRow>
 						<Row firstText="Fartsgrense" secondText="40 - 60 Km/t" />
@@ -92,8 +100,11 @@ const CoordinateRow = styled.div`
 	color: #444f55;
 `;
 
-const CustomStyledSvg = styled(StyledSvg)`
-	width: 1em;
+const CustomStyledSvg = styled(IconButton)`
+	margin: 0;
+	img {
+		width: 2em;
+	}
 `;
 
 const Content = styled.div`
@@ -104,4 +115,10 @@ const Content = styled.div`
 const StyledModal = styled(Modal)`
 	padding: 2.8em 2em 3em;
 	width: fit-content;
+`;
+
+const StyledRow = styled(Row)`
+	* {
+		margin: 0;
+	}
 `;

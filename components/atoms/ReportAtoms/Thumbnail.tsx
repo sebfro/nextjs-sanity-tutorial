@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { EditPencil } from '../../Icons';
+import IconButton from '../Common/IconButton';
 import { StyledSvg } from '../StyledComponents/StyledSvg';
 import UpdateImages from './UpdateImages';
 
@@ -35,39 +37,24 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 		<ThumbnailWrapper>
 			<img id="thumbnail" src={photos[counter - 1]} />
 			{editable && (
-				<CircleEditPencil onClick={handleEditPhoto}>
-					<CustomStyledSvg
-						className="cursorhover"
-						src="/EditPencil.svg"
-						alt="logo"
-					/>
-				</CircleEditPencil>
+				<CircleEditPencil
+					handleClickCallback={handleEditPhoto}
+					svgSrc={EditPencil}
+				/>
 			)}
 			{slideShow && photos.length > 0 && (
 				<>
 					{counter !== 1 && (
 						<CircleArrowLeft
-							disabled={counter === 1}
-							onClick={() => handleNextPhoto('prev')}
-						>
-							<CustomStyledSvg
-								className="cursorhover"
-								src="/CircleArrowLeft.png"
-								alt="logo"
-							/>
-						</CircleArrowLeft>
+							svgSrc={CircleArrowLeft}
+							handleClickCallback={() => handleNextPhoto('prev')}
+						/>
 					)}
 					{counter !== photos.length && (
 						<CircleArrowRight
-							disabled={counter === photos.length}
-							onClick={() => handleNextPhoto('next')}
-						>
-							<CustomStyledSvg
-								className="cursorhover"
-								src="/CircleArrowLeft.png"
-								alt="logo"
-							/>
-						</CircleArrowRight>
+							svgSrc={CircleArrowLeft}
+							handleClickCallback={() => handleNextPhoto('next')}
+						/>
 					)}
 					<Counter>{`${counter} / ${photos.length}`}</Counter>
 				</>
@@ -94,11 +81,11 @@ const ThumbnailWrapper = styled.div`
 	}
 `;
 
-const CircleBtn = styled.div`
+const CircleBtn = styled(IconButton)`
 	background-color: white;
 	border-radius: 50%;
-	width: 2em;
-	height: 2em;
+	/* width: 2em;
+	height: 2em; */
 	display: flex;
 	justify-content: center;
 	position: absolute;
@@ -110,17 +97,12 @@ const CircleEditPencil = styled(CircleBtn)`
 	top: 0.5em;
 `;
 
-const ChangeImageArrowBase = styled(CircleBtn)<{ disabled: boolean }>`
-	${({ disabled }) =>
-		disabled &&
-		css`
-			opacity: 50%;
-		`}
+const ChangeImageArrowBase = styled(CircleBtn)`
 	border: 1px solid #858d90;
-	img {
+	/* img {
 		width: 0.6em;
 		height: 0.9em;
-	}
+	} */
 	align-items: center;
 	bottom: 40%;
 `;

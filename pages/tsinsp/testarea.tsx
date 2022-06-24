@@ -22,6 +22,7 @@ const TestArea: React.FC = () => {
 				<CircleButton svgSrc="/heart.png" />
 				<CircleButton svgSrc="/EditPencil.svg" />
 			</Row>
+			<CardButton>Click me</CardButton>
 		</Wrapper>
 	);
 };
@@ -40,4 +41,20 @@ const Wrapper = styled.div`
 const Row = styled.div`
 	display: flex;
 	column-gap: 1em;
+`;
+
+const CardButton = styled.button`
+	background-color: white;
+	border: 1px solid black;
+	p {
+		color: #444f55;
+		margin: 0;
+	}
+	:hover {
+		border-width: 3px;
+		box-shadow: 0px 0px 8px 4px rgba(53, 62, 67, 0.2);
+		.titletext {
+			border-bottom: 1px solid grey;
+		}
+	}
 `;

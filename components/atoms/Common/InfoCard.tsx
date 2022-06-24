@@ -16,7 +16,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
 	redirectText,
 }) => {
 	return (
-		<Wrapper>
+		<Wrapper backgroundColor="#e6f1f5">
 			<>
 				<div id="firstelement">
 					<StyledSvg src={imgSrc} alt="logo" />
@@ -34,7 +34,6 @@ const Wrapper = styled(Card)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #e6f1f5;
 	padding: 1em 1.5em;
 	p {
 		margin: 0;

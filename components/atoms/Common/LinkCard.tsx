@@ -15,7 +15,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
 	url,
 }) => {
 	return (
-		<CustomCard backgroundColor="white">
+		<CustomCard backgroundColor="white" button>
 			<Link href={url}>
 				<CardContent>
 					<CardFirstRow>
@@ -35,6 +35,7 @@ const CustomCard = styled(Card)`
 	p {
 		color: #444f55;
 		margin: 0;
+		/* text-align: start; */
 	}
 	:hover {
 		border-width: 3px;
@@ -61,12 +62,11 @@ const CardFirstRow = styled.div`
 const CardContent = styled.div`
 	width: 100%;
 	padding: 1.5em;
-	row-gap: 1em;
+	row-gap: 1.2em;
 	display: flex;
 	flex-direction: column;
 `;
 const SubTitle = styled.p`
-	p {
-		font-size: 20px;
-	}
+	font-size: 16px;
+	text-align: start;
 `;

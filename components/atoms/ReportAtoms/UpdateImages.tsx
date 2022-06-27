@@ -1,11 +1,5 @@
-import {
-	Form,
-	Formik,
-	FormikHelpers,
-	FormikProps,
-	useFormikContext,
-} from 'formik';
-import React, { useCallback } from 'react';
+import { useFormikContext } from 'formik';
+import React from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../../pages/tsinsp/report';
 import { SuccessIcon } from '../../Icons';
@@ -22,13 +16,8 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 	isOpen,
 	handleConfirm,
 	handleClose,
-	...props
 }) => {
 	const formikProps = useFormikContext<InitialValues>();
-	const handleSubmit = useCallback(async (values: InitialValues) => {
-		console.log(values);
-		console.log('--------');
-	}, []);
 	return (
 		<Wrapper>
 			<Modal

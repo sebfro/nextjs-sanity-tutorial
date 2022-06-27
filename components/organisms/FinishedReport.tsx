@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import Card, { StyledCard } from '../../components/atoms/Card';
+import Card, { CardDiv } from '../../components/atoms/Card';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
@@ -159,7 +159,7 @@ const ButtonRow = styled.div`
 	align-items: center;
 `;
 
-const CustomCard = styled(StyledCard)`
+const CustomCard = styled(CardDiv)`
 	padding: 0 1.5em;
 	margin-bottom: 1em;
 	column-gap: 1em;

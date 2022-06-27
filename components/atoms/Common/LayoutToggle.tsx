@@ -61,7 +61,13 @@ const Toggles = styled.div<{ selectedColor: string; deselectedColor: string }>`
 	}
 `;
 
-const ToggleBtn = styled.p`
+const ToggleBtn = styled.button`
+	border: none;
+	text-align: start;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: 600;
+	padding: 0;
 	:hover {
 		cursor: pointer;
 	}

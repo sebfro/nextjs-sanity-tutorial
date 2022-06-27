@@ -1,51 +1,38 @@
-import { useFormikContext } from 'formik';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { InitialValues } from '../../../pages/tsinsp/report';
 import Card from '../../atoms/Card';
 import EditPencilBtn from '../../atoms/Common/EditPencilBtn';
 import Row from '../../atoms/ReportAtoms/Row';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
+import { lightgrey } from '../../colors';
 import { PositionLeftArrow, PositionRightArrow } from '../../Icons';
 import ChangePosition from '../ChangePosition';
 import Modal from '../Modal';
 import IconButton from './../../atoms/Common/IconButton';
 
 interface SideCardContentProps {
+	photos: string[];
+	canEditPhoto?: boolean;
 	canEditPosition?: boolean;
 }
 
 const SideCardContent: React.FC<SideCardContentProps> = ({
+	photos,
+	canEditPhoto = false,
 	canEditPosition = true,
 }) => {
-	const {
-		values: { images },
-	} = useFormikContext<InitialValues>();
-	const urlImages = useMemo((): string[] => {
-		if (!images || images.length === 0) return [];
-		return images.flatMap(i => {
-			// if (i && i.type.match('image.*')) {
-			return URL.createObjectURL(i);
-			// }
-		});
-	}, [images]);
-
-	console.log(urlImages);
-
 	const [isPositionModalOpen, setIsPositionModalOpen] = useState(false);
+
 	return (
 		<Card>
 			<>
 				<SideCardWrapper>
-					<Thumbnail photos={urlImages} />
+					<Thumbnail photos={photos} editable={canEditPhoto} />
 					<Content>
 						{canEditPosition && (
-							<StyledRow
-								firstText="Posisjon"
-								secondText="14 - 21 %"
-								includeLine={false}
-							>
+							<StyledRow firstText="Posisjon" includeLine={false}>
 								<EditPencilBtn
+									backgroundColor={lightgrey}
 									border={false}
 									onClick={() => setIsPositionModalOpen(true)}
 								/>
@@ -55,7 +42,8 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 							<CustomStyledSvg
 								svgSrc={PositionRightArrow}
 								border={false}
-								handleClickCallback={() => {}}
+								onClick={() => {}}
+								backgroundColor={lightgrey}
 							/>
 							<p>RV580 S1D1 M5561</p>
 						</CoordinateRow>
@@ -63,7 +51,8 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 							<CustomStyledSvg
 								svgSrc={PositionLeftArrow}
 								border={false}
-								handleClickCallback={() => {}}
+								onClick={() => {}}
+								backgroundColor={lightgrey}
 							/>
 							<p>RV580 S1D1 M5561</p>
 						</CoordinateRow>

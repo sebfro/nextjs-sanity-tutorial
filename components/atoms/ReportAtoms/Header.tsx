@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EditPencil } from '../../Icons';
 import EditPencilBtn from '../Common/EditPencilBtn';
-import IconButton from '../Common/IconButton';
 import { StyledCursorPointerSvg } from '../StyledComponents/StyledSvg';
 
 interface HeaderProps {

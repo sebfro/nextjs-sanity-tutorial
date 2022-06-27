@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Modal from '../../molecules/Modal';
 import TsButton from '../TsButton';
-import { StyledCard } from './../Card';
+import { CardDiv } from './../Card';
 import DeliverReportModal from './DeliverReportModal';
 
 interface DiscoveriesInReportCardProps {
@@ -66,7 +66,7 @@ const CustomBtn = styled(TsButton)`
 	color: white;
 `;
 
-const CustomStyledCard = styled(StyledCard)`
+const CustomStyledCard = styled(CardDiv)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

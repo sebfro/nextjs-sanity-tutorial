@@ -37,8 +37,9 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 					</p>
 				</div>
 				<IconButton
+					backgroundColor={backgroundColor}
 					svgSrc={iconSrc}
-					handleClickCallback={() => {}}
+					onClick={() => {}}
 					border={false}
 				/>
 			</RiskCardContent>

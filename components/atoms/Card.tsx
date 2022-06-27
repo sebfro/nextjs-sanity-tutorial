@@ -16,45 +16,43 @@ const Card: React.FC<GreyCardProps> = ({
 	className,
 }) => {
 	return (
-		<Wrapper includeBorder={includeBorder} backgroundColor={backgroundColor}>
+		<>
 			{button ? (
-				<CustomBtn className={`${className} cardstyling`}>{children}</CustomBtn>
+				<CardBtn className={`${className} cardstyling`}>{children}</CardBtn>
 			) : (
-				<div className={`${className} cardstyling`}>{children}</div>
+				<CardDiv
+					includeBorder={includeBorder}
+					backgroundColor={backgroundColor}
+					className={`${className}`}
+				>
+					{children}
+				</CardDiv>
 			)}
-		</Wrapper>
+		</>
 	);
 };
 
 export default Card;
 
-type WrapperProps = {
+type CardProps = {
 	backgroundColor?: string;
 	includeBorder?: boolean;
 };
 
-const Wrapper = styled.div<WrapperProps>`
-	.cardstyling {
-		display: flex;
-		${({ includeBorder = true }) =>
-			includeBorder &&
-			css`
-				border: 1px solid #dedede;
-			`};
-		background-color: ${({ backgroundColor = '#f5f5f5' }) => backgroundColor};
-		color: black;
-	}
-`;
-
-const CustomBtn = styled.button`
+const CardBtn = styled.button<CardProps>`
+	display: flex;
+	${({ includeBorder = true }) =>
+		includeBorder &&
+		css`
+			border: 1px solid #dedede;
+		`};
+	background-color: ${({ backgroundColor = '#f5f5f5' }) => backgroundColor};
+	color: black;
 	width: 100%;
 	padding: 0;
 `;
 
-export const StyledCard = styled.div<{
-	backgroundColor?: string;
-	includeBorder?: boolean;
-}>`
+export const CardDiv = styled.div<CardProps>`
 	display: flex;
 	${({ includeBorder = true }) =>
 		includeBorder &&

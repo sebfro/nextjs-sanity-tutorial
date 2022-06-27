@@ -4,11 +4,8 @@ import { StyledSvg } from '../StyledComponents/StyledSvg';
 
 interface CircleButtonProps {
 	svgSrc: string;
-	handleClickCallback: () => void;
-	btnHeight?: number;
-	btnWidth?: number;
-	iconHeight?: number;
-	iconWidth?: number;
+	onClick: () => void;
+	iconSize?: number;
 	className?: string;
 	backgroundColor?: string;
 	text?: string;
@@ -17,12 +14,9 @@ interface CircleButtonProps {
 }
 const IconButton: React.FC<CircleButtonProps> = ({
 	svgSrc,
-	handleClickCallback,
+	onClick,
 	className,
-	btnHeight = 0,
-	btnWidth = 0,
-	iconHeight = 2,
-	iconWidth = 2,
+	iconSize = 0,
 	backgroundColor = 'white',
 	border = true,
 	circle = true,
@@ -31,13 +25,10 @@ const IconButton: React.FC<CircleButtonProps> = ({
 		<Wrapper
 			backgroundColor={backgroundColor}
 			border={border}
-			onClick={handleClickCallback}
+			onClick={onClick}
 			circle={circle}
 			className={className}
-			btnHeight={btnHeight}
-			btnWidth={btnWidth}
-			iconHeight={iconHeight}
-			iconWidth={iconWidth}
+			iconSize={iconSize}
 		>
 			<StyledSvg src={svgSrc} alt="logo" />
 		</Wrapper>
@@ -50,14 +41,12 @@ const Wrapper = styled.button<{
 	backgroundColor: string;
 	border: boolean;
 	circle: boolean;
-	btnHeight: number;
-	btnWidth: number;
-	iconHeight: number;
-	iconWidth: number;
+	iconSize: number;
 }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0.8em;
 	${({ circle }) =>
 		circle &&
 		css`
@@ -67,21 +56,25 @@ const Wrapper = styled.button<{
 		border
 			? css`
 					border: 2px solid black;
-					padding: 0.8em;
 			  `
 			: css`
 					border: none;
-					padding: 0;
 			  `};
 	background-color: ${({ backgroundColor }) => backgroundColor};
-	width: min-content;
-	height: min-content;
 	:hover {
 		cursor: pointer;
 		background-color: #d5d5d5;
 	}
 	img {
-		width: 2em;
-		height: 2em;
+		${({ iconSize }) =>
+			iconSize
+				? css`
+						width: ${iconSize + 'em'};
+						height: ${iconSize + 'em'};
+				  `
+				: css`
+						width: 'min-content';
+						height: 'min-content';
+				  `};
 	}
 `;

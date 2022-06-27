@@ -1,5 +1,5 @@
 import { Form, Formik, FormikProps } from 'formik';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../components/atoms/Card';
 import FormTextInput from '../../components/atoms/FormInputs/FormTextInput';
@@ -74,6 +74,15 @@ const Report: React.FC<ReportProps> = ({
 		handbookReference: Yup.string().required('Required'),
 	});
 
+	const urlPhotos = (images: File[]): string[] => {
+		if (!images || images.length === 0) return [];
+		return images.flatMap(i => {
+			// if (i && i.type.match('image.*')) {
+			return URL.createObjectURL(i);
+			// }
+		});
+	};
+
 	return (
 		<div>
 			<Card backgroundColor="white">
@@ -96,7 +105,10 @@ const Report: React.FC<ReportProps> = ({
 								</Card>
 							</div>
 							<Layout className="reportpadding">
-								<SideCardContent />
+								<SideCardContent
+									photos={urlPhotos(props.values.images)}
+									canEditPhoto
+								/>
 								<InputsContainer>
 									<DescriptionInput
 										name="description"

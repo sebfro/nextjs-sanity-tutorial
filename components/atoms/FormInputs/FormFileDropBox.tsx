@@ -1,7 +1,7 @@
 import { Field, FieldProps, FormikProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
-import { StyledSvg } from '../StyledComponents/StyledSvg';
+import StyledSvg from '../StyledComponents/StyledSvg';
 
 interface FileDropBoxProps {
 	labelText: string;
@@ -28,7 +28,7 @@ const FormFileDropBox: React.FC<FileDropBoxProps> = ({
 					<Label>{labelText} </Label>
 					<CustomBtn className="button" htmlFor="upload">
 						<p>Klikk for å laster opp</p>
-						<StyledSvg src="/piggy-bank.png" alt="logo" />
+						<StyledSvg src={'/Upload.svg'} alt="logo" />
 					</CustomBtn>
 					<input
 						multiple

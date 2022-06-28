@@ -1,11 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { StyledSvg } from '../StyledComponents/StyledSvg';
+import { Icons } from '../../Icons';
+import StyledSvg from '../StyledComponents/StyledSvg';
 
 export interface TagsProps {
 	text: string;
 	type?: 'error' | 'standard';
-	iconPath?: string;
+	iconPath?: Icons;
 }
 
 const Tag: React.FC<TagsProps> = ({ text, type = 'standard', iconPath }) => {

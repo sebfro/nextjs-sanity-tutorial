@@ -2,10 +2,9 @@ import { useFormikContext } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../../pages/tsinsp/report';
-import { SuccessIcon } from '../../Icons';
 import Modal from '../../molecules/Modal';
 import FormFileDropBox from '../FormInputs/FormFileDropBox';
-import { StyledSvg } from './../StyledComponents/StyledSvg';
+import StyledSvg from './../StyledComponents/StyledSvg';
 
 interface UpdateImagesProps {
 	isOpen: boolean;
@@ -42,11 +41,11 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 							return (
 								<UploadedImagesRow key={i}>
 									<UploadedImageName>
-										<StyledSvg src={SuccessIcon} />
+										<StyledSvg src={'/SuccessIcon.svg'} alt="Success Icon" />
 										<p>{img.name}</p>
 									</UploadedImageName>
 									<TrashIcon>
-										<StyledSvg src="/Trash.png" />
+										<StyledSvg src={'/Trash.png'} alt="Trash can" />
 										<p>Fjern fil</p>
 									</TrashIcon>
 								</UploadedImagesRow>

@@ -1,9 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { StyledSvg } from '../StyledComponents/StyledSvg';
+import { Icons } from '../../Icons';
+import StyledSvg from '../StyledComponents/StyledSvg';
 
 interface CircleButtonProps {
-	svgSrc: string;
+	svgSrc: Icons;
 	onClick: () => void;
 	iconSize?: number;
 	className?: string;

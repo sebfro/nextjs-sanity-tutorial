@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { EditPencil, Expand } from '../../Icons';
+import { Icons } from '../../Icons';
 import Card from '../Card';
 import IconButton from './../Common/IconButton';
 
@@ -19,12 +19,12 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 	backgroundColor = '#f5f5f5',
 	includeBorder = true,
 }) => {
-	const iconSrc = useMemo(() => {
+	const iconSrc = useMemo((): Icons => {
 		switch (type) {
 			case 'edit':
-				return EditPencil;
+				return '/EditPencil.svg';
 			default:
-				return Expand;
+				return '/expand.svg';
 		}
 	}, [type]);
 	return (

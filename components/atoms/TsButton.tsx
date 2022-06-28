@@ -1,12 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { White } from '../../styles/Colors';
-import { StyledSvg } from './StyledComponents/StyledSvg';
+import { Icons } from '../Icons';
+import StyledSvg from './StyledComponents/StyledSvg';
 
 interface TsButtonProps {
 	callback: () => void;
 	text: string;
-	iconPath?: string;
+	iconPath?: Icons;
 	className?: string;
 	centerText?: boolean;
 	border?: boolean;

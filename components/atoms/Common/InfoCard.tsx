@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Icons } from '../../Icons';
 import Card from '../Card';
-import { StyledSvg } from '../StyledComponents/StyledSvg';
+import StyledSvg from '../StyledComponents/StyledSvg';
 
 interface InfoCardProps {
 	redirectLink: string;
 	redirectText: string;
 	title: string;
-	imgSrc?: string;
+	imgSrc: Icons;
 }
 const InfoCard: React.FC<InfoCardProps> = ({
 	title,
-	imgSrc = '/piggy-bank.png',
+	imgSrc,
 	redirectLink,
 	redirectText,
 }) => {

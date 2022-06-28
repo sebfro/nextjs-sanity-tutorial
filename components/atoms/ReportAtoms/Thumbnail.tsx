@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { White } from '../../../styles/Colors';
-import { CircleArrowLeft, EditPencil, PlaceholderPhoto } from '../../Icons';
+import { IconsEnum } from '../../Icons';
 import IconButton from '../Common/IconButton';
 import UpdateImages from './UpdateImages';
 
@@ -32,29 +32,37 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 	console.log(photos);
 	return (
 		<ThumbnailWrapper>
-			<img id="thumbnail" src={photos[counter - 1] || PlaceholderPhoto} />
+			<img
+				id="thumbnail"
+				src={photos[counter - 1] || IconsEnum.PlaceholderPhoto}
+			/>
 			{editable && (
-				<CircleEditPencil onClick={handleEditPhoto} svgSrc={EditPencil} />
+				<CircleEditPencil
+					onClick={handleEditPhoto}
+					svgSrc={'/EditPencil.svg'}
+				/>
 			)}
-			{slideShow && photos.length > 0 && photos[0] !== PlaceholderPhoto && (
-				<>
-					{counter !== 1 && (
-						<CircleArrowLeftBtn
-							svgSrc={CircleArrowLeft}
-							onClick={() => handleNextPhoto('prev')}
-							iconSize={2}
-						/>
-					)}
-					{counter !== photos.length && (
-						<CircleArrowRightBtn
-							svgSrc={CircleArrowLeft}
-							onClick={() => handleNextPhoto('next')}
-							iconSize={2}
-						/>
-					)}
-					<Counter>{`${counter} / ${photos.length}`}</Counter>
-				</>
-			)}
+			{slideShow &&
+				photos.length > 0 &&
+				photos[0] !== IconsEnum.PlaceholderPhoto && (
+					<>
+						{counter !== 1 && (
+							<CircleArrowLeftBtn
+								svgSrc={'/CircleArrowLeft.svg'}
+								onClick={() => handleNextPhoto('prev')}
+								iconSize={2}
+							/>
+						)}
+						{counter !== photos.length && (
+							<CircleArrowRightBtn
+								svgSrc={'/CircleArrowLeft.svg'}
+								onClick={() => handleNextPhoto('next')}
+								iconSize={2}
+							/>
+						)}
+						<Counter>{`${counter} / ${photos.length}`}</Counter>
+					</>
+				)}
 			{editable && (
 				<UpdateImages
 					isOpen={modalIsOpen}

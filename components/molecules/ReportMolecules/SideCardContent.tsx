@@ -5,7 +5,6 @@ import EditPencilBtn from '../../atoms/Common/EditPencilBtn';
 import Row from '../../atoms/ReportAtoms/Row';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
 import { lightgrey } from '../../../styles/Colors';
-import { PositionLeftArrow, PositionRightArrow } from '../../Icons';
 import ChangePosition from '../ChangePosition';
 import Modal from '../Modal';
 import IconButton from './../../atoms/Common/IconButton';
@@ -40,7 +39,7 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 						)}
 						<CoordinateRow>
 							<CustomStyledSvg
-								svgSrc={PositionRightArrow}
+								svgSrc={'/PositionRightArrow.svg'}
 								border={false}
 								onClick={() => {}}
 								backgroundColor={lightgrey}
@@ -49,7 +48,7 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 						</CoordinateRow>
 						<CoordinateRow>
 							<CustomStyledSvg
-								svgSrc={PositionLeftArrow}
+								svgSrc={'/PositionLeftArrow.svg'}
 								border={false}
 								onClick={() => {}}
 								backgroundColor={lightgrey}

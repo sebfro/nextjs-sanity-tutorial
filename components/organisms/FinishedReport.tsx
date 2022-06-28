@@ -1,13 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import Card, { CardDiv } from '../../components/atoms/Card';
+import Card from '../../components/atoms/Card';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
+import { TextColor } from '../Colors';
 import { EditPencil } from '../Icons';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
-
-const TextColor = '#444F55';
 
 export interface FinishedreportProps {
 	topText: string;
@@ -58,22 +57,13 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 						/>
 					</Header>
 					{showMore ? (
-						<>
-							<CustomCard backgroundColor="white" includeBorder>
-								<>
-									<p>Registrert 11.04.22 09:42</p>
-									<p>|</p>
-									<p>Sist endret 11.04.22 09:42</p>
-								</>
-							</CustomCard>
-							<FinishedReportExpanded
-								topText={topText}
-								actionDescription={actionDescription}
-								handbookReference={handbookReference}
-								tags={tags}
-								immediateActionRequired={immediateActionRequired}
-							/>
-						</>
+						<FinishedReportExpanded
+							topText={topText}
+							actionDescription={actionDescription}
+							handbookReference={handbookReference}
+							tags={tags}
+							immediateActionRequired={immediateActionRequired}
+						/>
 					) : (
 						<FinishedReportMinimized
 							tags={tags}
@@ -157,13 +147,4 @@ const ButtonRow = styled.div`
 	background-color: #ececec;
 	height: 3.3em;
 	align-items: center;
-`;
-
-const CustomCard = styled(CardDiv)`
-	padding: 0 1.5em;
-	margin-bottom: 1em;
-	column-gap: 1em;
-	color: ${TextColor};
-	font-weight: 300;
-	font-size: 14px;
 `;

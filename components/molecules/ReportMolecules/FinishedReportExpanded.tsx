@@ -8,6 +8,8 @@ import { Layout } from '../ReportLayout';
 import SideCardContent from './SideCardContent';
 import { Label } from './../../atoms/Common/Label';
 import RiskCardRow from './../../atoms/ReportAtoms/RiskCardRow';
+import { CardDiv } from '../../atoms/Card';
+import { TextColor } from '../../Colors';
 
 interface FinishedReportExpandedProps {
 	tags: TagsProps[];
@@ -26,7 +28,11 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 }) => {
 	return (
 		<Layout>
-			<SideCardContent canEditPosition={false} />
+			<SideCardContent
+				canEditPosition={false}
+				photos={[]}
+				canEditPhoto={false}
+			/>
 			<ReportContent>
 				<DescriptionWithTagRow description={topText} tags={tags}>
 					<CustomLine />
@@ -54,6 +60,15 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 					/>
 				</div>
 			</ReportContent>
+			<CustomCard backgroundColor="white" includeBorder>
+				<>
+					<p>Funn ID 2022-005-008</p>
+					<p>|</p>
+					<p>Registrert 11.04.22 09:42</p>
+					<p>|</p>
+					<p>Sist endret 11.04.22 09:42</p>
+				</>
+			</CustomCard>
 		</Layout>
 	);
 };
@@ -69,4 +84,13 @@ const ReportContent = styled.div`
 const CustomLine = styled(Line)`
 	margin-top: 1.5em;
 	background-color: #dadada;
+`;
+
+const CustomCard = styled(CardDiv)`
+	padding: 0 1.5em;
+	column-gap: 1em;
+	color: ${TextColor};
+	font-weight: 300;
+	font-size: 14px;
+	grid-column: 1 / 3;
 `;

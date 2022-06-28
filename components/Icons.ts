@@ -6,3 +6,4 @@ export const SuccessIcon = '/SuccessIcon.svg';
 export const InfoSuccess = '/Info_Success.svg';
 export const Expand = '/expand.svg';
 export const PlaceholderPhoto = '/placeholder-photo.svg';
+export const Upload = '/Upload.svg';

@@ -29,7 +29,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 		},
 		[counter, photos]
 	);
-	console.log(photos);
+
 	return (
 		<ThumbnailWrapper>
 			<img

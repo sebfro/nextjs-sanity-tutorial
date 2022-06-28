@@ -91,7 +91,8 @@ const Label = styled.p`
 
 const CustomBtn = styled.label`
 	display: flex;
-	column-gap: 0.5em;
+	align-items: center;
+	column-gap: 1.5em;
 	p {
 		margin: 0;
 	}

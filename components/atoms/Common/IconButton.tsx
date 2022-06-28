@@ -17,6 +17,7 @@ const IconButton: React.FC<CircleButtonProps> = ({
 	svgSrc,
 	onClick,
 	className,
+	text,
 	iconSize = 0,
 	backgroundColor = 'white',
 	border = true,
@@ -30,8 +31,10 @@ const IconButton: React.FC<CircleButtonProps> = ({
 			circle={circle}
 			className={className}
 			iconSize={iconSize}
+			type="submit"
 		>
 			<StyledSvg src={svgSrc} alt="logo" />
+			{text && <p>{text}</p>}
 		</Wrapper>
 	);
 };
@@ -48,6 +51,10 @@ const Wrapper = styled.button<{
 	justify-content: center;
 	align-items: center;
 	padding: 0.8em;
+	flex-direction: column;
+	p {
+		margin: 0.6em 0 0;
+	}
 	${({ circle }) =>
 		circle &&
 		css`

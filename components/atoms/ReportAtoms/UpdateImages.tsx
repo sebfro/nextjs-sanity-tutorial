@@ -1,8 +1,9 @@
 import { useFormikContext } from 'formik';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { InitialValues } from '../../../pages/tsinsp/report';
 import Modal from '../../molecules/Modal';
+import IconButton from '../Common/IconButton';
 import FormFileDropBox from '../FormInputs/FormFileDropBox';
 import StyledSvg from './../StyledComponents/StyledSvg';
 
@@ -17,6 +18,20 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 	handleClose,
 }) => {
 	const formikProps = useFormikContext<InitialValues>();
+	const {
+		values: { images },
+		setFieldValue,
+	} = formikProps;
+	const removeImage = useCallback(
+		(imgFile: File) => {
+			setFieldValue(
+				'images',
+				images.filter(img => img !== imgFile)
+			);
+		},
+		[images, setFieldValue]
+	);
+
 	return (
 		<Wrapper>
 			<Modal
@@ -37,17 +52,20 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 						/>
 					</FormWrapper>
 					<UploadedImages>
-						{formikProps.values.images.map((img, i) => {
+						{images.map((img, i) => {
 							return (
 								<UploadedImagesRow key={i}>
 									<UploadedImageName>
 										<StyledSvg src={'/SuccessIcon.svg'} alt="Success Icon" />
 										<p>{img.name}</p>
 									</UploadedImageName>
-									<TrashIcon>
-										<StyledSvg src={'/Trash.png'} alt="Trash can" />
-										<p>Fjern fil</p>
-									</TrashIcon>
+									<IconButton
+										svgSrc="/Trash.png"
+										border={false}
+										text="Fjern fil"
+										onClick={() => removeImage(img)}
+										circle={false}
+									/>
 								</UploadedImagesRow>
 							);
 						})}

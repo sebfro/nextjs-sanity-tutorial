@@ -103,17 +103,3 @@ const UploadedImageName = styled.div`
 	display: flex;
 	column-gap: 0.5em;
 `;
-
-const TrashIcon = styled.div`
-	display: grid;
-	justify-items: center;
-	align-items: center;
-	row-gap: 0.5em;
-	img {
-		width: 24px;
-		height: 24px;
-	}
-	p {
-		margin: 0;
-	}
-`;

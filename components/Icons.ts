@@ -1,3 +1,6 @@
+import SvgComponent from './atoms/Common/SvgComponent';
+import RiskCardRow from './atoms/ReportAtoms/RiskCardRow';
+
 //If the svgs are used in standard html without typing, use this one instead
 export enum IconsEnum {
 	Close = '/Close.svg',
@@ -13,6 +16,7 @@ export enum IconsEnum {
 	Trash = '/Trash.png',
 	PositionTag = '/PositionTag.png',
 	Map = '/Map.png',
+	Logo = '/Logo.svg',
 }
 
 // If you are going to update any of them use f2 to update all components that use it.
@@ -30,3 +34,5 @@ export type Icons =
 	| '/Trash.png'
 	| '/PositionTag.png'
 	| '/Map.png';
+
+export type e = typeof SvgComponent | typeof RiskCardRow;

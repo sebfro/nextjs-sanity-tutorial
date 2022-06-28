@@ -10,7 +10,7 @@ interface LinkButtonProps {
 const LinkButton: React.FC<LinkButtonProps> = ({ link, text, className }) => {
 	return (
 		<Wrapper className={`${className} pointeronhover`}>
-			<StyledSvg src={'/CircleArrowLeft.svg'} alt="logo" />
+			<StyledSvg src="/CircleArrowLeft.svg" alt="logo" />
 			{/* <ClickableLink  >{text}</ClickableLink> */}
 			<ClickableLink href={link}>{text}</ClickableLink>
 		</Wrapper>

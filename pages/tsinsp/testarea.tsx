@@ -6,6 +6,7 @@ import LinkCard from '../../components/atoms/Common/LinkCard';
 import { White } from '../../styles/Colors';
 import { EditPencil } from '../../components/Icons';
 import { VeivesenRoutes } from '../../Constants/routes';
+import SvgComponent from '../../components/atoms/Common/SvgComponent';
 
 const TestArea: React.FC = () => {
 	return (
@@ -25,6 +26,9 @@ const TestArea: React.FC = () => {
 				<IconButton svgSrc={EditPencil} circle={false} />
 			</Row>
 			<CardButton>Click me</CardButton>
+			<p>her</p>
+			<SvgComponent />
+			<p>her</p>
 		</Wrapper>
 	);
 };
@@ -38,6 +42,9 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	row-gap: 2em;
+	path {
+		fill: red;
+	}
 `;
 
 const Row = styled.div`

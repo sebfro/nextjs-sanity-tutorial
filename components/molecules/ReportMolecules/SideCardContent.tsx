@@ -4,7 +4,7 @@ import Card from '../../atoms/Card';
 import EditPencilBtn from '../../atoms/Common/EditPencilBtn';
 import Row from '../../atoms/ReportAtoms/Row';
 import Thumbnail from '../../atoms/ReportAtoms/Thumbnail';
-import { lightgrey } from '../../colors';
+import { lightgrey } from '../../../styles/Colors';
 import { PositionLeftArrow, PositionRightArrow } from '../../Icons';
 import ChangePosition from '../ChangePosition';
 import Modal from '../Modal';

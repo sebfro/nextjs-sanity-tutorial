@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import { White } from '../Colors';
+import { White } from '../../styles/Colors';
 import SaveButtonRow from './SaveButtonRow';
 
 export interface ModalProps {

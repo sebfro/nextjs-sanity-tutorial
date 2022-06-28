@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 import { Layout } from '../../components/molecules/ReportLayout';
 import RiskCardRow from './../../components/atoms/ReportAtoms/RiskCardRow';
 import UpdateDiscoveryDetails from '../../components/atoms/ReportAtoms/UpdateDiscoveryDetails';
-import { White } from '../../components/Colors';
+import { White } from '../../styles/Colors';
 
 export interface InitialValues {
 	description: string;

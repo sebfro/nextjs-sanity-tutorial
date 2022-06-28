@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
-import { White } from '../../Colors';
+import { White } from '../../../styles/Colors';
 import Card from '../Card';
 import { StyledSvg } from '../StyledComponents/StyledSvg';
 

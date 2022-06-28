@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { White } from '../Colors';
+import { White } from '../../styles/Colors';
 import { StyledSvg } from './StyledComponents/StyledSvg';
 
 interface TsButtonProps {

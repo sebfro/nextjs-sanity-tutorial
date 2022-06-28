@@ -2,7 +2,7 @@ import { FieldProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors.module.css';
-import { White } from '../Colors';
+import { White } from '../../styles/Colors';
 
 interface FormTextInputProps {
 	type?: string;

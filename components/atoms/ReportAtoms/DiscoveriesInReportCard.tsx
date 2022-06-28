@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { Grey, White } from '../../Colors';
+import { Grey, White } from '../../../styles/Colors';
 import Modal from '../../molecules/Modal';
 import TsButton from '../TsButton';
 import { CardDiv } from './../Card';

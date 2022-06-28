@@ -1,7 +1,7 @@
 import { Field } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
-import { White } from '../../Colors';
+import { White } from '../../../styles/Colors';
 import { Label } from '../Common/Label';
 
 interface DropdownProps {

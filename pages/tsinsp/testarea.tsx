@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import IconButton from '../../components/atoms/Common/IconButton';
 import InfoCard from '../../components/atoms/Common/InfoCard';
 import LinkCard from '../../components/atoms/Common/LinkCard';
-import { White } from '../../components/Colors';
+import { White } from '../../styles/Colors';
 import { EditPencil } from '../../components/Icons';
 import { VeivesenRoutes } from '../../Constants/routes';
 

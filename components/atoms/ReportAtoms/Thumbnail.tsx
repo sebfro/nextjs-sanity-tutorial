@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { White } from '../../Colors';
+import { White } from '../../../styles/Colors';
 import { CircleArrowLeft, EditPencil, PlaceholderPhoto } from '../../Icons';
 import IconButton from '../Common/IconButton';
 import UpdateImages from './UpdateImages';

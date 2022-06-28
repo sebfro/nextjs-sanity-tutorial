@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TsButton from '../atoms/TsButton';
-import { White } from '../Colors';
+import { White } from '../../styles/Colors';
 
 interface SaveButtonRowProps {
 	confirmCallback: () => void;

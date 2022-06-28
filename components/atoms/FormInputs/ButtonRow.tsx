@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { White } from '../../Colors';
+import { White } from '../../../styles/Colors';
 import TsButton from '../TsButton';
 
 interface ButtonRowProps {

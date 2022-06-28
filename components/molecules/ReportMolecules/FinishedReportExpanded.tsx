@@ -9,7 +9,7 @@ import SideCardContent from './SideCardContent';
 import { Label } from './../../atoms/Common/Label';
 import RiskCardRow from './../../atoms/ReportAtoms/RiskCardRow';
 import { CardDiv } from '../../atoms/Card';
-import { TextColor, White } from '../../Colors';
+import { TextColor, White } from '../../../styles/Colors';
 
 interface FinishedReportExpandedProps {
 	tags: TagsProps[];

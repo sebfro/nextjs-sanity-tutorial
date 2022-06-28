@@ -4,7 +4,7 @@ import Card from '../../components/atoms/Card';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
-import { Grey, TextColor, White } from '../Colors';
+import { Grey, TextColor, White } from '../../styles/Colors';
 import { EditPencil } from '../Icons';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
 

@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import { White } from '../Colors';
 import SaveButtonRow from './SaveButtonRow';
 
 export interface ModalProps {
@@ -76,7 +77,7 @@ const ModalContainer = styled.div`
 
 const ModalCard = styled.div`
 	position: fixed;
-	background: white;
+	background: ${White};
 	width: 50%;
 	height: auto;
 	top: 50%;

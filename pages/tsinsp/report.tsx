@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 import { Layout } from '../../components/molecules/ReportLayout';
 import RiskCardRow from './../../components/atoms/ReportAtoms/RiskCardRow';
 import UpdateDiscoveryDetails from '../../components/atoms/ReportAtoms/UpdateDiscoveryDetails';
+import { White } from '../../components/Colors';
 
 export interface InitialValues {
 	description: string;
@@ -85,7 +86,7 @@ const Report: React.FC<ReportProps> = ({
 
 	return (
 		<div>
-			<Card backgroundColor="white">
+			<Card backgroundColor={White}>
 				<Formik
 					initialValues={initialValues}
 					onSubmit={handleSubmit}

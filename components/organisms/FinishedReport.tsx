@@ -4,7 +4,7 @@ import Card from '../../components/atoms/Card';
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
-import { TextColor } from '../Colors';
+import { Grey, TextColor, White } from '../Colors';
 import { EditPencil } from '../Icons';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
 
@@ -39,7 +39,7 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 	}, []);
 
 	return (
-		<Card backgroundColor="white">
+		<Card backgroundColor={White}>
 			<Container>
 				<Wrapper>
 					<Header>
@@ -136,7 +136,7 @@ const ButtonRow = styled.div`
 	column-gap: 1em;
 	.btnstyling {
 		padding-left: 0;
-		background-color: #ececec;
+		background-color: ${Grey};
 		font-size: 14px;
 		img {
 			width: 17px;
@@ -144,7 +144,7 @@ const ButtonRow = styled.div`
 		}
 	}
 	padding-left: 2em;
-	background-color: #ececec;
+	background-color: ${Grey};
 	height: 3.3em;
 	align-items: center;
 `;

@@ -1,6 +1,7 @@
 import { Field } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
+import { White } from '../../Colors';
 import { Label } from '../Common/Label';
 
 interface DropdownProps {
@@ -43,6 +44,6 @@ const Wrapper = styled.div`
 		width: 100%;
 		border: 2px solid #97989b;
 		height: 44px;
-		background-color: white;
+		background-color: ${White};
 	}
 `;

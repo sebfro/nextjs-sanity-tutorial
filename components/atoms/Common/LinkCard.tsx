@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
+import { White } from '../../Colors';
 import Card from '../Card';
 import { StyledSvg } from '../StyledComponents/StyledSvg';
 
@@ -15,7 +16,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
 	url,
 }) => {
 	return (
-		<CustomCard backgroundColor="white" button>
+		<CustomCard backgroundColor={White} button>
 			<Link href={url}>
 				<CardContent>
 					<CardFirstRow>

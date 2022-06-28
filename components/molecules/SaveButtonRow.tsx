@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TsButton from '../atoms/TsButton';
+import { White } from '../Colors';
 
 interface SaveButtonRowProps {
 	confirmCallback: () => void;
@@ -53,7 +54,7 @@ const ButtonRow = styled.div<{ direction: boolean }>`
 		}
 	}
 	button:last-of-type {
-		color: white;
+		color: ${White};
 		background-color: #444f55;
 		:hover {
 			background-color: #646a6d;

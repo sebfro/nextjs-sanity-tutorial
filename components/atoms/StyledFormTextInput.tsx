@@ -2,6 +2,7 @@ import { FieldProps } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../styles/colors.module.css';
+import { White } from '../Colors';
 
 interface FormTextInputProps {
 	type?: string;
@@ -37,5 +38,5 @@ const StyledInput = styled.input`
 	border-radius: 5px;
 	min-width: 15em;
 	padding: 0.5em;
-	color: white;
+	color: ${White};
 `;

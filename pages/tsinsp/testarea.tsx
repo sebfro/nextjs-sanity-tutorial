@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import IconButton from '../../components/atoms/Common/IconButton';
 import InfoCard from '../../components/atoms/Common/InfoCard';
 import LinkCard from '../../components/atoms/Common/LinkCard';
+import { White } from '../../components/Colors';
 import { EditPencil } from '../../components/Icons';
 import { VeivesenRoutes } from '../../Constants/routes';
 
@@ -45,7 +46,7 @@ const Row = styled.div`
 `;
 
 const CardButton = styled.button`
-	background-color: white;
+	background-color: ${White};
 	border: 1px solid black;
 	p {
 		color: #444f55;

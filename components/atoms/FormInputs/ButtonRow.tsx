@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { White } from '../../Colors';
 import TsButton from '../TsButton';
 
 interface ButtonRowProps {
@@ -50,7 +51,7 @@ const ButtonRowWrapper = styled.div`
 	}
 	column-gap: 1em;
 	button:first-of-type {
-		color: white;
+		color: ${White};
 		background-color: #444f55;
 		:hover {
 			background-color: #646a6d;

@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import { White } from '../../Colors';
 import { CircleArrowLeft, EditPencil, PlaceholderPhoto } from '../../Icons';
 import IconButton from '../Common/IconButton';
 import UpdateImages from './UpdateImages';
@@ -79,7 +80,7 @@ const ThumbnailWrapper = styled.div`
 `;
 
 const CircleBtn = styled(IconButton)`
-	background-color: white;
+	background-color: ${White};
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
@@ -111,6 +112,6 @@ const Counter = styled.div`
 	position: absolute;
 	bottom: 1em;
 	left: 1em;
-	color: white;
+	color: ${White};
 	font-size: 18px;
 `;

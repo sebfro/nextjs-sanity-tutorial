@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { White } from '../Colors';
 import { StyledSvg } from './StyledComponents/StyledSvg';
 
 interface TsButtonProps {
@@ -47,7 +48,7 @@ const Button = styled.button<{
 	reverse: boolean;
 }>`
 	border: ${({ border }) => (border ? '1px solid black' : 'none')};
-	background-color: white;
+	background-color: ${White};
 	display: flex;
 	column-gap: 12px;
 	flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};

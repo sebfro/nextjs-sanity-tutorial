@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import { Grey, White } from '../../Colors';
 import Modal from '../../molecules/Modal';
 import TsButton from '../TsButton';
 import { CardDiv } from './../Card';
@@ -25,7 +26,7 @@ const DiscoveriesInReportCard: React.FC<DiscoveriesInReportCardProps> = ({
 	}, []);
 
 	return (
-		<CustomStyledCard backgroundColor="#ececec">
+		<CustomStyledCard backgroundColor={Grey}>
 			<LeftSideContent>
 				<h1>Funn i rapporten</h1>
 				<div id="discoverywrapper">
@@ -63,7 +64,7 @@ export default DiscoveriesInReportCard;
 const CustomBtn = styled(TsButton)`
 	padding: 1em 3em;
 	background-color: #444f55;
-	color: white;
+	color: ${White};
 `;
 
 const CustomStyledCard = styled(CardDiv)`

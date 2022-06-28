@@ -9,7 +9,7 @@ import SideCardContent from './SideCardContent';
 import { Label } from './../../atoms/Common/Label';
 import RiskCardRow from './../../atoms/ReportAtoms/RiskCardRow';
 import { CardDiv } from '../../atoms/Card';
-import { TextColor } from '../../Colors';
+import { TextColor, White } from '../../Colors';
 
 interface FinishedReportExpandedProps {
 	tags: TagsProps[];
@@ -60,7 +60,7 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 					/>
 				</div>
 			</ReportContent>
-			<CustomCard backgroundColor="white" includeBorder>
+			<CustomCard backgroundColor={White} includeBorder>
 				<>
 					<p>Funn ID 2022-005-008</p>
 					<p>|</p>

@@ -12,11 +12,11 @@ const EditPencilBtn: React.FC<EditPencilBtnProps> = ({
 	onClick,
 	backgroundColor = 'white',
 	border = false,
-	iconSize = 2,
+	iconSize = 3,
 }) => {
 	return (
 		<EditPencil
-			svgSrc={'/EditPencil.svg'}
+			svgSrc="EditPencil"
 			onClick={onClick}
 			border={border}
 			iconSize={iconSize}

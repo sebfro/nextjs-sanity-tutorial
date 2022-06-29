@@ -5,7 +5,7 @@ import { InitialValues } from '../../../pages/tsinsp/report';
 import Modal from '../../molecules/Modal';
 import IconButton from '../Common/IconButton';
 import FormFileDropBox from '../FormInputs/FormFileDropBox';
-import StyledSvg from './../StyledComponents/StyledSvg';
+import SvgGetter from '../SVG/SvgGetter';
 
 interface UpdateImagesProps {
 	isOpen: boolean;
@@ -56,11 +56,11 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 							return (
 								<UploadedImagesRow key={i}>
 									<UploadedImageName>
-										<StyledSvg src={'/SuccessIcon.svg'} alt="Success Icon" />
+										<SvgGetter icon="SuccessIcon" />
 										<p>{img.name}</p>
 									</UploadedImageName>
 									<IconButton
-										svgSrc="/Trash.png"
+										svgSrc="Trash"
 										border={false}
 										text="Fjern fil"
 										onClick={() => removeImage(img)}
@@ -102,4 +102,5 @@ const UploadedImagesRow = styled.div`
 const UploadedImageName = styled.div`
 	display: flex;
 	column-gap: 0.5em;
+	align-items: center;
 `;

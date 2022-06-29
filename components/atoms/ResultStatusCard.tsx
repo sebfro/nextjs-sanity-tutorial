@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Card from './Card';
-import StyledSvg from './StyledComponents/StyledSvg';
+import SvgGetter from './SVG/SvgGetter';
 
 type StatusType = 'error' | 'success' | 'warning';
 interface ResultStatusCard {
@@ -12,7 +12,7 @@ const ResultStatusCard: React.FC<ResultStatusCard> = ({ status, text }) => {
 	return (
 		<StyledCard status={status}>
 			<>
-				<StyledSvg src={'/Info_Success.svg'} alt="Success checkmark" />
+				<SvgGetter icon="Info_Success" />
 				<p>{text}</p>
 			</>
 		</StyledCard>

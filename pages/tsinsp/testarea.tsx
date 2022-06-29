@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import IconButton from '../../components/atoms/Common/IconButton';
 import InfoCard from '../../components/atoms/Common/InfoCard';
 import LinkCard from '../../components/atoms/Common/LinkCard';
 import { White } from '../../styles/Colors';
-import { EditPencil } from '../../components/Icons';
 import { VeivesenRoutes } from '../../Constants/routes';
-import SvgComponent from '../../components/atoms/Common/SvgComponent';
+import EditPencil from '../../components/atoms/SVG/EditPencil';
 
 const TestArea: React.FC = () => {
+	const testClick = useCallback(() => {
+		console.log('Test');
+	}, []);
+
 	return (
 		<Wrapper>
 			<LinkCard
@@ -20,14 +23,19 @@ const TestArea: React.FC = () => {
 				title="Dette funnet har status “uten finansiering”."
 				redirectText="Se oppfølgingsside"
 				redirectLink={VeivesenRoutes.overviewLayout}
+				imgSrc="InfoNotification"
 			/>
 			<Row>
-				<IconButton svgSrc="/heart.png" />
-				<IconButton svgSrc={EditPencil} circle={false} />
+				<IconButton onClick={testClick} svgSrc="Close" />
+				<IconButton
+					onClick={testClick}
+					svgSrc="InfoNotification"
+					circle={false}
+				/>
 			</Row>
 			<CardButton>Click me</CardButton>
 			<p>her</p>
-			<SvgComponent />
+			<EditPencil fill="pink" />
 			<p>her</p>
 		</Wrapper>
 	);
@@ -42,9 +50,6 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	row-gap: 2em;
-	path {
-		fill: red;
-	}
 `;
 
 const Row = styled.div`

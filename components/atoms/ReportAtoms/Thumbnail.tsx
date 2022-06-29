@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { White } from '../../../styles/Colors';
-import { IconsEnum } from '../../Icons';
 import IconButton from '../Common/IconButton';
 import UpdateImages from './UpdateImages';
 
@@ -15,6 +14,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 	editable = false,
 	slideShow = true,
 }) => {
+	const Placeholder = '/PlaceholderPhoto.svg';
 	const [counter, setCounter] = useState(1);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const handleEditPhoto = useCallback(() => {
@@ -32,37 +32,27 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 
 	return (
 		<ThumbnailWrapper>
-			<img
-				id="thumbnail"
-				src={photos[counter - 1] || IconsEnum.PlaceholderPhoto}
-			/>
+			<img id="thumbnail" src={photos[counter - 1] || Placeholder} />
 			{editable && (
-				<CircleEditPencil
-					onClick={handleEditPhoto}
-					svgSrc={'/EditPencil.svg'}
-				/>
+				<CircleEditPencil onClick={handleEditPhoto} svgSrc={'EditPencil'} />
 			)}
-			{slideShow &&
-				photos.length > 0 &&
-				photos[0] !== IconsEnum.PlaceholderPhoto && (
-					<>
-						{counter !== 1 && (
-							<CircleArrowLeftBtn
-								svgSrc={'/CircleArrowLeft.svg'}
-								onClick={() => handleNextPhoto('prev')}
-								iconSize={2}
-							/>
-						)}
-						{counter !== photos.length && (
-							<CircleArrowRightBtn
-								svgSrc={'/CircleArrowLeft.svg'}
-								onClick={() => handleNextPhoto('next')}
-								iconSize={2}
-							/>
-						)}
-						<Counter>{`${counter} / ${photos.length}`}</Counter>
-					</>
-				)}
+			{slideShow && photos.length > 0 && photos[0] !== Placeholder && (
+				<>
+					{counter !== 1 && (
+						<CircleArrowLeftBtn
+							svgSrc="CircleArrowLeft"
+							onClick={() => handleNextPhoto('prev')}
+						/>
+					)}
+					{counter !== photos.length && (
+						<CircleArrowRightBtn
+							svgSrc="CircleArrowLeft"
+							onClick={() => handleNextPhoto('next')}
+						/>
+					)}
+					<Counter>{`${counter} / ${photos.length}`}</Counter>
+				</>
+			)}
 			{editable && (
 				<UpdateImages
 					isOpen={modalIsOpen}
@@ -97,8 +87,8 @@ const CircleBtn = styled(IconButton)`
 
 const CircleEditPencil = styled(CircleBtn)`
 	border: 1px solid black;
-	right: 0.5em;
-	top: 0.5em;
+	right: 1em;
+	top: 1em;
 `;
 
 const ChangeImageArrowBase = styled(IconButton)`

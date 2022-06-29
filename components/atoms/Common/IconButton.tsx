@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Icons } from '../../Icons';
-import StyledSvg from '../StyledComponents/StyledSvg';
+import SvgGetter from '../SVG/SvgGetter';
 
 interface CircleButtonProps {
 	svgSrc: Icons;
@@ -12,13 +12,15 @@ interface CircleButtonProps {
 	text?: string;
 	border?: boolean;
 	circle?: boolean;
+	svgColor?: string;
 }
 const IconButton: React.FC<CircleButtonProps> = ({
 	svgSrc,
 	onClick,
 	className,
 	text,
-	iconSize = 0,
+	svgColor,
+	iconSize = 3,
 	backgroundColor = 'white',
 	border = true,
 	circle = true,
@@ -33,7 +35,7 @@ const IconButton: React.FC<CircleButtonProps> = ({
 			iconSize={iconSize}
 			type="submit"
 		>
-			<StyledSvg src={svgSrc} alt="logo" />
+			<SvgGetter fill={svgColor} icon={svgSrc} />
 			{text && <p>{text}</p>}
 		</Wrapper>
 	);
@@ -50,8 +52,8 @@ const Wrapper = styled.button<{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.8em;
 	flex-direction: column;
+	padding: 0;
 	p {
 		margin: 0.6em 0 0;
 	}
@@ -73,16 +75,14 @@ const Wrapper = styled.button<{
 		cursor: pointer;
 		background-color: #d5d5d5;
 	}
-	img {
-		${({ iconSize }) =>
-			iconSize
-				? css`
-						width: ${iconSize + 'em'};
-						height: ${iconSize + 'em'};
-				  `
-				: css`
-						width: 'min-content';
-						height: 'min-content';
-				  `};
-	}
+	${({ iconSize }) =>
+		iconSize
+			? css`
+					width: ${iconSize + 'em'};
+					height: ${iconSize + 'em'};
+			  `
+			: css`
+					width: 'min-content';
+					height: 'min-content';
+			  `};
 `;

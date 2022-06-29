@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Card from '../../atoms/Card';
 import EditPencilBtn from '../../atoms/Common/EditPencilBtn';
@@ -21,6 +21,9 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 	canEditPosition = true,
 }) => {
 	const [isPositionModalOpen, setIsPositionModalOpen] = useState(false);
+	const handlePositionLink = useCallback(() => {
+		console.log('Show position data?');
+	}, []);
 
 	return (
 		<Card>
@@ -39,18 +42,18 @@ const SideCardContent: React.FC<SideCardContentProps> = ({
 						)}
 						<CoordinateRow>
 							<CustomStyledSvg
-								svgSrc={'/PositionRightArrow.svg'}
+								svgSrc="PositionRightArrow"
 								border={false}
-								onClick={() => {}}
+								onClick={handlePositionLink}
 								backgroundColor={lightgrey}
 							/>
 							<p>RV580 S1D1 M5561</p>
 						</CoordinateRow>
 						<CoordinateRow>
 							<CustomStyledSvg
-								svgSrc={'/PositionLeftArrow.svg'}
+								svgSrc="PositionLeftArrow"
 								border={false}
-								onClick={() => {}}
+								onClick={handlePositionLink}
 								backgroundColor={lightgrey}
 							/>
 							<p>RV580 S1D1 M5561</p>

@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { White } from '../../styles/Colors';
+import IconButton from '../atoms/Common/IconButton';
 import SaveButtonRow from './SaveButtonRow';
 
 export interface ModalProps {
@@ -33,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({
 				<ModalCard className={className}>
 					<Heading>
 						<h1>{headerText}</h1>
-						<StyledSvg src="/piggy-bank.png" alt="logo" onClick={handleClose} />
+						<IconButton onClick={handleClose} svgSrc="Close" border={false} />
 					</Heading>
 					{children}
 					{includeBtnRow && (

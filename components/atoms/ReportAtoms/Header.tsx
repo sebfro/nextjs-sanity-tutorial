@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import EditPencilBtn from '../Common/EditPencilBtn';
-import { StyledCursorPointerSvg } from '../StyledComponents/StyledSvg';
 
 interface HeaderProps {
 	headingNumber: number;
@@ -55,12 +54,6 @@ const TextWrapper = styled.div`
 		color: #444f55;
 		margin: 0;
 	}
-`;
-
-const CustomStyledSvg = styled(StyledCursorPointerSvg)`
-	width: 20px;
-	height: 24px;
-	align-self: center;
 `;
 
 const ColumnOne = styled.div`

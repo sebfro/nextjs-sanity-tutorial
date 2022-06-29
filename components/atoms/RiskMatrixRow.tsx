@@ -1,44 +1,43 @@
-import { isEqual } from 'lodash';
+// import { isEqual } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import { SelectedRiskValues } from '../../../types/Matrix';
-import Radio from '../toggles/Radio';
-import { FrequencyHeaders } from './Matrix';
+import { CheckBoxRowValues } from '../../pages/risk/matrix';
+// import Checkcircle from './Checkcircle';
 const getScore = (riskCombination: any) => {
 	const { risikoAlvorlighet, risikoSannsynlighet } = riskCombination ?? {};
 	return +risikoAlvorlighet * +risikoSannsynlighet;
 };
 interface RiskMatrixRowProps {
 	rowNr: string;
-	matrixRow: FrequencyHeaders;
-	values: SelectedRiskValues[];
-	checkedValue: SelectedRiskValues | null;
-	setCheckValue: (selectedRiskValues: SelectedRiskValues) => void;
+	// matrixRow: FrequencyHeaders;
+	values: CheckBoxRowValues[];
+	// checkedValue: SelectedRiskValues | null;
+	// setCheckValue: (selectedRiskValues: SelectedRiskValues) => void;
 }
 const RiskMatrixRow: React.FC<RiskMatrixRowProps> = ({
 	rowNr,
-	matrixRow,
+	// matrixRow,
 	values,
-	checkedValue,
-	setCheckValue,
+	// checkedValue,
+	// setCheckValue,
 }) => {
 	return (
 		<>
 			<Category className={`colorRow${rowNr}Column1`}>
-				<p>{matrixRow.categoryHeader}</p>
-				<p>{matrixRow.categorySubheader}</p>
+				{/* <p>{matrixRow.categoryHeader}</p>
+				<p>{matrixRow.categorySubheader}</p> */}
 			</Category>
 			{values.map((riskCombination, i) => (
 				<RadioWrapper
 					key={`radioWrapper_'${getScore(riskCombination)}`}
 					className={`colorRow${rowNr}Column${i + 2}`}
 				>
-					<Radio
+					{/* <Checkcircle
 						checked={isEqual(riskCombination, checkedValue)}
 						value={getScore(riskCombination)}
 						key={getScore(riskCombination)}
 						onChange={() => setCheckValue(riskCombination)}
-					/>
+					/> */}
 				</RadioWrapper>
 			))}
 		</>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledSvg from '../atoms/StyledComponents/StyledSvg';
+import SvgGetter from '../atoms/SVG/SvgGetter';
 
 const ChangePosition: React.FC = () => {
 	return (
@@ -11,12 +11,12 @@ const ChangePosition: React.FC = () => {
 			</Header>
 			<Wrapper>
 				<CustomBtn className="cursorhover">
-					<CustomStyledSvg src={'/PositionTag.png'} alt="logo" />
+					<SvgGetter icon="PositionTag" />
 					<p>Bruk nåværende posisjon</p>
 				</CustomBtn>
-				<p>/</p>
+				<Slash>/</Slash>
 				<CustomBtn className="cursorhover">
-					<CustomStyledSvg src={'/Map.png'} alt="logo" />
+					<SvgGetter icon="Map" />
 					<p>Velg posisjon i kart</p>
 				</CustomBtn>
 			</Wrapper>
@@ -53,10 +53,14 @@ const CustomBtn = styled.div`
 	align-items: center;
 	flex-direction: column;
 	text-align: center;
+	row-gap: 1em;
 	p {
 		font-size: 16px;
 		color: #444f55;
+		margin: 0;
 	}
 `;
 
-const CustomStyledSvg = styled(StyledSvg)``;
+const Slash = styled.p`
+	font-size: 20px;
+`;

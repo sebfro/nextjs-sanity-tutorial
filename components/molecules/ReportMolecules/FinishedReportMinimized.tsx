@@ -21,7 +21,7 @@ const FinishedReportMinimized: React.FC<FinishedReportMinimizedProps> = ({
 		return [
 			immediateActionRequired && {
 				text: 'Strakstiltak',
-				iconPath: '/InfoNotification.png',
+				iconPath: 'InfoNotification',
 				type: 'error',
 			},
 			...tags,

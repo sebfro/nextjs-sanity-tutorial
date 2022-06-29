@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import StyledSvg from './StyledComponents/StyledSvg';
+import SvgGetter from './SVG/SvgGetter';
 
 interface LinkButtonProps {
 	text: string;
@@ -10,7 +10,7 @@ interface LinkButtonProps {
 const LinkButton: React.FC<LinkButtonProps> = ({ link, text, className }) => {
 	return (
 		<Wrapper className={`${className} pointeronhover`}>
-			<StyledSvg src="/CircleArrowLeft.svg" alt="logo" />
+			<SvgGetter icon="CircleArrowLeft" />
 			{/* <ClickableLink  >{text}</ClickableLink> */}
 			<ClickableLink href={link}>{text}</ClickableLink>
 		</Wrapper>

@@ -5,7 +5,6 @@ import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import TsButton from '../../components/atoms/TsButton';
 import FinishedReportMinimized from '../../components/molecules/ReportMolecules/FinishedReportMinimized';
 import { Grey, TextColor, White } from '../../styles/Colors';
-import { EditPencil } from '../Icons';
 import FinishedReportExpanded from './../../components/molecules/ReportMolecules/FinishedReportExpanded';
 
 export interface FinishedreportProps {
@@ -48,7 +47,7 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 							<h1>{headerText}</h1>
 						</div>
 						<TsButton
-							iconPath={showMore ? '/ArrowUp.png' : '/ArrowDown.png'}
+							icon={showMore ? 'ArrowUp' : 'ArrowDown'}
 							text={showMore ? 'Vis mindre' : 'Vis mer'}
 							callback={handleToggle}
 							border={false}
@@ -75,14 +74,14 @@ const Finishedreport: React.FC<FinishedreportProps> = ({
 				</Wrapper>
 				<ButtonRow>
 					<TsButton
-						iconPath={EditPencil}
+						icon="EditPencil"
 						text="Rediger"
 						border={false}
 						callback={handleEditClick}
 						className="btnstyling"
 					/>
 					<TsButton
-						iconPath="/Trash.png"
+						icon="Trash"
 						text="Slett"
 						border={false}
 						callback={handleDeleteClick}

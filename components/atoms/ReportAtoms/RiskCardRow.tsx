@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import { Icons } from '../../Icons';
 import Card from '../Card';
@@ -22,11 +22,22 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 	const iconSrc = useMemo((): Icons => {
 		switch (type) {
 			case 'edit':
-				return '/EditPencil.svg';
+				return 'EditPencil';
 			default:
-				return '/expand.svg';
+				return 'Expand';
 		}
 	}, [type]);
+	const handleClick = useCallback(() => {
+		switch (type) {
+			case 'edit':
+				console.log('rediger');
+				break;
+			default:
+				console.log('Expand');
+				break;
+		}
+	}, [type]);
+
 	return (
 		<Card backgroundColor={backgroundColor} includeBorder={includeBorder}>
 			<RiskCardContent>
@@ -39,7 +50,7 @@ const RiskCardRow: React.FC<RiskCardRowprops> = ({
 				<IconButton
 					backgroundColor={backgroundColor}
 					svgSrc={iconSrc}
-					onClick={() => {}}
+					onClick={handleClick}
 					border={false}
 				/>
 			</RiskCardContent>

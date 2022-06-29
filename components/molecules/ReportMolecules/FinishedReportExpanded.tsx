@@ -42,7 +42,7 @@ const FinishedReportExpanded: React.FC<FinishedReportExpandedProps> = ({
 						{immediateActionRequired && (
 							<Tag
 								text="Strakstiltak"
-								iconPath="/InfoNotification.png"
+								iconPath="InfoNotification"
 								type="error"
 							/>
 						)}

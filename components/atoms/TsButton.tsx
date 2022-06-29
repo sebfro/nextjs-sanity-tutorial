@@ -2,12 +2,12 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { White } from '../../styles/Colors';
 import { Icons } from '../Icons';
-import StyledSvg from './StyledComponents/StyledSvg';
+import SvgGetter from './SVG/SvgGetter';
 
 interface TsButtonProps {
 	callback: () => void;
 	text: string;
-	iconPath?: Icons;
+	icon?: Icons;
 	className?: string;
 	centerText?: boolean;
 	border?: boolean;
@@ -17,7 +17,7 @@ interface TsButtonProps {
 const TsButton: React.FC<TsButtonProps> = ({
 	callback,
 	text,
-	iconPath,
+	icon,
 	className = '',
 	centerText = false,
 	border = true,
@@ -33,9 +33,7 @@ const TsButton: React.FC<TsButtonProps> = ({
 			reverse={reverse}
 			className={className}
 		>
-			{iconPath && (
-				<CustomStyledSvg className="cursorhover" src={iconPath} alt="logo" />
-			)}
+			{icon && <SvgGetter icon={icon} />}
 			{text}
 		</Button>
 	);
@@ -68,8 +66,4 @@ const Button = styled.button<{
 	:hover {
 		cursor: pointer;
 	}
-`;
-
-const CustomStyledSvg = styled(StyledSvg)`
-	width: 1em;
 `;

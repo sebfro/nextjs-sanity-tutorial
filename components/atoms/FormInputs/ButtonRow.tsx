@@ -33,7 +33,7 @@ const ButtonRow: React.FC<ButtonRowProps> = ({
 				centerText
 				text={cancelBtnText}
 				callback={cancelCallback}
-				iconPath="/Trash.png"
+				icon="Trash"
 			/>
 		</ButtonRowWrapper>
 	);

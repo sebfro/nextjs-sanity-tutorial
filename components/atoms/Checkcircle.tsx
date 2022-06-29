@@ -3,12 +3,14 @@ import styled from 'styled-components';
 
 interface CheckcircleProps {
 	onClickCallback: (value: string) => void;
-	value: string;
+	value: number;
+	checked: boolean;
 	className: string;
 }
 const Checkcircle: React.FC<CheckcircleProps> = ({
 	onClickCallback,
 	value,
+	checked,
 	className,
 }) => {
 	const handleChange = useCallback(
@@ -23,6 +25,7 @@ const Checkcircle: React.FC<CheckcircleProps> = ({
 			<CustomCheckbox
 				name="risk"
 				type="radio"
+				checked={checked}
 				value={value}
 				onChange={handleChange}
 			/>

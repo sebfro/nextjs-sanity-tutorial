@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import StyledSvg from './StyledComponents/StyledSvg';
+import SvgGetter from './SVG/SvgGetter';
 
 interface TopBarProps {
 	username: string;
@@ -12,14 +12,14 @@ const TopBar: React.FC<TopBarProps> = ({ username }) => {
 	return (
 		<Bar className="flexaligncenter">
 			<HeadingItem className="flexaligncenter">
-				<StyledSvg src={'/Upload.svg'} alt="logo" />
+				<SvgGetter icon="Upload" />
 				{username}
 			</HeadingItem>
 			<HeadingItem
 				className="flexaligncenter pointeronhover"
 				onClick={handleLogout}
 			>
-				<StyledSvg src={'/Close.svg'} alt="logo" />
+				<SvgGetter icon="Close" />
 				Logg ut
 			</HeadingItem>
 		</Bar>

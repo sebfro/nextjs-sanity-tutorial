@@ -36,10 +36,10 @@ const FirstRowCheckboxValues: CheckBoxRowValues[][] = [
 ];
 
 const Matrix: React.FC = () => {
-	const [checkedValue, setCheckedValue] = useState<string | null>(null);
-	const setCheckValue = useCallback((value: string) => {
-		setCheckedValue(value);
-	}, []);
+	// const [checkedValue, setCheckedValue] = useState<string | null>(null);
+	// const setCheckValue = useCallback((value: string) => {
+	// 	setCheckedValue(value);
+	// }, []);
 
 	return (
 		<ColorWrapper>
@@ -51,7 +51,7 @@ const Matrix: React.FC = () => {
 				<Heading className="colorRow1Column3">Hardt skadd</Heading>
 				<Heading className="colorRow1Column4">Drept</Heading>
 				<Heading className="colorRow1Column5">Flere drepte</Heading>
-				<RiskMatrixRow
+				{/* <RiskMatrixRow
 					categoryHeader="Svært ofte"
 					categorySubheader="Minst 1 gang pr år"
 					checkboxList={FirstRowCheckboxValues[0]}
@@ -78,7 +78,7 @@ const Matrix: React.FC = () => {
 					checkboxList={FirstRowCheckboxValues[3]}
 					setCheckValue={setCheckValue}
 					rowNr="4"
-				/>
+				/> */}
 				<BottomRow>
 					<p className="bold">Alvorighetsscore</p>
 					<p>|</p>

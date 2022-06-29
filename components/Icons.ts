@@ -1,6 +1,3 @@
-import SvgComponent from './atoms/Common/SvgComponent';
-import RiskCardRow from './atoms/ReportAtoms/RiskCardRow';
-
 //If the svgs are used in standard html without typing, use this one instead
 export enum IconsEnum {
 	Close = '/Close.svg',
@@ -21,18 +18,44 @@ export enum IconsEnum {
 
 // If you are going to update any of them use f2 to update all components that use it.
 export type Icons =
-	| '/Close.svg'
-	| '/EditPencil.svg'
-	| '/PositionLeftArrow.svg'
-	| '/PositionRightArrow.svg'
-	| '/CircleArrowLeft.svg'
-	| '/SuccessIcon.svg'
-	| '/Info_Success.svg'
-	| '/expand.svg'
-	| '/placeholder-photo.svg'
-	| '/Upload.svg'
-	| '/Trash.png'
-	| '/PositionTag.png'
-	| '/Map.png';
+	| 'Close'
+	| 'EditPencil'
+	| 'PositionLeftArrow'
+	| 'PositionRightArrow'
+	| 'CircleArrowLeft'
+	| 'SuccessIcon'
+	| 'Info_Success'
+	| 'Expand'
+	| 'PlaceholderPhoto'
+	| 'Upload'
+	| 'Trash'
+	| 'PositionTag'
+	| 'Map'
+	| 'InfoNotification'
+	| 'ArrowDown'
+	| 'ArrowUp'
+	| 'InfoNotificationWarning'
+	| 'PersonIcon'
+	| 'SignOut';
 
-export type e = typeof SvgComponent | typeof RiskCardRow;
+export const iconsList = [
+	'Close',
+	'EditPencil',
+	'PositionLeftArrow',
+	'PositionRightArrow',
+	'CircleArrowLeft',
+	'SuccessIcon',
+	'Info_Success',
+	'Expand',
+	'PlaceholderPhoto',
+	'Upload',
+	'Trash',
+	'PositionTag',
+	'Map',
+	'SignOut',
+	'PersonIcon',
+	'InfoNotificationWarning',
+	'InfoNotification',
+	'ArrowUp',
+	'ArrowDown',
+] as const;

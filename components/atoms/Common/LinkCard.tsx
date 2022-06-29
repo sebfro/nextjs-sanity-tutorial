@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { White } from '../../../styles/Colors';
 import Card from '../Card';
-import StyledSvg from '../StyledComponents/StyledSvg';
+import SvgGetter from '../SVG/SvgGetter';
 
 interface LinkCardProps {
 	textHeader: string;
@@ -21,7 +21,7 @@ const LinkCard: React.FC<LinkCardProps> = ({
 				<CardContent>
 					<CardFirstRow>
 						<p className="titletext">{textHeader}</p>
-						<StyledSvg src={'/CircleArrowLeft.svg'} alt="Arrow left" />
+						<SvgGetter icon="CircleArrowLeft" />
 					</CardFirstRow>
 					<SubTitle>{subTitleText}</SubTitle>
 				</CardContent>

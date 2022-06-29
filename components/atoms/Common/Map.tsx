@@ -40,7 +40,9 @@ const Heading = styled.div`
 `;
 
 const Wrapper = styled.div`
-	width: 100%;
+	flex-grow: 4;
+	min-width: 45em;
+	height: fit-content;
 	img {
 		width: 100%;
 	}

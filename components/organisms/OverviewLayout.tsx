@@ -63,7 +63,8 @@ const Content = styled.div`
 `;
 
 const LeftContent = styled.div`
-	width: 100%;
+	flex-grow: 5;
+	min-width: 60em;
 `;
 
 const Heading = styled.div`

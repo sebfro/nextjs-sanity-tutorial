@@ -31,7 +31,7 @@ export const EditPencil = styled(IconButton)<{ border: boolean }>`
 	${({ border }) =>
 		border
 			? css`
-					border: 2px solid black;
+					border: 1px solid black;
 			  `
 			: css`
 					border: none;

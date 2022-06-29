@@ -74,6 +74,7 @@ const ModalContainer = styled.div`
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.6);
+	z-index: 1;
 `;
 
 const ModalCard = styled.div`
@@ -88,11 +89,4 @@ const ModalCard = styled.div`
 	p {
 		color: black;
 	}
-`;
-
-const StyledSvg = styled.img`
-	width: 20px;
-	height: 24px;
-	cursor: pointer;
-	align-self: center;
 `;

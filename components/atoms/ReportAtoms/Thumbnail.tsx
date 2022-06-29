@@ -42,12 +42,14 @@ const Thumbnail: React.FC<ThumbnailProps> = ({
 						<CircleArrowLeftBtn
 							svgSrc="CircleArrowLeft"
 							onClick={() => handleNextPhoto('prev')}
+							backgroundColor="red"
 						/>
 					)}
 					{counter !== photos.length && (
 						<CircleArrowRightBtn
 							svgSrc="CircleArrowLeft"
 							onClick={() => handleNextPhoto('next')}
+							backgroundColor="red"
 						/>
 					)}
 					<Counter>{`${counter} / ${photos.length}`}</Counter>
@@ -70,7 +72,7 @@ const ThumbnailWrapper = styled.div`
 	display: inline-block;
 	position: relative;
 	width: 100%;
-	min-height: 12em;
+	height: fit-content;
 	#thumbnail {
 		width: 100%;
 		height: 100%;
@@ -92,6 +94,8 @@ const CircleEditPencil = styled(CircleBtn)`
 `;
 
 const ChangeImageArrowBase = styled(IconButton)`
+	background-color: ${White};
+	/* border: 1px solid black; */
 	border: 1px solid #858d90;
 	align-items: center;
 	bottom: 40%;

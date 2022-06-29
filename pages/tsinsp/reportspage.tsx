@@ -5,6 +5,7 @@ import DiscoveriesInReportCard from '../../components/atoms/ReportAtoms/Discover
 import { TagsProps } from '../../components/atoms/ReportAtoms/Tag';
 import ResultStatusCard from '../../components/atoms/ResultStatusCard';
 import TsButton from '../../components/atoms/TsButton';
+import Modal from '../../components/molecules/Modal';
 import Finishedreport, {
 	FinishedreportProps,
 } from '../../components/organisms/FinishedReport';

@@ -59,7 +59,7 @@ const UpdateImages: React.FC<UpdateImagesProps> = ({
 										<SvgGetter icon="SuccessIcon" />
 										<p>{img.name}</p>
 									</UploadedImageName>
-									<IconButton
+									<TrashIconBtn
 										svgSrc="Trash"
 										border={false}
 										text="Fjern fil"
@@ -96,11 +96,21 @@ const UploadedImagesRow = styled.div`
 	justify-content: space-between;
 	border-top: 1px solid black;
 	align-items: center;
-	padding: 1em 1.5em 1em 0;
+	padding: 0.7em 1.2em 0.7em 0;
 `;
 
 const UploadedImageName = styled.div`
 	display: flex;
 	column-gap: 0.5em;
 	align-items: center;
+`;
+
+const TrashIconBtn = styled(IconButton)`
+	height: fit-content;
+	width: fit-content;
+	row-gap: 0.7em;
+	padding: 0.3em 0.3em;
+	p {
+		margin: 0;
+	}
 `;

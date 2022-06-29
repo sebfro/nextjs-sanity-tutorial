@@ -59,7 +59,6 @@ const FormFileDropBox: React.FC<FileDropBoxProps> = ({
 export default FormFileDropBox;
 
 const Wrapper = styled.div`
-	width: 100%;
 	grid-column: 1 / 3;
 	color: black;
 	.subtitle {
@@ -72,7 +71,6 @@ const Wrapper = styled.div`
 	}
 	.button {
 		border: 2px dotted black;
-		width: 100%;
 		display: flex;
 		padding: 1em 0;
 		justify-content: center;

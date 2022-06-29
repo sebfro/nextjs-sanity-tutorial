@@ -54,6 +54,7 @@ const Wrapper = styled.button<{
 	align-items: center;
 	flex-direction: column;
 	padding: 0;
+	row-gap: 0.5em;
 	p {
 		margin: 0.6em 0 0;
 	}
